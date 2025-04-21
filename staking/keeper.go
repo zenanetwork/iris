@@ -31,9 +31,9 @@ var (
 // ModuleCommunicator manages different module interaction
 type ModuleCommunicator interface {
 	GetACKCount(ctx sdk.Context) uint64
-	SetCoins(ctx sdk.Context, addr hmTypes.irisAddress, amt sdk.Coins) sdk.Error
-	GetCoins(ctx sdk.Context, addr hmTypes.irisAddress) sdk.Coins
-	SendCoins(ctx sdk.Context, from hmTypes.irisAddress, to hmTypes.irisAddress, amt sdk.Coins) sdk.Error
+	SetCoins(ctx sdk.Context, addr hmTypes.IrisAddress, amt sdk.Coins) sdk.Error
+	GetCoins(ctx sdk.Context, addr hmTypes.IrisAddress) sdk.Coins
+	SendCoins(ctx sdk.Context, from hmTypes.IrisAddress, to hmTypes.IrisAddress, amt sdk.Coins) sdk.Error
 	CreateValidatorSigningInfo(ctx sdk.Context, valID hmTypes.ValidatorID, valSigningInfo hmTypes.ValidatorSigningInfo)
 }
 
@@ -248,7 +248,7 @@ func (k *Keeper) IterateValidatorsAndApplyFn(ctx sdk.Context, f func(validator h
 }
 
 // UpdateSigner updates validator with signer and pubkey + validator => signer map
-func (k *Keeper) UpdateSigner(ctx sdk.Context, newSigner hmTypes.irisAddress, newPubkey hmTypes.PubKey, prevSigner hmTypes.irisAddress) error {
+func (k *Keeper) UpdateSigner(ctx sdk.Context, newSigner hmTypes.IrisAddress, newPubkey hmTypes.PubKey, prevSigner hmTypes.IrisAddress) error {
 	// get old validator from state and make power 0
 	validator, err := k.GetValidatorInfo(ctx, prevSigner.Bytes())
 	if err != nil {
@@ -353,7 +353,7 @@ func (k *Keeper) GetCurrentProposer(ctx sdk.Context) *hmTypes.Validator {
 }
 
 // SetValidatorIDToSignerAddr sets mapping for validator ID to signer address
-func (k *Keeper) SetValidatorIDToSignerAddr(ctx sdk.Context, valID hmTypes.ValidatorID, signerAddr hmTypes.irisAddress) {
+func (k *Keeper) SetValidatorIDToSignerAddr(ctx sdk.Context, valID hmTypes.ValidatorID, signerAddr hmTypes.IrisAddress) {
 	store := ctx.KVStore(k.storeKey)
 	store.Set(GetValidatorMapKey(valID.Bytes()), signerAddr.Bytes())
 }

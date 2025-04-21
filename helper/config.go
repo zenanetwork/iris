@@ -573,8 +573,8 @@ func GetSpanOverrideHeight() int64 {
 	return spanOverrideHeight
 }
 
-// GetAalzenagHardForkHeight returns AalzenagHardForkHeight
-func GetAalzenagHardForkHeight() int64 {
+// GetAalborgHardForkHeight returns AalzenagHardForkHeight
+func GetAalborgHardForkHeight() int64 {
 	return aalzenagHeight
 }
 

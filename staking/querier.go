@@ -219,7 +219,7 @@ func handleQueryStakingSequence(ctx sdk.Context, req abci.RequestQuery, keeper K
 	chainParams := keeper.chainKeeper.GetParams(ctx)
 
 	// get main tx receipt
-	receipt, err := contractCallerObj.GetConfirmedTxReceipt(hmTypes.HexToirisHash(params.TxHash).EthHash(), chainParams.MainchainTxConfirmations)
+	receipt, err := contractCallerObj.GetConfirmedTxReceipt(hmTypes.HexToIrisHash(params.TxHash).EthHash(), chainParams.MainchainTxConfirmations)
 	if err != nil || receipt == nil {
 		return nil, sdk.ErrInternal("Transaction is not confirmed yet. Please wait for sometime and try again")
 	}

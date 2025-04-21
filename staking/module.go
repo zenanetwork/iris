@@ -27,7 +27,7 @@ import (
 var (
 	_ module.AppModule         = AppModule{}
 	_ module.AppModuleBasic    = AppModuleBasic{}
-	_ hmModule.irisModuleBasic = AppModule{}
+	_ hmModule.IrisModuleBasic = AppModule{}
 	// _ module.AppModuleSimulation = AppModule{}
 )
 
