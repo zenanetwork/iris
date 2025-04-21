@@ -11,18 +11,18 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	clerkCli "github.com/maticnetwork/heimdall/clerk/client/cli"
-	clerkRest "github.com/maticnetwork/heimdall/clerk/client/rest"
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
+	clerkCli "github.com/zenanetwork/iris/clerk/client/cli"
+	clerkRest "github.com/zenanetwork/iris/clerk/client/rest"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
 )
 
 var (
 	_ module.AppModule                 = AppModule{}
 	_ module.AppModuleBasic            = AppModuleBasic{}
-	_ hmModule.IrisModuleBasic     = AppModule{}
+	_ hmModule.IrisModuleBasic         = AppModule{}
 	_ hmModule.StreamedGenesisExporter = AppModule{}
 	// _ module.AppModuleSimulation = AppModule{}
 )

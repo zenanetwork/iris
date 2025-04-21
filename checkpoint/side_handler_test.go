@@ -7,22 +7,22 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	borCommon "github.com/ethereum/go-ethereum/common"
+	zenaCommon "github.com/ethereum/go-ethereum/common"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/checkpoint"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/common"
-	errs "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/contracts/rootchain"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	cmTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/checkpoint"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/common"
+	errs "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/contracts/rootchain"
+	"github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // SideHandlerTestSuite integrate test suite context object
@@ -91,7 +91,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustSuccess() {
 	}
 	rootchainInstance := &rootchain.Rootchain{}
 	suite.contractCaller.On("GetRootChainInstance", mock.Anything).Return(rootchainInstance, nil)
-	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(borCommon.HexToHash("456"), uint64(0), uint64(512), uint64(1), hmTypes.HexToIrisAddress("456"), nil)
+	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(zenaCommon.HexToHash("456"), uint64(0), uint64(512), uint64(1), hmTypes.HexToIrisAddress("456"), nil)
 
 	suite.handler(ctx, checkpointAdjust)
 	sideResult := suite.sideHandler(ctx, checkpointAdjust)
@@ -127,7 +127,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustSameCheckpointAsRoot
 	}
 	rootchainInstance := &rootchain.Rootchain{}
 	suite.contractCaller.On("GetRootChainInstance", mock.Anything).Return(rootchainInstance, nil)
-	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(borCommon.HexToHash("123"), uint64(0), uint64(256), uint64(1), hmTypes.HexToIrisAddress("123"), nil)
+	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(zenaCommon.HexToHash("123"), uint64(0), uint64(256), uint64(1), hmTypes.HexToIrisAddress("123"), nil)
 
 	suite.handler(ctx, checkpointAdjust)
 	sideResult := suite.sideHandler(ctx, checkpointAdjust)
@@ -159,7 +159,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustNotSameCheckpointAsR
 
 	rootchainInstance := &rootchain.Rootchain{}
 	suite.contractCaller.On("GetRootChainInstance", mock.Anything).Return(rootchainInstance, nil)
-	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(borCommon.HexToHash("222"), uint64(0), uint64(256), uint64(1), hmTypes.HexToIrisAddress("123"), nil)
+	suite.contractCaller.On("GetHeaderInfo", mock.Anything, mock.Anything, mock.Anything).Return(zenaCommon.HexToHash("222"), uint64(0), uint64(256), uint64(1), hmTypes.HexToIrisAddress("123"), nil)
 
 	result := suite.sideHandler(ctx, checkpointAdjust)
 	require.Equal(t, result.Code, uint32(common.CodeCheckpointAlreadyExists))
@@ -176,7 +176,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgCheckpoint() {
 	header, err := chSim.GenRandCheckpoint(start, maxSize, params.MaxCheckpointLength)
 	require.NoError(t, err)
 
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	suite.Run("Success", func() {
 		suite.contractCaller = mocks.IContractCaller{}
@@ -188,7 +188,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		suite.contractCaller.On("CheckIfBlocksExist", header.EndBlock+cmTypes.DefaultMaticchainTxConfirmations).Return(true)
@@ -211,7 +211,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		suite.contractCaller.On("CheckIfBlocksExist", header.EndBlock+cmTypes.DefaultMaticchainTxConfirmations).Return(true)
@@ -237,7 +237,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		suite.contractCaller.On("CheckIfBlocksExist", header.EndBlock+cmTypes.DefaultMaticchainTxConfirmations).Return(true)
@@ -348,7 +348,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgCheckpoint() {
 	// add current proposer to header
 	header.Proposer = stakingKeeper.GetValidatorSet(ctx).Proposer.Signer
 
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	suite.Run("Failure", func() {
 		// create checkpoint msg
@@ -358,7 +358,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		result := suite.postHandler(ctx, msgCheckpoint, abci.SideTxResultType_No)
@@ -377,7 +377,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		result := suite.postHandler(ctx, msgCheckpoint, abci.SideTxResultType_Yes)
@@ -400,7 +400,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			header.RootHash,
-			borChainId,
+			zenaChainId,
 		)
 
 		result := suite.postHandler(ctx, msgCheckpoint, abci.SideTxResultType_Yes)

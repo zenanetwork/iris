@@ -5,20 +5,20 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
 )
 
 // MsgEventRecord - state msg
 type MsgEventRecord struct {
 	From            types.IrisAddress `json:"from"`
 	TxHash          types.IrisHash    `json:"tx_hash"`
-	LogIndex        uint64                `json:"log_index"`
-	BlockNumber     uint64                `json:"block_number"`
+	LogIndex        uint64            `json:"log_index"`
+	BlockNumber     uint64            `json:"block_number"`
 	ContractAddress types.IrisAddress `json:"contract_address"`
-	Data            types.HexBytes        `json:"data"`
-	ID              uint64                `json:"id"`
-	ChainID         string                `json:"bor_chain_id"`
+	Data            types.HexBytes    `json:"data"`
+	ID              uint64            `json:"id"`
+	ChainID         string            `json:"zena_chain_id"`
 }
 
 var _ sdk.Msg = MsgEventRecord{}

@@ -10,9 +10,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/types"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/types"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 )
 
 //It represents the auth params

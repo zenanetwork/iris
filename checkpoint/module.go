@@ -14,17 +14,17 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	checkpointCli "github.com/maticnetwork/heimdall/checkpoint/client/cli"
-	checkpointRest "github.com/maticnetwork/heimdall/checkpoint/client/rest"
-	"github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/staking"
-	"github.com/maticnetwork/heimdall/topup"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	checkpointCli "github.com/zenanetwork/iris/checkpoint/client/cli"
+	checkpointRest "github.com/zenanetwork/iris/checkpoint/client/rest"
+	"github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/staking"
+	"github.com/zenanetwork/iris/topup"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 var (

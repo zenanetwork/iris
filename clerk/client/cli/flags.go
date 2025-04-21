@@ -8,7 +8,7 @@ const (
 	FlagLogIndex        = "log-index"
 	FlagRecordID        = "id"
 	FlagData            = "data"
-	FlagBorChainId      = "bor-chain-id"
+	FlagZenaChainId     = "zena-chain-id"
 	FlagPage            = "page"
 	FlagLimit           = "limit"
 )

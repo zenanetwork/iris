@@ -6,10 +6,10 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/helper"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/helper"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // Setup initializes a new App. A Nop logger is set in App.

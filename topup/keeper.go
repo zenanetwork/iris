@@ -8,13 +8,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/bank"
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/staking"
-	"github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	"github.com/tendermint/tendermint/libs/log"
+	"github.com/zenanetwork/iris/bank"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/staking"
+	"github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var (

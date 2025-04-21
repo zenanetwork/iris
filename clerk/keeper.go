@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/params/subspace"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var (

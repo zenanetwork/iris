@@ -25,12 +25,12 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
-	stakingTypes "github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/zena/types"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
+	stakingTypes "github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 )
 
 type IrisSpanResultWithHeight struct {
@@ -58,7 +58,7 @@ type span struct {
 	//in:body
 	ValidatorSet      validatorSet `json:"validator_set"`
 	SelectedProducers []validator  `json:"selected_producer"`
-	BorChainId        string       `json:"bor_chain_id"`
+	ZenaChainId        string       `json:"zena_chain_id"`
 }
 
 type validatorSet struct {
@@ -68,39 +68,39 @@ type validatorSet struct {
 
 // It represents the list of spans
 //
-//swagger:response borSpanListResponse
-type borSpanListResponse struct {
+//swagger:response zenaSpanListResponse
+type zenaSpanListResponse struct {
 	//in:body
-	Output borSpanList `json:"output"`
+	Output zenaSpanList `json:"output"`
 }
 
-type borSpanList struct {
+type zenaSpanList struct {
 	Height string `json:"height"`
 	Result []span `json:"result"`
 }
 
 // It represents the span
 //
-//swagger:response borSpanResponse
-type borSpanResponse struct {
+//swagger:response zenaSpanResponse
+type zenaSpanResponse struct {
 	//in:body
-	Output borSpan `json:"output"`
+	Output zenaSpan `json:"output"`
 }
 
-type borSpan struct {
+type zenaSpan struct {
 	Height string `json:"height"`
 	Result span   `json:"result"`
 }
 
-// It represents the bor span parameters
+// It represents the zena span parameters
 //
-//swagger:response borSpanParamsResponse
-type borSpanParamsResponse struct {
+//swagger:response zenaSpanParamsResponse
+type zenaSpanParamsResponse struct {
 	//in:body
-	Output borSpanParams `json:"output"`
+	Output zenaSpanParams `json:"output"`
 }
 
-type borSpanParams struct {
+type zenaSpanParams struct {
 	Height string     `json:"height"`
 	Result spanParams `json:"result"`
 }
@@ -117,8 +117,8 @@ type spanParams struct {
 
 // It represents the next span seed
 //
-//swagger:response borNextSpanSeedResponse
-type borNextSpanSeedResponse struct {
+//swagger:response zenaNextSpanSeedResponse
+type zenaNextSpanSeedResponse struct {
 	//in:body
 	Output spanSeed `json:"output"`
 }
@@ -131,16 +131,16 @@ type spanSeed struct {
 var spanOverrides map[uint64]*IrisSpanResultWithHeight = nil
 
 func registerQueryRoutes(cliCtx context.CLIContext, r *mux.Router) {
-	r.HandleFunc("/bor/span/list", spanListHandlerFn(cliCtx)).Methods("GET")
-	r.HandleFunc("/bor/span/{id}", spanHandlerFn(cliCtx)).Methods("GET")
-	r.HandleFunc("/bor/latest-span", latestSpanHandlerFn(cliCtx)).Methods("GET")
-	r.HandleFunc("/bor/prepare-next-span", prepareNextSpanHandlerFn(cliCtx)).Methods("GET")
-	r.HandleFunc("/bor/next-span-seed/{id}", fetchNextSpanSeedHandlerFn(cliCtx)).Methods("GET")
-	r.HandleFunc("/bor/params", paramsHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/span/list", spanListHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/span/{id}", spanHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/latest-span", latestSpanHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/prepare-next-span", prepareNextSpanHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/next-span-seed/{id}", fetchNextSpanSeedHandlerFn(cliCtx)).Methods("GET")
+	r.HandleFunc("/zena/params", paramsHandlerFn(cliCtx)).Methods("GET")
 }
 
-//swagger:parameters borCurrentSpanById
-type borCurrentSpanById struct {
+//swagger:parameters zenaCurrentSpanById
+type zenaCurrentSpanById struct {
 
 	//Id number of the span
 	//required:true
@@ -149,10 +149,10 @@ type borCurrentSpanById struct {
 	Id int `json:"id"`
 }
 
-// swagger:route GET /bor/next-span-seed/{id} bor borCurrentSpanById
+// swagger:route GET /zena/next-span-seed/{id} zena zenaCurrentSpanById
 // It returns the seed for the next span
 // responses:
-//   200: borNextSpanSeedResponse
+//   200: zenaNextSpanSeedResponse
 
 func fetchNextSpanSeedHandlerFn(
 	cliCtx context.CLIContext,
@@ -196,8 +196,8 @@ func fetchNextSpanSeedHandlerFn(
 	}
 }
 
-//swagger:parameters borSpanList
-type borSpanListParam struct {
+//swagger:parameters zenaSpanList
+type zenaSpanListParam struct {
 
 	//Page Number
 	//required:true
@@ -212,11 +212,11 @@ type borSpanListParam struct {
 	Limit int `json:"limit"`
 }
 
-// swagger:route GET /bor/span/list bor borSpanList
-// It returns the list of Bor Span
+// swagger:route GET /zena/span/list zena zenaSpanList
+// It returns the list of Zena Span
 // responses:
 //
-//	200: borSpanListResponse
+//	200: zenaSpanListResponse
 func spanListHandlerFn(
 	cliCtx context.CLIContext,
 ) http.HandlerFunc {
@@ -262,8 +262,8 @@ func spanListHandlerFn(
 	}
 }
 
-//swagger:parameters borSpanById
-type borSpanById struct {
+//swagger:parameters zenaSpanById
+type zenaSpanById struct {
 
 	//Id number of the span
 	//required:true
@@ -272,11 +272,11 @@ type borSpanById struct {
 	Id int `json:"id"`
 }
 
-// swagger:route GET /bor/span/{id} bor borSpanById
+// swagger:route GET /zena/span/{id} zena zenaSpanById
 // It returns the span based on ID
 // responses:
 //
-//	200: borSpanResponse
+//	200: zenaSpanResponse
 func spanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -333,11 +333,11 @@ func spanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	}
 }
 
-// swagger:route GET /bor/latest-span bor borSpanLatest
+// swagger:route GET /zena/latest-span zena zenaSpanLatest
 // It returns the latest-span
 // responses:
 //
-//	200: borSpanResponse
+//	200: zenaSpanResponse
 func latestSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -363,8 +363,8 @@ func latestSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	}
 }
 
-//swagger:parameters borPrepareNextSpan
-type borPrepareNextSpanParam struct {
+//swagger:parameters zenaPrepareNextSpan
+type zenaPrepareNextSpanParam struct {
 
 	//Start Block
 	//required:true
@@ -385,11 +385,11 @@ type borPrepareNextSpanParam struct {
 	ChainId int `json:"chain_id"`
 }
 
-// swagger:route GET /bor/prepare-next-span bor borPrepareNextSpan
+// swagger:route GET /zena/prepare-next-span zena zenaPrepareNextSpan
 // It returns the prepared next span
 // responses:
 //
-//	200: borSpanResponse
+//	200: zenaSpanResponse
 func prepareNextSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -529,11 +529,11 @@ func prepareNextSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	}
 }
 
-// swagger:route GET /bor/params bor borSpanParams
+// swagger:route GET /zena/params zena zenaSpanParams
 // It returns the span parameters
 // responses:
 //
-//	200: borSpanParamsResponse
+//	200: zenaSpanParamsResponse
 func paramsHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -556,7 +556,7 @@ func paramsHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 
 // ResponseWithHeight defines a response object type that wraps an original
 // response with a height.
-// TODO:Link it with bor
+// TODO:Link it with zena
 type ResponseWithHeight struct {
 	Height string              `json:"height"`
 	Result jsoniter.RawMessage `json:"result"`
@@ -593,7 +593,7 @@ func loadSpanOverrides() {
 	}
 }
 
-//swagger:parameters borSpanList borSpanById borPrepareNextSpan borSpanLatest borSpanParams borNextSpanSeed
+//swagger:parameters zenaSpanList zenaSpanById zenaPrepareNextSpan zenaSpanLatest zenaSpanParams zenaNextSpanSeed
 type Height struct {
 
 	//Block Height

@@ -9,22 +9,22 @@ import (
 	"time"
 
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 
-	proto "github.com/maticnetwork/polyproto/heimdall"
-	protoutils "github.com/maticnetwork/polyproto/utils"
+	proto "github.com/zenanetwork/zenaproto/iris"
+	protoutils "github.com/zenanetwork/zenaproto/utils"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type Checkpoint struct {
-	Proposer   hmTypes.IrisAddress `json:"proposer"`
-	StartBlock uint64              `json:"start_block"`
-	EndBlock   uint64              `json:"end_block"`
-	RootHash   hmTypes.IrisHash    `json:"root_hash"`
-	BorChainID string              `json:"bor_chain_id"`
-	TimeStamp  uint64              `json:"timestamp"`
+	Proposer    hmTypes.IrisAddress `json:"proposer"`
+	StartBlock  uint64              `json:"start_block"`
+	EndBlock    uint64              `json:"end_block"`
+	RootHash    hmTypes.IrisHash    `json:"root_hash"`
+	ZenaChainID string              `json:"zena_chain_id"`
+	TimeStamp   uint64              `json:"timestamp"`
 }
 
 func (h *IrisGRPCServer) FetchCheckpointCount(_ context.Context, _ *emptypb.Empty) (*proto.FetchCheckpointCountResponse, error) {
@@ -86,12 +86,12 @@ func (h *IrisGRPCServer) FetchCheckpoint(_ context.Context, in *proto.FetchCheck
 
 	resp.Height = fmt.Sprint(result.Height)
 	resp.Result = &proto.Checkpoint{
-		StartBlock: checkPoint.StartBlock,
-		EndBlock:   checkPoint.EndBlock,
-		RootHash:   protoutils.ConvertHashToH256(hash),
-		Proposer:   protoutils.ConvertAddressToH160(address),
-		Timestamp:  timestamppb.New(time.Unix(big.NewInt(0).SetUint64(checkPoint.TimeStamp).Int64(), 0)),
-		BorChainID: checkPoint.BorChainID,
+		StartBlock:  checkPoint.StartBlock,
+		EndBlock:    checkPoint.EndBlock,
+		RootHash:    protoutils.ConvertHashToH256(hash),
+		Proposer:    protoutils.ConvertAddressToH160(address),
+		Timestamp:   timestamppb.New(time.Unix(big.NewInt(0).SetUint64(checkPoint.TimeStamp).Int64(), 0)),
+		ZenaChainID: checkPoint.ZenaChainID,
 	}
 
 	return resp, nil

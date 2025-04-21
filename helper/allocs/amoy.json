@@ -47,7 +47,7 @@
     "bank": {
       "send_enabled": true
     },
-    "bor": {
+    "zena": {
       "params": {
         "sprint_duration": "16",
         "span_duration": "6400",
@@ -100,7 +100,7 @@
               "accum": "0"
             }
           ],
-          "bor_chain_id": "80002"
+          "zena_chain_id": "80002"
         }
       ]
     },
@@ -109,7 +109,7 @@
         "mainchain_tx_confirmations": "6",
         "maticchain_tx_confirmations": "10",
         "chain_params": {
-          "bor_chain_id": "80002",
+          "zena_chain_id": "80002",
           "matic_token_address": "0x3fd0A53F4Bf853985a95F4Eb3F9C9FDE1F8e2b53",
           "staking_manager_address": "0x4AE8f648B1Ec892B6cc68C89cc088583964d08bE",
           "slash_manager_address": "0x9e699267858ce513eACF3b66420334785f9c8E4c",

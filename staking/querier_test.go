@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	"github.com/maticnetwork/heimdall/staking"
-	"github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/app"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/helper/mocks"
+	"github.com/zenanetwork/iris/staking"
+	"github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // QuerierTestSuite integrate test suite context object

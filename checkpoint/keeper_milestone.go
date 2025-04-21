@@ -6,9 +6,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	cmn "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	cmn "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var (

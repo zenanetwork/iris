@@ -36,10 +36,10 @@ import (
 	"github.com/tendermint/tendermint/rpc/client/mock"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 const APIBodyLimit = 128 * 1024 * 1024 // 128 MB

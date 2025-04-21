@@ -11,8 +11,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/maticnetwork/heimdall/slashing/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/slashing/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module
@@ -85,7 +85,7 @@ $ <appcli> query slashing signing-info {valID}
 	}
 } */
 
-//Give signing info by id
+// Give signing info by id
 func GetSigningInfo(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "signing-info",
@@ -122,7 +122,7 @@ func GetSigningInfo(cdc *codec.Codec) *cobra.Command {
 	return cmd
 }
 
-//Give signing info by id
+// Give signing info by id
 func GetSigningInfos(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "signing-infos",
@@ -202,7 +202,7 @@ func GetLatestSlashInfo(cdc *codec.Codec) *cobra.Command {
 	return cmd
 }
 
-//Give signing info by id
+// Give signing info by id
 func GetLatestSlashingInfos(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "slashing-infos",
@@ -246,7 +246,7 @@ func GetLatestSlashingInfos(cdc *codec.Codec) *cobra.Command {
 	return cmd
 }
 
-//Give tick slash infos
+// Give tick slash infos
 func GetTickSlashingInfos(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "tick-slash-infos",

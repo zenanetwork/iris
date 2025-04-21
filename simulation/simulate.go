@@ -14,7 +14,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // initialize the chain for the simulation

@@ -12,19 +12,19 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/helper"
-	topupCli "github.com/maticnetwork/heimdall/topup/client/cli"
-	topupRest "github.com/maticnetwork/heimdall/topup/client/rest"
-	"github.com/maticnetwork/heimdall/topup/simulation"
-	"github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/helper"
+	topupCli "github.com/zenanetwork/iris/topup/client/cli"
+	topupRest "github.com/zenanetwork/iris/topup/client/rest"
+	"github.com/zenanetwork/iris/topup/simulation"
+	"github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 var (
-	_ module.AppModule             = AppModule{}
-	_ module.AppModuleBasic        = AppModuleBasic{}
+	_ module.AppModule         = AppModule{}
+	_ module.AppModuleBasic    = AppModuleBasic{}
 	_ hmModule.IrisModuleBasic = AppModule{}
 )
 

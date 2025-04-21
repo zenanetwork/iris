@@ -4,18 +4,18 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 // EventRecord represents state record
 type EventRecord struct {
-	ID         uint64                `json:"id" yaml:"id"`
+	ID         uint64            `json:"id" yaml:"id"`
 	Contract   types.IrisAddress `json:"contract" yaml:"contract"`
-	Data       types.HexBytes        `json:"data" yaml:"data"`
+	Data       types.HexBytes    `json:"data" yaml:"data"`
 	TxHash     types.IrisHash    `json:"tx_hash" yaml:"tx_hash"`
-	LogIndex   uint64                `json:"log_index" yaml:"log_index"`
-	ChainID    string                `json:"bor_chain_id" yaml:"bor_chain_id"`
-	RecordTime time.Time             `json:"record_time" yaml:"record_time"`
+	LogIndex   uint64            `json:"log_index" yaml:"log_index"`
+	ChainID    string            `json:"zena_chain_id" yaml:"zena_chain_id"`
+	RecordTime time.Time         `json:"record_time" yaml:"record_time"`
 }
 
 // NewEventRecord creates new record

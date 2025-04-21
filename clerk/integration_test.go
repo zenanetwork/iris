@@ -5,8 +5,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/clerk/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/clerk/types"
 )
 
 //

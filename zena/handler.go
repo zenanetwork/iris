@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"errors"
@@ -6,12 +6,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
 )
 
-// NewHandler returns a handler for "bor" type messages.
+// NewHandler returns a handler for "zena" type messages.
 func NewHandler(k Keeper) sdk.Handler {
 	return func(ctx sdk.Context, msg sdk.Msg) sdk.Result {
 		ctx = ctx.WithEventManager(sdk.NewEventManager())
@@ -21,7 +21,7 @@ func NewHandler(k Keeper) sdk.Handler {
 			types.MsgProposeSpanV2:
 			return HandleMsgProposeSpan(ctx, msg, k)
 		default:
-			return sdk.ErrTxDecode("Invalid message in bor module").Result()
+			return sdk.ErrTxDecode("Invalid message in zena module").Result()
 		}
 	}
 }
@@ -66,9 +66,9 @@ func HandleMsgProposeSpan(ctx sdk.Context, msg sdk.Msg, k Keeper) sdk.Result {
 	chainParams := params.ChainParams
 
 	// check chain id
-	if chainParams.BorChainID != proposeMsg.ChainID {
-		k.Logger(ctx).Error("Invalid Bor chain id", "msgChainID", proposeMsg.ChainID)
-		return common.ErrInvalidBorChainID(k.Codespace()).Result()
+	if chainParams.ZenaChainID != proposeMsg.ChainID {
+		k.Logger(ctx).Error("Invalid Zena chain id", "msgChainID", proposeMsg.ChainID)
+		return common.ErrInvalidZenaChainID(k.Codespace()).Result()
 	}
 
 	// check if last span is up or if greater diff than threshold is found between validator set

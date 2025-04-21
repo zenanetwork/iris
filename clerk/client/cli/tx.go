@@ -11,12 +11,12 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	clerkTypes "github.com/maticnetwork/heimdall/clerk/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	clerkTypes "github.com/zenanetwork/iris/clerk/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // GetTxCmd returns the transaction commands for this module
@@ -46,10 +46,10 @@ func CreateNewStateRecord(cdc *codec.Codec) *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
 
-			// bor chain id
-			borChainID := viper.GetString(FlagBorChainId)
-			if borChainID == "" {
-				return fmt.Errorf("BorChainID cannot be empty")
+			// zena chain id
+			zenaChainID := viper.GetString(FlagZenaChainId)
+			if zenaChainID == "" {
+				return fmt.Errorf("ZenaChainID cannot be empty")
 			}
 
 			// get proposer
@@ -120,7 +120,7 @@ func CreateNewStateRecord(cdc *codec.Codec) *cobra.Command {
 				recordID,
 				contractAddr,
 				data,
-				borChainID,
+				zenaChainID,
 			)
 
 			return helper.BroadcastMsgsWithCLI(cliCtx, []sdk.Msg{msg})
@@ -130,7 +130,7 @@ func CreateNewStateRecord(cdc *codec.Codec) *cobra.Command {
 	cmd.Flags().String(FlagTxHash, "", "--tx-hash=<tx-hash>")
 	cmd.Flags().String(FlagLogIndex, "", "--log-index=<log-index>")
 	cmd.Flags().String(FlagRecordID, "", "--id=<record-id>")
-	cmd.Flags().String(FlagBorChainId, "", "--bor-chain-id=<bor-chain-id>")
+	cmd.Flags().String(FlagZenaChainId, "", "--zena-chain-id=<zena-chain-id>")
 	cmd.Flags().Uint64(FlagBlockNumber, 0, "--block-number=<block-number>")
 	cmd.Flags().String(FlagContractAddress, "", "--contract-addr=<contract-addr>")
 	cmd.Flags().String(FlagData, "", "--data=<data>")
@@ -147,8 +147,8 @@ func CreateNewStateRecord(cdc *codec.Codec) *cobra.Command {
 		logger.Error("CreateNewStateRecord | MarkFlagRequired | FlagLogIndex", "Error", err)
 	}
 
-	if err := cmd.MarkFlagRequired(FlagBorChainId); err != nil {
-		logger.Error("CreateNewStateRecord | MarkFlagRequired | FlagBorChainId", "Error", err)
+	if err := cmd.MarkFlagRequired(FlagZenaChainId); err != nil {
+		logger.Error("CreateNewStateRecord | MarkFlagRequired | FlagZenaChainId", "Error", err)
 	}
 
 	if err := cmd.MarkFlagRequired(FlagBlockNumber); err != nil {

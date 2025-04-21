@@ -8,11 +8,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gorilla/mux"
 
-	"github.com/maticnetwork/heimdall/slashing/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/slashing/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 
-	restClient "github.com/maticnetwork/heimdall/client/rest"
+	restClient "github.com/zenanetwork/iris/client/rest"
 )
 
 // It represents unjail msg.

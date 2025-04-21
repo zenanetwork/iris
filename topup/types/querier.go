@@ -1,6 +1,6 @@
 package types
 
-import "github.com/maticnetwork/heimdall/types"
+import "github.com/zenanetwork/iris/types"
 
 const (
 	QuerySequence            = "sequence"
@@ -44,7 +44,7 @@ func NewQueryAccountProofParams(userAddress types.IrisAddress) QueryAccountProof
 // QueryVerifyAccountProofParams defines the params for verifying account proof.
 type QueryVerifyAccountProofParams struct {
 	UserAddress  types.IrisAddress `json:"user_addr"`
-	AccountProof string                `json:"account_proof"`
+	AccountProof string            `json:"account_proof"`
 }
 
 // NewQueryVerifyAccountProofParams creates a new instance of QueryVerifyAccountProofParams.

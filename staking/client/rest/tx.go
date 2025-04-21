@@ -8,10 +8,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gorilla/mux"
 
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	"github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	"github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 // It represents Propose Span msg.

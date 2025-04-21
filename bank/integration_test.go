@@ -2,10 +2,10 @@ package bank_test
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	bankTypes "github.com/maticnetwork/heimdall/bank/types"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	bankTypes "github.com/zenanetwork/iris/bank/types"
 )
 
 //

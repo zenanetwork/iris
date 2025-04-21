@@ -8,9 +8,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // handleMsgMilestone validates milestone transaction
@@ -85,8 +85,8 @@ func handleMsgMilestone(ctx sdk.Context, msg types.MsgMilestone, k Keeper) sdk.R
 
 			return common.ErrMilestoneNotInContinuity(k.Codespace()).Result()
 		}
-	} else if msg.StartBlock != helper.GetMilestoneBorBlockHeight() {
-		logger.Error("First milestone to start from", "block", helper.GetMilestoneBorBlockHeight(), "milestone start block", msg.StartBlock, "error", err)
+	} else if msg.StartBlock != helper.GetMilestoneZenaBlockHeight() {
+		logger.Error("First milestone to start from", "block", helper.GetMilestoneZenaBlockHeight(), "milestone start block", msg.StartBlock, "error", err)
 		return common.ErrNoMilestoneFound(k.Codespace()).Result()
 	}
 

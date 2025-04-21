@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package rest
 
 import (
@@ -10,9 +10,9 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/slashing/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/slashing/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 )
 
 //swagger:response slashingSigningInfoByIdResponse
@@ -71,7 +71,8 @@ type ValidatorSlashingInfo struct {
 	IsJailed      bool  `json:"IsJailed"`
 }
 
-//It represents the slashing parameters
+// It represents the slashing parameters
+//
 //swagger:response slashingParametersResponse
 type slashingParametersResponse struct {
 	//in:body
@@ -95,7 +96,8 @@ type params struct {
 	EnableSlashing          bool   `json:"enable_slashing"`
 }
 
-//It represents the slashing count
+// It represents the slashing count
+//
 //swagger:response slashingCountResponse
 type slashingCountResponse struct {
 	//in:body
@@ -107,7 +109,8 @@ type slashingCountStructure struct {
 	Result int64  `json:"result"`
 }
 
-//It represents the slashing count
+// It represents the slashing count
+//
 //swagger:response slashingInfosBytesResponse
 type slashingInfosBytesResponse struct {
 	//in:body
@@ -189,7 +192,9 @@ type validatorID struct {
 // swagger:route GET /slashing/validators/{id}/signing_info slashing slashingSigningInfoById
 // It returns the signing infos of the validator based on Id
 // responses:
-//   200: slashingSigningInfoByIdResponse
+//
+//	200: slashingSigningInfoByIdResponse
+//
 // http request handler to query signing info
 func signingInfoHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -229,7 +234,9 @@ func signingInfoHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /slashing/signing_infos slashing slashingInfos
 // It returns the signing infos.
 // responses:
-//   200: slashingInfosResponse
+//
+//	200: slashingInfosResponse
+//
 // http request handler to query signing info
 func signingInfoHandlerListFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -275,7 +282,9 @@ type ID struct {
 // swagger:route GET /slashing/validators/{id}/latest_slash_info slashing slashingLatestInfoById
 // It returns the latest signing infos of the validator based on Id
 // responses:
-//   200: slashingLatestInfoByIdResponse
+//
+//	200: slashingLatestInfoByIdResponse
+//
 // http request handler to query slashing info
 func latestSlashInfoHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -315,7 +324,9 @@ func latestSlashInfoHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /slashing/latest_slash_infos slashing slashingLatestInfos
 // It returns the latest signing infos
 // responses:
-//   200: slashingLatestInfosResponse
+//
+//	200: slashingLatestInfosResponse
+//
 // http request handler to query signing info
 func latestSlashInfoHandlerListFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -352,7 +363,9 @@ func latestSlashInfoHandlerListFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /slashing/latest_slash_info_bytes slashing slashingLatestSlashInfoBytes
 // It returns the latest signing info byte
 // responses:
-//		200:slashingInfosBytesResponse
+//
+//	200:slashingInfosBytesResponse
+//
 // http request handler to query signing info
 func latestSlashInfoBytesHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -395,7 +408,8 @@ func latestSlashInfoBytesHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /slashing/parameters slashing slashingParameters
 // It returns the slashing parameters
 // responses:
-//   200: slashingParametersResponse
+//
+//	200: slashingParametersResponse
 func queryParamsHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -433,7 +447,9 @@ type slashingTickInfosParams struct {
 // swagger:route GET /slashing/tick_slash_infos slashing slashingTickInfos
 // It returns the tick slash infos
 // responses:
-//   200: slashingLatestInfosResponse
+//
+//	200: slashingLatestInfosResponse
+//
 // http request handler to query tick slashing info
 func tickSlashInfoHandlerListFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -483,7 +499,9 @@ type slashingTxParams struct {
 // swagger:route GET /slashing/isoldtx slashing slashingIsOldTx
 // It returns whether the transaction is old
 // responses:
-//   200: slashingIsOldTxResponse
+//
+//	200: slashingIsOldTxResponse
+//
 // Returns slashing tx status information
 func SlashingTxStatusHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -536,7 +554,8 @@ func SlashingTxStatusHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /slashing/tick-count slashing slashingTickCount
 // It returns the slashing tick count
 // responses:
-//   200: slashingCountResponse
+//
+//	200: slashingCountResponse
 func tickCountHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)

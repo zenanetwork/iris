@@ -14,10 +14,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	govutils "github.com/maticnetwork/heimdall/gov/client/utils"
-	"github.com/maticnetwork/heimdall/gov/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	govutils "github.com/zenanetwork/iris/gov/client/utils"
+	"github.com/zenanetwork/iris/gov/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var logger = helper.Logger.With("module", "gov/client/cli")

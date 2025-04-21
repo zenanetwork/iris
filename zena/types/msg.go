@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 //
@@ -19,7 +19,7 @@ type MsgProposeSpan struct {
 	Proposer   hmTypes.IrisAddress `json:"proposer"`
 	StartBlock uint64              `json:"start_block"`
 	EndBlock   uint64              `json:"end_block"`
-	ChainID    string              `json:"bor_chain_id"`
+	ChainID    string              `json:"zena_chain_id"`
 	Seed       common.Hash         `json:"seed"`
 }
 
@@ -93,7 +93,7 @@ type MsgProposeSpanV2 struct {
 	Proposer   hmTypes.IrisAddress `json:"proposer"`
 	StartBlock uint64              `json:"start_block"`
 	EndBlock   uint64              `json:"end_block"`
-	ChainID    string              `json:"bor_chain_id"`
+	ChainID    string              `json:"zena_chain_id"`
 	Seed       common.Hash         `json:"seed"`
 	SeedAuthor common.Address      `json:"seed_author"`
 }

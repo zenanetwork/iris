@@ -5,8 +5,8 @@ import (
 	"errors"
 	"math"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // GenesisValidator genesis validator
@@ -61,7 +61,7 @@ func DefaultGenesisState() GenesisState {
 	return NewGenesisState(nil, hmTypes.ValidatorSet{}, nil)
 }
 
-// ValidateGenesis performs basic validation of bor genesis data returning an
+// ValidateGenesis performs basic validation of zena genesis data returning an
 // error for any failed validation criteria.
 func ValidateGenesis(data GenesisState) error {
 	for _, validator := range data.Validators {

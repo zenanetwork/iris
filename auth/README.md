@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-* [Overview](#overview)
-    * [Gas and Fees](#gas-and-fees)
-    * [Types](#types)
-    * [Parameters](#parameters)
-* [Query Commands](#query-commands)
+- [Overview](#overview)
+  - [Gas and Fees](#gas-and-fees)
+  - [Types](#types)
+  - [Parameters](#parameters)
+- [Query Commands](#query-commands)
 
 ## Overview
 
@@ -27,6 +27,7 @@ Besides accounts (specified in State), the types exposed by the auth module are 
 #### StdSignature
 
 A StdSignature is the type of a byte array.
+
 ```
 // StdSignature represents a sig
 type StdSignature []byte
@@ -81,15 +82,15 @@ type BaseAccount struct {
 
 The auth module contains the following parameters:
 
-|Key                   |Type  |Default value     |
-|----------------------|------|------------------|
-|MaxMemoCharacters     |uint64|256               |
-|TxSigLimit            |uint64|7                 |
-|TxSizeCostPerByte     |uint64|10                |
-|SigVerifyCostED25519  |uint64|590               |
-|SigVerifyCostSecp256k1|uint64|1000              |
-|DefaultMaxTxGas       |uint64|1000000           |
-|DefaultTxFees         |string|"1000000000000000"|
+| Key                    | Type   | Default value      |
+| ---------------------- | ------ | ------------------ |
+| MaxMemoCharacters      | uint64 | 256                |
+| TxSigLimit             | uint64 | 7                  |
+| TxSizeCostPerByte      | uint64 | 10                 |
+| SigVerifyCostED25519   | uint64 | 590                |
+| SigVerifyCostSecp256k1 | uint64 | 1000               |
+| DefaultMaxTxGas        | uint64 | 1000000            |
+| DefaultTxFees          | string | "1000000000000000" |
 
 ## Query Commands
 
@@ -101,9 +102,11 @@ One can run the following query command from the auth module.
 To know your account details, run the following command:
 
 ```
-heimdalld show-account
+irisd show-account
 ```
+
 Expected response:
+
 ```
 {
     "address": "0x68243159a498cf20d945cf3E4250918278BA538E",
@@ -114,11 +117,11 @@ Expected response:
 ### CLI Commands
 
 ```
-heimdallcli query auth account <address> --trust-node
+iriscli query auth account <address> --trust-node
 ```
 
 ```
-heimdallcli query auth params
+iriscli query auth params
 ```
 
 ### REST Endpoints

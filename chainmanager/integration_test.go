@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	chainManagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
+	"github.com/zenanetwork/iris/app"
+	chainManagerTypes "github.com/zenanetwork/iris/chainmanager/types"
 )
 
 //

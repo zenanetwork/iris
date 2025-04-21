@@ -7,7 +7,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/gov/types"
+	"github.com/zenanetwork/iris/gov/types"
 )
 
 func NewQuerier(keeper Keeper) sdk.Querier {

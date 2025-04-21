@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	slashingTypes "github.com/maticnetwork/heimdall/slashing/types"
 	"github.com/stretchr/testify/require"
+	slashingTypes "github.com/zenanetwork/iris/slashing/types"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 func TestSlashingInfoRLP(t *testing.T) {

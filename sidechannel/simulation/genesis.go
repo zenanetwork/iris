@@ -7,7 +7,7 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/sidechannel/types"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 const validator = "validator"

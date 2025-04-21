@@ -1,10 +1,10 @@
 package cmd
 
 import (
-	"github.com/maticnetwork/heimdall/bridge/setu/queue"
-	"github.com/maticnetwork/heimdall/helper"
 	"github.com/spf13/cobra"
 	"github.com/streadway/amqp"
+	"github.com/zenanetwork/iris/bridge/setu/queue"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // purgeCmd represents the reset of queue

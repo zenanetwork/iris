@@ -11,9 +11,9 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	db "github.com/tendermint/tm-db"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/simulation"
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/simulation"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 func TestEireneAppExport(t *testing.T) {

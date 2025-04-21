@@ -16,11 +16,11 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethcmn "github.com/ethereum/go-ethereum/common"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
-	stakingTypes "github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
+	stakingTypes "github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 )
 
 // It represents the checkpoint parameters
@@ -56,12 +56,12 @@ type checkpointStructure struct {
 }
 
 type checkpoint struct {
-	Proposer   string `json:"proposer"`
-	StartBlock int64  `json:"start_block"`
-	EndBlock   int64  `json:"end_block"`
-	RootHash   string `json:"root_hash"`
-	BorChainId string `json:"bor_chain_id"`
-	Timestamp  int64  `json:"timestamp"`
+	Proposer    string `json:"proposer"`
+	StartBlock  int64  `json:"start_block"`
+	EndBlock    int64  `json:"end_block"`
+	RootHash    string `json:"root_hash"`
+	ZenaChainId string `json:"zena_chain_id"`
+	Timestamp   int64  `json:"timestamp"`
 }
 
 // It represents the checkpoint prepare
@@ -474,7 +474,7 @@ type stateDump struct {
 //
 //	200: overviewResponse
 //
-// get all state-dump of heimdall
+// get all state-dump of iris
 func overviewHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -641,13 +641,13 @@ func latestCheckpointHandlerFunc(cliCtx context.CLIContext) http.HandlerFunc {
 		}
 
 		checkpointWithID := &hmTypes.CheckpointWithID{
-			ID:         ackCount,
-			Proposer:   checkpointUnmarshal.Proposer,
-			StartBlock: checkpointUnmarshal.StartBlock,
-			EndBlock:   checkpointUnmarshal.EndBlock,
-			RootHash:   checkpointUnmarshal.RootHash,
-			BorChainID: checkpointUnmarshal.BorChainID,
-			TimeStamp:  checkpointUnmarshal.TimeStamp,
+			ID:          ackCount,
+			Proposer:    checkpointUnmarshal.Proposer,
+			StartBlock:  checkpointUnmarshal.StartBlock,
+			EndBlock:    checkpointUnmarshal.EndBlock,
+			RootHash:    checkpointUnmarshal.RootHash,
+			ZenaChainID: checkpointUnmarshal.ZenaChainID,
+			TimeStamp:   checkpointUnmarshal.TimeStamp,
 		}
 
 		resWithID, err := jsoniter.ConfigFastest.Marshal(checkpointWithID)
@@ -716,13 +716,13 @@ func checkpointByNumberHandlerFunc(cliCtx context.CLIContext) http.HandlerFunc {
 		}
 
 		checkpointWithID := &hmTypes.CheckpointWithID{
-			ID:         number,
-			Proposer:   checkpointUnmarshal.Proposer,
-			StartBlock: checkpointUnmarshal.StartBlock,
-			EndBlock:   checkpointUnmarshal.EndBlock,
-			RootHash:   checkpointUnmarshal.RootHash,
-			BorChainID: checkpointUnmarshal.BorChainID,
-			TimeStamp:  checkpointUnmarshal.TimeStamp,
+			ID:          number,
+			Proposer:    checkpointUnmarshal.Proposer,
+			StartBlock:  checkpointUnmarshal.StartBlock,
+			EndBlock:    checkpointUnmarshal.EndBlock,
+			RootHash:    checkpointUnmarshal.RootHash,
+			ZenaChainID: checkpointUnmarshal.ZenaChainID,
+			TimeStamp:   checkpointUnmarshal.TimeStamp,
 		}
 
 		resWithID, err := jsoniter.ConfigFastest.Marshal(checkpointWithID)

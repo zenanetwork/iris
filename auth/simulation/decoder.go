@@ -6,8 +6,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	exported "github.com/maticnetwork/heimdall/auth/exported"
-	"github.com/maticnetwork/heimdall/auth/types"
+	exported "github.com/zenanetwork/iris/auth/exported"
+	"github.com/zenanetwork/iris/auth/types"
 )
 
 // DecodeStore unmarshals the KVPair's Value to the corresponding auth type

@@ -54,40 +54,52 @@ One can run the following commands from the governance module:
 ### Run Using CLI
 
 ```
-heimdallcli query gov proposal [proposal-id]
+iriscli query gov proposal [proposal-id]
 ```
+
 ```
-heimdallcli query gov proposals
+iriscli query gov proposals
 ```
+
 ```
-heimdallcli query gov vote [proposal-id] [voter-id]
+iriscli query gov vote [proposal-id] [voter-id]
 ```
+
 ```
-heimdallcli query gov votes [proposal-id]
+iriscli query gov votes [proposal-id]
 ```
+
 ```
-heimdallcli query gov deposit [proposal-id] [depositer-addr]
+iriscli query gov deposit [proposal-id] [depositer-addr]
 ```
+
 ```
-heimdallcli query gov deposits [proposal-id]
+iriscli query gov deposits [proposal-id]
 ```
+
 ```
-heimdallcli query gov tally [proposal-id]
+iriscli query gov tally [proposal-id]
 ```
+
 ```
-heimdallcli query gov params
+iriscli query gov params
 ```
+
 ```
-heimdallcli query gov param [param-type]
+iriscli query gov param [param-type]
 ```
+
 ```
-heimdallcli query gov proposer [proposal-id]
+iriscli query gov proposer [proposal-id]
 ```
+
 ```
-heimdallcli tx gov submit-proposal --proposal proposal.json --from key
+iriscli tx gov submit-proposal --proposal proposal.json --from key
 ```
+
 where `proposal.json` will have
-``` 
+
+```
 {
   "title": "Auth Param Change",
   "description": "Update max tx gas",
@@ -106,15 +118,19 @@ where `proposal.json` will have
   ]
 }
 ```
+
 ```
-heimdallcli tx gov deposit [proposal-id] [stake]
+iriscli tx gov deposit [proposal-id] [stake]
 ```
+
 ```
-heimdallcli tx gov vote [proposal-id] [option] --validator-id 1  --chain-id <heimdall-chain-id>
+iriscli tx gov vote [proposal-id] [option] --validator-id 1  --chain-id <iris-chain-id>
 ```
+
 with options from `yes/no/no_with_veto/abstain`, Like
+
 ```
-heimdallcli tx gov vote 1 "Yes" --validator-id 1  --chain-id <heimdal-chain-id>
+iriscli tx gov vote 1 "Yes" --validator-id 1  --chain-id <heimdal-chain-id>
 ```
 
 ### Run Using REST
@@ -122,30 +138,35 @@ heimdallcli tx gov vote 1 "Yes" --validator-id 1  --chain-id <heimdal-chain-id>
 ```
 curl "localhost:1317/gov/proposals"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/votes"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/votes/{voter-id}"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/deposits"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/deposits/{depositer-addr}"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/tally"
 ```
+
 ```
 curl "localhost:1317/gov/params"
 ```
+
 ```
 curl "localhost:1317/gov/proposals/{proposal-id}/proposer"
 ```
-
-
-

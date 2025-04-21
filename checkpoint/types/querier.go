@@ -24,12 +24,12 @@ func NewQueryCheckpointParams(number uint64) QueryCheckpointParams {
 	return QueryCheckpointParams{Number: number}
 }
 
-// QueryBorChainID defines the params for querying with bor chain id
-type QueryBorChainID struct {
-	BorChainID string
+// QueryZenaChainID defines the params for querying with zena chain id
+type QueryZenaChainID struct {
+	ZenaChainID string
 }
 
-// NewQueryBorChainID creates a new instance of QueryBorChainID with give chain id
-func NewQueryBorChainID(chainID string) QueryBorChainID {
-	return QueryBorChainID{BorChainID: chainID}
+// NewQueryZenaChainID creates a new instance of QueryZenaChainID with give chain id
+func NewQueryZenaChainID(chainID string) QueryZenaChainID {
+	return QueryZenaChainID{ZenaChainID: chainID}
 }

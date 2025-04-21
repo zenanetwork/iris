@@ -10,9 +10,9 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/chainmanager/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/chainmanager/types"
 )
 
 // QuerierTestSuite integrate test suite context object

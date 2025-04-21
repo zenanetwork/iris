@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"errors"
@@ -14,12 +14,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethTypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/staking"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/staking"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 const maxSpanListLimit = 150 // a span is ~6 KB => we can fit 150 spans in 1 MB response
@@ -95,7 +95,7 @@ func (k *Keeper) SetContractCaller(contractCaller helper.IContractCaller) {
 	k.contractCaller = contractCaller
 }
 
-// AddNewSpan adds new span for bor to store
+// AddNewSpan adds new span for zena to store
 func (k *Keeper) AddNewSpan(ctx sdk.Context, span hmTypes.Span) error {
 	store := ctx.KVStore(k.storeKey)
 
@@ -114,7 +114,7 @@ func (k *Keeper) AddNewSpan(ctx sdk.Context, span hmTypes.Span) error {
 	return nil
 }
 
-// AddNewRawSpan adds new span for bor to store
+// AddNewRawSpan adds new span for zena to store
 func (k *Keeper) AddNewRawSpan(ctx sdk.Context, span hmTypes.Span) error {
 	store := ctx.KVStore(k.storeKey)
 
@@ -209,7 +209,7 @@ func (k *Keeper) GetLastSpan(ctx sdk.Context) (*hmTypes.Span, error) {
 }
 
 // FreezeSet freezes validator set for next span
-func (k *Keeper) FreezeSet(ctx sdk.Context, id uint64, startBlock uint64, endBlock uint64, borChainID string, seed common.Hash) error {
+func (k *Keeper) FreezeSet(ctx sdk.Context, id uint64, startBlock uint64, endBlock uint64, zenaChainID string, seed common.Hash) error {
 	var (
 		newProducers []hmTypes.Validator
 		err          error
@@ -256,7 +256,7 @@ func (k *Keeper) FreezeSet(ctx sdk.Context, id uint64, startBlock uint64, endBlo
 		endBlock,
 		k.sk.GetValidatorSet(ctx),
 		newProducers,
-		borChainID,
+		zenaChainID,
 	)
 
 	k.Logger(ctx).Info("Freezing new span", "id", id, "span", newSpan)
@@ -360,7 +360,7 @@ func (k *Keeper) GetLastEthBlock(ctx sdk.Context) *big.Int {
 func (k *Keeper) GetNextSpanSeed(ctx sdk.Context, id uint64) (common.Hash, common.Address, error) {
 	var (
 		blockHeader *ethTypes.Header
-		borBlock    uint64
+		zenaBlock    uint64
 		seedSpan    *hmTypes.Span
 		err         error
 		author      *common.Address
@@ -393,18 +393,18 @@ func (k *Keeper) GetNextSpanSeed(ctx sdk.Context, id uint64) (common.Hash, commo
 			return common.Hash{}, common.Address{}, err
 		}
 
-		borBlock, author, err = k.getBorBlockForSpanSeed(ctx, seedSpan, id)
+		zenaBlock, author, err = k.getZenaBlockForSpanSeed(ctx, seedSpan, id)
 		if err != nil {
 			return common.Hash{}, common.Address{}, err
 		}
 
-		if borBlock > math.MaxInt64 {
-			return common.Hash{}, common.Address{}, fmt.Errorf("bor block value out of range for int64: %d", borBlock)
+		if zenaBlock > math.MaxInt64 {
+			return common.Hash{}, common.Address{}, fmt.Errorf("zena block value out of range for int64: %d", zenaBlock)
 		}
 
-		blockHeader, err = k.contractCaller.GetMaticChainBlock(big.NewInt(int64(borBlock)))
+		blockHeader, err = k.contractCaller.GetMaticChainBlock(big.NewInt(int64(zenaBlock)))
 		if err != nil {
-			k.Logger(ctx).Error("Error fetching block header from bor chain while calculating next span seed", "error", err, "block", borBlock)
+			k.Logger(ctx).Error("Error fetching block header from zena chain while calculating next span seed", "error", err, "block", zenaBlock)
 			return common.Hash{}, common.Address{}, err
 		}
 
@@ -413,7 +413,7 @@ func (k *Keeper) GetNextSpanSeed(ctx sdk.Context, id uint64) (common.Hash, commo
 			return blockHeader.Hash(), common.Address{}, fmt.Errorf("seed author is nil")
 		}
 
-		k.Logger(ctx).Debug("fetched block for seed", "block", borBlock, "author", author, "span id", id)
+		k.Logger(ctx).Debug("fetched block for seed", "block", zenaBlock, "author", author, "span id", id)
 	}
 
 	return blockHeader.Hash(), *author, nil
@@ -450,12 +450,12 @@ func (k *Keeper) GetSeedProducer(ctx sdk.Context, id uint64) (*common.Address, e
 // -----------------------------------------------------------------------------
 // Params
 
-// SetParams sets the bor module's parameters.
+// SetParams sets the zena module's parameters.
 func (k *Keeper) SetParams(ctx sdk.Context, params types.Params) {
 	k.paramSpace.SetParamSet(ctx, &params)
 }
 
-// GetParams gets the bor module's parameters.
+// GetParams gets the zena module's parameters.
 func (k *Keeper) GetParams(ctx sdk.Context) (params types.Params) {
 	k.paramSpace.GetParamSet(ctx, &params)
 	return
@@ -487,29 +487,29 @@ func (k *Keeper) IterateSpansAndApplyFn(ctx sdk.Context, f func(span hmTypes.Spa
 	}
 }
 
-// getBorBlockForSpanSeed returns the bor block number and its producer whose hash is used as seed for the next span
-func (k *Keeper) getBorBlockForSpanSeed(ctx sdk.Context, seedSpan *hmTypes.Span, proposedSpanID uint64) (uint64, *common.Address, error) {
+// getZenaBlockForSpanSeed returns the zena block number and its producer whose hash is used as seed for the next span
+func (k *Keeper) getZenaBlockForSpanSeed(ctx sdk.Context, seedSpan *hmTypes.Span, proposedSpanID uint64) (uint64, *common.Address, error) {
 	var (
-		borBlock uint64
+		zenaBlock uint64
 		author   *common.Address
 		err      error
 	)
 
 	logger := k.Logger(ctx)
 
-	logger.Debug("getting bor block for span seed", "span id", seedSpan.ID, "proposed span id", proposedSpanID)
+	logger.Debug("getting zena block for span seed", "span id", seedSpan.ID, "proposed span id", proposedSpanID)
 
 	if proposedSpanID == 1 {
-		borBlock = 1
-		author, err = k.contractCaller.GetBorChainBlockAuthor(big.NewInt(int64(borBlock)))
+		zenaBlock = 1
+		author, err = k.contractCaller.GetZenaChainBlockAuthor(big.NewInt(int64(zenaBlock)))
 		if err != nil {
-			logger.Error("Error fetching first block for span seed", "error", err, "block", borBlock)
+			logger.Error("Error fetching first block for span seed", "error", err, "block", zenaBlock)
 			return 0, nil, err
 		}
 
-		logger.Debug("returning first block author", "author", author, "block", borBlock)
+		logger.Debug("returning first block author", "author", author, "block", zenaBlock)
 
-		return borBlock, author, nil
+		return zenaBlock, author, nil
 	}
 
 	uniqueAuthors := make(map[string]struct{})
@@ -547,46 +547,46 @@ func (k *Keeper) getBorBlockForSpanSeed(ctx sdk.Context, seedSpan *hmTypes.Span,
 	firstDiffFromLast := uint64(0)
 
 	// try to find a seed block with an author not in the last "blockAuthorsCollisionCheck" spans
-	borParams := k.GetParams(ctx)
-	for borBlock = seedSpan.EndBlock; borBlock >= seedSpan.StartBlock; borBlock -= borParams.SprintDuration {
-		if borBlock > math.MaxInt64 {
-			return 0, nil, fmt.Errorf("bor block value out of range for int64: %d", borBlock)
+	zenaParams := k.GetParams(ctx)
+	for zenaBlock = seedSpan.EndBlock; zenaBlock >= seedSpan.StartBlock; zenaBlock -= zenaParams.SprintDuration {
+		if zenaBlock > math.MaxInt64 {
+			return 0, nil, fmt.Errorf("zena block value out of range for int64: %d", zenaBlock)
 		}
-		author, err = k.contractCaller.GetBorChainBlockAuthor(big.NewInt(int64(borBlock)))
+		author, err = k.contractCaller.GetZenaChainBlockAuthor(big.NewInt(int64(zenaBlock)))
 		if err != nil {
-			logger.Error("Error fetching block author from bor chain while calculating next span seed", "error", err, "block", borBlock)
+			logger.Error("Error fetching block author from zena chain while calculating next span seed", "error", err, "block", zenaBlock)
 			return 0, nil, err
 		}
 
 		if _, exists := uniqueAuthors[author.Hex()]; !exists || len(seedSpan.ValidatorSet.Validators) == 1 {
-			logger.Debug("got author", "author", author, "block", borBlock)
-			return borBlock, author, nil
+			logger.Debug("got author", "author", author, "block", zenaBlock)
+			return zenaBlock, author, nil
 		}
 
 		if firstDiffFromLast == 0 && lastAuthor != nil && author.Hex() != lastAuthor.Hex() {
-			firstDiffFromLast = borBlock
+			firstDiffFromLast = zenaBlock
 		}
 	}
 
 	// if no unique author found, return the first different block author
-	borBlock = firstDiffFromLast
-	if borBlock == 0 {
-		borBlock = seedSpan.EndBlock
+	zenaBlock = firstDiffFromLast
+	if zenaBlock == 0 {
+		zenaBlock = seedSpan.EndBlock
 	}
 
-	if borBlock > math.MaxInt64 {
-		return 0, nil, fmt.Errorf("bor block value out of range for int64: %d", borBlock)
+	if zenaBlock > math.MaxInt64 {
+		return 0, nil, fmt.Errorf("zena block value out of range for int64: %d", zenaBlock)
 	}
 
-	author, err = k.contractCaller.GetBorChainBlockAuthor(big.NewInt(int64(borBlock)))
+	author, err = k.contractCaller.GetZenaChainBlockAuthor(big.NewInt(int64(zenaBlock)))
 	if err != nil {
-		logger.Error("Error fetching end block author from bor chain while calculating next span seed", "error", err, "block", borBlock)
+		logger.Error("Error fetching end block author from zena chain while calculating next span seed", "error", err, "block", zenaBlock)
 		return 0, nil, err
 	}
 
-	logger.Debug("returning first different block author", "author", author, "block", borBlock)
+	logger.Debug("returning first different block author", "author", author, "block", zenaBlock)
 
-	return borBlock, author, nil
+	return zenaBlock, author, nil
 }
 
 // rollbackVotingPowers rolls back voting powers of validators from a previous snapshot of validators

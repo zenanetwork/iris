@@ -9,13 +9,13 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	milestoneTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
 	"github.com/pborman/uuid"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	milestoneTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // milestoneProcessor - process milestone related events
@@ -108,7 +108,7 @@ func (mp *MilestoneProcessor) checkAndPropose(milestoneLength uint64) (err error
 			return errors.New("got nil result while fetching milestone count")
 		}
 
-		var start = helper.GetMilestoneBorBlockHeight()
+		var start = helper.GetMilestoneZenaBlockHeight()
 
 		if result.Count != 0 {
 			// fetch latest milestone
@@ -185,7 +185,7 @@ func (mp *MilestoneProcessor) createAndSendMilestoneToIris(milestoneContext *Mil
 		startNum,
 		endNum,
 		hmTypes.BytesToIrisHash(endHash[:]),
-		chainParams.BorChainID,
+		chainParams.ZenaChainID,
 		milestoneId,
 	)
 

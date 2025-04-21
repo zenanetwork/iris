@@ -6,12 +6,12 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	govRest "github.com/maticnetwork/heimdall/gov/client/rest"
-	govTypes "github.com/maticnetwork/heimdall/gov/types"
-	paramsUtils "github.com/maticnetwork/heimdall/params/client/utils"
-	paramsTypes "github.com/maticnetwork/heimdall/params/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	govRest "github.com/zenanetwork/iris/gov/client/rest"
+	govTypes "github.com/zenanetwork/iris/gov/types"
+	paramsUtils "github.com/zenanetwork/iris/params/client/utils"
+	paramsTypes "github.com/zenanetwork/iris/params/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 // ProposalRESTHandler returns a ProposalRESTHandler that exposes the param

@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/maticnetwork/heimdall/simulation"
+	"github.com/zenanetwork/iris/simulation"
 )
 
 // Profile with:

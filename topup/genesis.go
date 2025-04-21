@@ -2,7 +2,7 @@ package topup
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/topup/types"
+	"github.com/zenanetwork/iris/topup/types"
 )
 
 // InitGenesis sets distribution information for genesis.

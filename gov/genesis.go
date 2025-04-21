@@ -8,9 +8,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/gov/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/gov/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 const (

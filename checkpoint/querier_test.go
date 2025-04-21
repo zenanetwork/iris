@@ -14,12 +14,12 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/checkpoint"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/checkpoint"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // QuerierTestSuite integrate test suite context object
@@ -119,14 +119,14 @@ func (suite *QuerierTestSuite) TestQueryCheckpoint() {
 	rootHash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	checkpointBlock := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		timestamp,
 	)
 	err := app.CheckpointKeeper.AddCheckpoint(ctx, headerNumber, checkpointBlock)
@@ -162,14 +162,14 @@ func (suite *QuerierTestSuite) TestQueryCheckpointBuffer() {
 	rootHash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	checkpointBlock := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		timestamp,
 	)
 	err := app.CheckpointKeeper.SetCheckpointBuffer(ctx, checkpointBlock)
@@ -231,14 +231,14 @@ func (suite *QuerierTestSuite) TestQueryCheckpointList() {
 		rootHash := hmTypes.HexToIrisHash("123")
 		proposerAddress := hmTypes.HexToIrisAddress("123")
 		timestamp := uint64(time.Now().Unix()) + uint64(i)
-		borChainId := "1234"
+		zenaChainId := "1234"
 
 		checkpoint := hmTypes.CreateBlock(
 			startBlock,
 			endBlock,
 			rootHash,
 			proposerAddress,
-			borChainId,
+			zenaChainId,
 			timestamp,
 		)
 		checkpoints[i] = checkpoint
@@ -282,14 +282,14 @@ func (suite *QuerierTestSuite) TestQueryNextCheckpoint() {
 	rootHash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	checkpointBlock := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		timestamp,
 	)
 
@@ -302,7 +302,7 @@ func (suite *QuerierTestSuite) TestQueryNextCheckpoint() {
 	route := fmt.Sprintf("custom/%s/%s", types.QuerierRoute, types.QueryNextCheckpoint)
 	req := abci.RequestQuery{
 		Path: route,
-		Data: app.Codec().MustMarshalJSON(types.NewQueryBorChainID(borChainId)),
+		Data: app.Codec().MustMarshalJSON(types.NewQueryZenaChainID(zenaChainId)),
 	}
 	res, sdkErr := querier(ctx, path, req)
 	require.NoError(t, sdkErr)
@@ -315,5 +315,5 @@ func (suite *QuerierTestSuite) TestQueryNextCheckpoint() {
 	require.Equal(t, checkpointBlock.StartBlock, actualRes.StartBlock)
 	require.Equal(t, checkpointBlock.EndBlock, actualRes.EndBlock)
 	require.Equal(t, checkpointBlock.RootHash, actualRes.RootHash)
-	require.Equal(t, checkpointBlock.BorChainID, actualRes.BorChainID)
+	require.Equal(t, checkpointBlock.ZenaChainID, actualRes.ZenaChainID)
 }

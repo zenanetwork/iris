@@ -7,14 +7,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/auth"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/common"
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	tmTypes "github.com/tendermint/tendermint/types"
+	"github.com/zenanetwork/iris/auth"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/common"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewSideTxHandler returns a side handler for "topup" type messages.
@@ -145,10 +145,10 @@ func PostHandleMsgTopup(ctx sdk.Context, k Keeper, msg types.MsgTopup, sideTxRes
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			types.EventTypeTopup,
-			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                                  // action
-			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),                // module name
+			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                              // action
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),            // module name
 			sdk.NewAttribute(hmTypes.AttributeKeyTxHash, hmTypes.BytesToIrisHash(hash).Hex()), // tx hash
-			sdk.NewAttribute(hmTypes.AttributeKeySideTxResult, sideTxResult.String()),             // result
+			sdk.NewAttribute(hmTypes.AttributeKeySideTxResult, sideTxResult.String()),         // result
 			sdk.NewAttribute(types.AttributeKeySender, msg.FromAddress.String()),
 			sdk.NewAttribute(types.AttributeKeyRecipient, msg.User.String()),
 			sdk.NewAttribute(types.AttributeKeyTopupAmount, msg.Fee.String()),

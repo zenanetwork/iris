@@ -227,7 +227,7 @@ func DefaultMainTxDecoder(cdc *codec.Codec, lastBlockHeight func() int64, getDan
 
 			msgs := hftx.GetMsgs()
 			for _, msg := range msgs {
-				if msg.Route() == "bor" && msg.Type() == "propose-span-v2" {
+				if msg.Route() == "zena" && msg.Type() == "propose-span-v2" {
 					return nil, sdk.ErrTxDecode("error decoding transaction")
 				}
 			}

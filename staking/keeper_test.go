@@ -6,19 +6,19 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
+	"github.com/zenanetwork/iris/app"
 
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/helper"
 
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	stakingSim "github.com/maticnetwork/heimdall/staking/simulation"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	stakingSim "github.com/zenanetwork/iris/staking/simulation"
 
-	"github.com/maticnetwork/heimdall/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	"github.com/tendermint/tendermint/crypto/secp256k1"
+	"github.com/zenanetwork/iris/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 type KeeperTestSuite struct {

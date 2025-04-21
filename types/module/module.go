@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 // IrisModuleBasic is the standard form for basic non-dependant elements of an application module.

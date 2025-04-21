@@ -12,9 +12,9 @@ import (
 	ethCommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // RootChainListenerContext root chain listener context

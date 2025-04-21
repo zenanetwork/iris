@@ -2,7 +2,7 @@ package cli
 
 const (
 	FlagProposerAddress = "proposer"
-	FlagBorChainId      = "bor-chain-id"
+	FlagZenaChainId      = "zena-chain-id"
 	FlagStartBlock      = "start-block"
 	FlagSpanId          = "span-id"
 	FlagLimit           = "limit"

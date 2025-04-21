@@ -12,18 +12,18 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	bankCli "github.com/maticnetwork/heimdall/bank/client/cli"
-	bankRest "github.com/maticnetwork/heimdall/bank/client/rest"
-	"github.com/maticnetwork/heimdall/bank/simulation"
-	"github.com/maticnetwork/heimdall/bank/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	bankCli "github.com/zenanetwork/iris/bank/client/cli"
+	bankRest "github.com/zenanetwork/iris/bank/client/rest"
+	"github.com/zenanetwork/iris/bank/simulation"
+	"github.com/zenanetwork/iris/bank/types"
+	"github.com/zenanetwork/iris/helper"
+	hmModule "github.com/zenanetwork/iris/types/module"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 var (
-	_ module.AppModule             = AppModule{}
-	_ module.AppModuleBasic        = AppModuleBasic{}
+	_ module.AppModule         = AppModule{}
+	_ module.AppModuleBasic    = AppModuleBasic{}
 	_ hmModule.IrisModuleBasic = AppModule{}
 	// _ hmModule.AppModuleSimulation = AppModule{}
 )

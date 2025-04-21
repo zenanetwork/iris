@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/params/subspace"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // Default parameter values
@@ -33,7 +33,7 @@ var _ subspace.ParamSet = &Params{}
 
 // ChainParams chain related params
 type ChainParams struct {
-	ZenaChainID           string              `json:"zena_chain_id" yaml:"bor_chain_id"`
+	ZenaChainID           string              `json:"zena_chain_id" yaml:"zena_chain_id"`
 	MaticTokenAddress     hmTypes.IrisAddress `json:"matic_token_address" yaml:"matic_token_address"`
 	StakingManagerAddress hmTypes.IrisAddress `json:"staking_manager_address" yaml:"staking_manager_address"`
 	SlashManagerAddress   hmTypes.IrisAddress `json:"slash_manager_address" yaml:"slash_manager_address"`
@@ -41,14 +41,14 @@ type ChainParams struct {
 	StakingInfoAddress    hmTypes.IrisAddress `json:"staking_info_address" yaml:"staking_info_address"`
 	StateSenderAddress    hmTypes.IrisAddress `json:"state_sender_address" yaml:"state_sender_address"`
 
-	// Bor Chain Contracts
+	// Zena Chain Contracts
 	StateReceiverAddress hmTypes.IrisAddress `json:"state_receiver_address" yaml:"state_receiver_address"`
 	ValidatorSetAddress  hmTypes.IrisAddress `json:"validator_set_address" yaml:"validator_set_address"`
 }
 
 func (cp ChainParams) String() string {
 	return fmt.Sprintf(`
-	BorChainID: 									%s
+	ZenaChainID: 									%s
   MaticTokenAddress:            %s
 	StakingManagerAddress:        %s
 	SlashManagerAddress:        %s
@@ -167,7 +167,7 @@ func DefaultParams() Params {
 		MainchainTxConfirmations:  DefaultMainchainTxConfirmations,
 		MaticchainTxConfirmations: DefaultMaticchainTxConfirmations,
 		ChainParams: ChainParams{
-			ZenaChainID:          helper.DefaultBorChainID,
+			ZenaChainID:          helper.DefaultZenaChainID,
 			StateReceiverAddress: DefaultStateReceiverAddress,
 			ValidatorSetAddress:  DefaultValidatorSetAddress,
 		},

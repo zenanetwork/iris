@@ -5,11 +5,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewHandler returns a handler for "topup" type messages.

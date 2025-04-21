@@ -23,15 +23,15 @@ import (
 	httpClient "github.com/tendermint/tendermint/rpc/client"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	chainManagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	milestoneTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	clerktypes "github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/contracts/statesender"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
-	hmtypes "github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	chainManagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	milestoneTypes "github.com/zenanetwork/iris/checkpoint/types"
+	clerktypes "github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/contracts/statesender"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
+	hmtypes "github.com/zenanetwork/iris/types"
 )
 
 type BridgeEvent string

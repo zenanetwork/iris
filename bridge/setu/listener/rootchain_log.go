@@ -8,10 +8,10 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/contracts/stakinginfo"
-	"github.com/maticnetwork/heimdall/contracts/statesender"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/contracts/stakinginfo"
+	"github.com/zenanetwork/iris/contracts/statesender"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // handleLog handles the given log

@@ -3,9 +3,9 @@ package supply
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	auth "github.com/maticnetwork/heimdall/auth"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/supply/types"
+	auth "github.com/zenanetwork/iris/auth"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/supply/types"
 )
 
 // InitGenesis sets supply information for genesis.

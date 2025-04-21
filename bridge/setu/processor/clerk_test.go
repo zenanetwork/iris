@@ -17,15 +17,15 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	authTypesMocks "github.com/maticnetwork/heimdall/auth/types/mocks"
-	"github.com/maticnetwork/heimdall/bridge/setu/broadcaster"
-	"github.com/maticnetwork/heimdall/bridge/setu/listener"
-	"github.com/maticnetwork/heimdall/bridge/setu/queue"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/helper"
-	helperMocks "github.com/maticnetwork/heimdall/helper/mocks"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	authTypesMocks "github.com/zenanetwork/iris/auth/types/mocks"
+	"github.com/zenanetwork/iris/bridge/setu/broadcaster"
+	"github.com/zenanetwork/iris/bridge/setu/listener"
+	"github.com/zenanetwork/iris/bridge/setu/queue"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/helper"
+	helperMocks "github.com/zenanetwork/iris/helper/mocks"
 )
 
 const (
@@ -40,7 +40,7 @@ const (
 		"mainchain_tx_confirmations": 6,
 		"maticchain_tx_confirmations": 10,
 		"chain_params": {
-			"bor_chain_id": "80001",
+			"zena_chain_id": "80001",
 			"matic_token_address": "0x499d11E0b6eAC7c0593d8Fb292DCBbF815Fb29Ae",
 			"staking_manager_address": "0x4864d89DCE4e24b2eDF64735E014a7E4154bfA7A",
 			"slash_manager_address": "0x93D8f8A1A88498b258ceb69dD82311962374269C",

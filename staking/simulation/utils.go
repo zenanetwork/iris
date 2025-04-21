@@ -5,9 +5,9 @@ import (
 	"crypto/rand"
 	"math/big"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/types"
 	"github.com/tendermint/tendermint/crypto/secp256k1"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/types"
 )
 
 // GenRandomVal generate random validators

@@ -17,15 +17,15 @@ import (
 
 	ethTypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	chainTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/contracts/stakinginfo"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	"github.com/maticnetwork/heimdall/topup"
-	"github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/app"
+	chainTypes "github.com/zenanetwork/iris/chainmanager/types"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/contracts/stakinginfo"
+	"github.com/zenanetwork/iris/helper/mocks"
+	"github.com/zenanetwork/iris/topup"
+	"github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // QuerierTestSuite integrate test suite context object

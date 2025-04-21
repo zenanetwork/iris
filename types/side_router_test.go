@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 var testSideTxHandler = func(_ sdk.Context, _ sdk.Msg) abci.ResponseDeliverSideTx {

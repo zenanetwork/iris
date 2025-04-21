@@ -7,15 +7,15 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/contracts/erc20"
-	"github.com/maticnetwork/heimdall/contracts/rootchain"
-	"github.com/maticnetwork/heimdall/contracts/slashmanager"
-	"github.com/maticnetwork/heimdall/contracts/stakemanager"
-	"github.com/maticnetwork/heimdall/contracts/stakinginfo"
-	"github.com/maticnetwork/heimdall/contracts/statereceiver"
-	"github.com/maticnetwork/heimdall/contracts/statesender"
-	"github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/contracts/erc20"
+	"github.com/zenanetwork/iris/contracts/rootchain"
+	"github.com/zenanetwork/iris/contracts/slashmanager"
+	"github.com/zenanetwork/iris/contracts/stakemanager"
+	"github.com/zenanetwork/iris/contracts/stakinginfo"
+	"github.com/zenanetwork/iris/contracts/statereceiver"
+	"github.com/zenanetwork/iris/contracts/statesender"
+	"github.com/zenanetwork/iris/types"
 
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
@@ -31,7 +31,7 @@ func TestCheckpointSigs(t *testing.T) {
 
 	viper.Set(TendermintNodeFlag, testTendermintNode)
 	viper.Set("log_level", "info")
-	InitHeimdallConfig(os.ExpandEnv("$HOME/.heimdalld"))
+	InitHeimdallConfig(os.ExpandEnv("$HOME/.irisd"))
 
 	contractCallerObj, err := NewContractCaller()
 	if err != nil {
@@ -84,7 +84,7 @@ func TestPopulateABIs(t *testing.T) {
 
 	viper.Set(TendermintNodeFlag, testTendermintNode)
 	viper.Set("log_level", "info")
-	InitHeimdallConfig(os.ExpandEnv("$HOME/.heimdalld"))
+	InitHeimdallConfig(os.ExpandEnv("$HOME/.irisd"))
 
 	t.Log("ABIs map should be empty and all ABIs not found")
 	assert.True(t, len(ContractsABIsMap) == 0)

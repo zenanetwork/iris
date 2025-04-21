@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"bytes"
@@ -7,14 +7,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	ethCommon "github.com/ethereum/go-ethereum/common"
-	"github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/common"
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/common"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewSideTxHandler returns a side handler for "span" type messages.
@@ -214,7 +214,7 @@ func PostHandleMsgEventSpan(ctx sdk.Context, k Keeper, msg sdk.Msg, sideTxResult
 
 		if ctx.BlockHeight() < helper.GetDanelawHeight() {
 			// store the seed producer
-			_, producer, err = k.getBorBlockForSpanSeed(ctx, lastSpan, proposeMsg.ID)
+			_, producer, err = k.getZenaBlockForSpanSeed(ctx, lastSpan, proposeMsg.ID)
 			if err != nil {
 				logger.Error("Unable to get seed producer", "Error", err)
 				return common.ErrUnableToGetSeed(k.Codespace()).Result()
@@ -244,10 +244,10 @@ func PostHandleMsgEventSpan(ctx sdk.Context, k Keeper, msg sdk.Msg, sideTxResult
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			types.EventTypeProposeSpan,
-			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                                  // action
-			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),                // module name
+			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                              // action
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),            // module name
 			sdk.NewAttribute(hmTypes.AttributeKeyTxHash, hmTypes.BytesToIrisHash(hash).Hex()), // tx hash
-			sdk.NewAttribute(hmTypes.AttributeKeySideTxResult, sideTxResult.String()),             // result
+			sdk.NewAttribute(hmTypes.AttributeKeySideTxResult, sideTxResult.String()),         // result
 			sdk.NewAttribute(types.AttributeKeySpanID, strconv.FormatUint(proposeMsg.ID, 10)),
 			sdk.NewAttribute(types.AttributeKeySpanStartBlock, strconv.FormatUint(proposeMsg.StartBlock, 10)),
 			sdk.NewAttribute(types.AttributeKeySpanEndBlock, strconv.FormatUint(proposeMsg.EndBlock, 10)),

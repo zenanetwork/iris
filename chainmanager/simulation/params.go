@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/simulation"
-	simtypes "github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/simulation"
+	simtypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 const (
@@ -31,7 +31,7 @@ func ParamChanges(r *rand.Rand) []simtypes.ParamChange {
 		),
 		simulation.NewSimParamChange(types.ModuleName, KeyChainParams,
 			func(r *rand.Rand) string {
-				return fmt.Sprintf("\"%s\"", GenBorChainId(r))
+				return fmt.Sprintf("\"%s\"", GenZenaChainId(r))
 			},
 		),
 	}

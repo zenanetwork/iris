@@ -8,7 +8,7 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	hmModule "github.com/maticnetwork/heimdall/types/module"
+	hmModule "github.com/zenanetwork/iris/types/module"
 )
 
 // App implements the common methods for a Cosmos SDK-based application

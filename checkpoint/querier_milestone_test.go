@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 func TestMilestoneQuerierTestSuite(t *testing.T) {
@@ -32,14 +32,14 @@ func (suite *QuerierTestSuite) TestQueryLatestMilestone() {
 	hash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "00000"
 	milestoneBlock := hmTypes.CreateMilestone(
 		startBlock,
 		endBlock,
 		hash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 		timestamp,
 	)

@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmCommon "github.com/zenanetwork/iris/common"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // Governance message types and routes
@@ -20,10 +20,10 @@ var _, _, _ sdk.Msg = MsgSubmitProposal{}, MsgDeposit{}, MsgVote{}
 
 // MsgSubmitProposal represents submit proposal message
 type MsgSubmitProposal struct {
-	Content        Content                 `json:"content" yaml:"content"`
-	InitialDeposit sdk.Coins               `json:"initial_deposit" yaml:"initial_deposit"` //  Initial deposit paid by sender. Must be strictly positive
+	Content        Content             `json:"content" yaml:"content"`
+	InitialDeposit sdk.Coins           `json:"initial_deposit" yaml:"initial_deposit"` //  Initial deposit paid by sender. Must be strictly positive
 	Proposer       hmTypes.IrisAddress `json:"proposer" yaml:"proposer"`               //  Address of the proposer
-	Validator      hmTypes.ValidatorID     `json:"validator" yaml:"validator"`             //  Validator id
+	Validator      hmTypes.ValidatorID `json:"validator" yaml:"validator"`             //  Validator id
 }
 
 // NewMsgSubmitProposal creates new submit proposal
@@ -31,7 +31,7 @@ func NewMsgSubmitProposal(content Content, initialDeposit sdk.Coins, proposer hm
 	return MsgSubmitProposal{content, initialDeposit, proposer, validator}
 }
 
-//nolint
+// nolint
 func (msg MsgSubmitProposal) Route() string { return RouterKey }
 func (msg MsgSubmitProposal) Type() string  { return TypeMsgSubmitProposal }
 
@@ -81,10 +81,10 @@ func (msg MsgSubmitProposal) GetSigners() []sdk.AccAddress {
 
 // MsgDeposit represents deposit message
 type MsgDeposit struct {
-	ProposalID uint64                  `json:"proposal_id" yaml:"proposal_id"` // ID of the proposal
+	ProposalID uint64              `json:"proposal_id" yaml:"proposal_id"` // ID of the proposal
 	Depositor  hmTypes.IrisAddress `json:"depositor" yaml:"depositor"`     // Address of the depositor
-	Amount     sdk.Coins               `json:"amount" yaml:"amount"`           // Coins to add to the proposal's deposit
-	Validator  hmTypes.ValidatorID     `json:"validator" yaml:"validator"`     //  Validator id
+	Amount     sdk.Coins           `json:"amount" yaml:"amount"`           // Coins to add to the proposal's deposit
+	Validator  hmTypes.ValidatorID `json:"validator" yaml:"validator"`     //  Validator id
 }
 
 func NewMsgDeposit(depositor hmTypes.IrisAddress, proposalID uint64, amount sdk.Coins, validator hmTypes.ValidatorID) MsgDeposit {
@@ -136,10 +136,10 @@ func (msg MsgDeposit) GetSigners() []sdk.AccAddress {
 
 // MsgVote
 type MsgVote struct {
-	ProposalID uint64                  `json:"proposal_id" yaml:"proposal_id"` // ID of the proposal
+	ProposalID uint64              `json:"proposal_id" yaml:"proposal_id"` // ID of the proposal
 	Voter      hmTypes.IrisAddress `json:"voter" yaml:"voter"`             //  address of the voter
-	Option     VoteOption              `json:"option" yaml:"option"`           //  option from OptionSet chosen by the voter
-	Validator  hmTypes.ValidatorID     `json:"validator" yaml:"validator"`     //  validator id of the voter
+	Option     VoteOption          `json:"option" yaml:"option"`           //  option from OptionSet chosen by the voter
+	Validator  hmTypes.ValidatorID `json:"validator" yaml:"validator"`     //  validator id of the voter
 }
 
 // NewMsgVote new msg vote

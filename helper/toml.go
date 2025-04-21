@@ -17,14 +17,14 @@ const defaultConfigTemplate = `# This is a TOML config file.
 # RPC endpoint for ethereum chain
 eth_rpc_url = "{{ .EthRPCUrl }}"
 
-# RPC endpoint for bor chain
-bor_rpc_url = "{{ .BorRPCUrl }}"
+# RPC endpoint for zena chain
+zena_rpc_url = "{{ .ZenaRPCUrl }}"
 
-# GRPC flag for bor chain
-bor_grpc_flag = "{{ .BorGRPCFlag }}"
+# GRPC flag for zena chain
+zena_grpc_flag = "{{ .ZenaGRPCFlag }}"
 
-# GRPC endpoint for bor chain
-bor_grpc_url = "{{ .BorGRPCUrl }}"
+# GRPC endpoint for zena chain
+zena_grpc_url = "{{ .ZenaGRPCUrl }}"
 
 # RPC endpoint for tendermint
 tendermint_rpc_url = "{{ .TendermintRPCUrl }}"

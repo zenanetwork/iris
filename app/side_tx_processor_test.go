@@ -11,9 +11,9 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	app "github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	app "github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var testTxStateData1 = []byte("test-tx-state1")

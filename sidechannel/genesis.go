@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/sidechannel/types"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 // InitGenesis sets distribution information for genesis.

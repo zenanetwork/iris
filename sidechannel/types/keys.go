@@ -9,13 +9,13 @@ const (
 	// ModuleName defines the name of the module
 	ModuleName = "sidechannel"
 
-	// StoreKey is the store key string for bor
+	// StoreKey is the store key string for zena
 	StoreKey = ModuleName
 
-	// RouterKey is the message route for bor
+	// RouterKey is the message route for zena
 	RouterKey = ModuleName
 
-	// QuerierRoute is the querier route for bor
+	// QuerierRoute is the querier route for zena
 	QuerierRoute = ModuleName
 
 	// DefaultParamspace default name for parameter store

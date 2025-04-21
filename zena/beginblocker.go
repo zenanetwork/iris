@@ -1,14 +1,14 @@
-package bor
+package zena
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	jsoniter "github.com/json-iterator/go"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/zena/client/rest"
-	"github.com/maticnetwork/heimdall/zena/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena/client/rest"
+	"github.com/zenanetwork/iris/zena/types"
 )
 
 // ResponseWithHeight defines a response object type that wraps an original

@@ -28,7 +28,7 @@ definitions:
     x-go-package: _/Users/vaibhavjindal/iris/topup/client/rest
   ContractAddresses:
     properties:
-      BorChainId:
+      ZenaChainId:
         type: string
       matic_token_address:
         type: string
@@ -84,9 +84,9 @@ definitions:
     properties:
       base_req:
         $ref: "#/definitions/BaseReq"
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainID
+        x-go-name: ZenaChainID
       span_id:
         format: uint64
         type: integer
@@ -100,9 +100,9 @@ definitions:
       - amount
       - span_id
       - start_block
-      - bor_chain_id
+      - zena_chain_id
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   StdTx:
     properties:
       memo:
@@ -248,7 +248,7 @@ definitions:
         x-go-name: Result
     type: object
     x-go-package: _/Users/vaibhavjindal/iris/bank/client/rest
-  borSpan:
+  zenaSpan:
     properties:
       height:
         type: string
@@ -256,8 +256,8 @@ definitions:
       result:
         $ref: "#/definitions/span"
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
-  borSpanList:
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
+  zenaSpanList:
     properties:
       height:
         type: string
@@ -268,8 +268,8 @@ definitions:
         type: array
         x-go-name: Result
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
-  borSpanParams:
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
+  zenaSpanParams:
     properties:
       height:
         type: string
@@ -277,7 +277,7 @@ definitions:
       result:
         $ref: "#/definitions/spanParams"
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   chainManager:
     properties:
       chain_params:
@@ -303,9 +303,9 @@ definitions:
     x-go-package: _/Users/vaibhavjindal/iris/chainmanager/client/rest
   checkpoint:
     properties:
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainId
+        x-go-name: ZenaChainId
       end_block:
         format: int64
         type: integer
@@ -461,9 +461,9 @@ definitions:
         x-go-name: AccountRootHash
       base_req:
         $ref: "#/definitions/BaseReq"
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainID
+        x-go-name: ZenaChainID
       end_block:
         type: string
         x-go-name: EndBlock
@@ -492,9 +492,9 @@ definitions:
       account_root_hash:
         type: string
         x-go-name: AccountRootHash
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainId
+        x-go-name: ZenaChainId
       end_block:
         type: string
         x-go-name: EndBlock
@@ -613,9 +613,9 @@ definitions:
       block_number:
         type: string
         x-go-name: BlockNumber
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainID
+        x-go-name: ZenaChainID
       contract_address:
         type: string
         x-go-name: ContractAddress
@@ -647,9 +647,9 @@ definitions:
       block_number:
         type: string
         x-go-name: BlockNumber
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainID
+        x-go-name: ZenaChainID
       contract_address:
         type: string
         x-go-name: ContractAddress
@@ -729,9 +729,9 @@ definitions:
     x-go-package: _/Users/vaibhavjindal/iris/gov/client/rest
   event:
     properties:
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainId
+        x-go-name: ZenaChainId
       contract:
         type: string
         x-go-name: Contract
@@ -968,7 +968,7 @@ definitions:
       value:
         $ref: "#/definitions/val"
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   output:
     properties:
       type:
@@ -977,7 +977,7 @@ definitions:
       value:
         $ref: "#/definitions/value"
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   overview:
     properties:
       ack_count:
@@ -1378,9 +1378,9 @@ definitions:
     x-go-package: _/Users/vaibhavjindal/iris/slashing/client/rest
   span:
     properties:
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainId
+        x-go-name: ZenaChainId
       end_block:
         format: int64
         type: integer
@@ -1401,7 +1401,7 @@ definitions:
       validator_set:
         $ref: "#/definitions/validatorSet"
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   spanParams:
     properties:
       producer_count:
@@ -1420,7 +1420,7 @@ definitions:
         type: integer
         x-go-name: SprintDuration
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   spanSeed:
     properties:
       height:
@@ -1430,7 +1430,7 @@ definitions:
         type: string
         x-go-name: Result
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   stakingNewValidatorInput:
     properties:
       ID:
@@ -2036,9 +2036,9 @@ definitions:
     x-go-package: _/Users/vaibhavjindal/iris/client/tx
   val:
     properties:
-      bor_chain_id:
+      zena_chain_id:
         type: string
-        x-go-name: BorChainId
+        x-go-name: ZenaChainId
       end_block:
         type: string
         x-go-name: EndBlock
@@ -2055,7 +2055,7 @@ definitions:
         type: string
         x-go-name: StartBlock
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   validator:
     properties:
       ID:
@@ -2126,7 +2126,7 @@ definitions:
         type: string
         x-go-name: Signature
     type: object
-    x-go-package: _/Users/vaibhavjindal/iris/bor/client/rest
+    x-go-package: _/Users/vaibhavjindal/iris/zena/client/rest
   vote:
     properties:
       option:
@@ -2229,10 +2229,10 @@ paths:
           $ref: "#/responses/bankBalanceByAddressResponse"
       tags:
         - bank
-  /bor/latest-span:
+  /zena/latest-span:
     get:
       description: It returns the latest-span
-      operationId: borSpanLatest
+      operationId: zenaSpanLatest
       parameters:
         - description: Block Height
           in: query
@@ -2241,13 +2241,13 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borSpanResponse"
+          $ref: "#/responses/zenaSpanResponse"
       tags:
-        - bor
-  /bor/next-span-seed:
+        - zena
+  /zena/next-span-seed:
     get:
       description: It returns the seed for the next span
-      operationId: borNextSpanSeed
+      operationId: zenaNextSpanSeed
       parameters:
         - description: Block Height
           in: query
@@ -2256,13 +2256,13 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borNextSpanSeedRespose"
+          $ref: "#/responses/zenaNextSpanSeedRespose"
       tags:
-        - bor
-  /bor/params:
+        - zena
+  /zena/params:
     get:
       description: It returns the span parameters
-      operationId: borSpanParams
+      operationId: zenaSpanParams
       parameters:
         - description: Block Height
           in: query
@@ -2271,13 +2271,13 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borSpanParamsResponse"
+          $ref: "#/responses/zenaSpanParamsResponse"
       tags:
-        - bor
-  /bor/prepare-next-span:
+        - zena
+  /zena/prepare-next-span:
     get:
       description: It returns the prepared next span
-      operationId: borPrepareNextSpan
+      operationId: zenaPrepareNextSpan
       parameters:
         - description: Start Block
           format: int64
@@ -2307,13 +2307,13 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borSpanResponse"
+          $ref: "#/responses/zenaSpanResponse"
       tags:
-        - bor
-  /bor/propose-span:
+        - zena
+  /zena/propose-span:
     post:
       description: It returns the prepared msg for proposing the span
-      operationId: borProposeSpan
+      operationId: zenaProposeSpan
       parameters:
         - description: Body
           in: body
@@ -2324,13 +2324,13 @@ paths:
           x-go-name: Input
       responses:
         "200":
-          $ref: "#/responses/borProposeSpanResponse"
+          $ref: "#/responses/zenaProposeSpanResponse"
       tags:
-        - bor
-  /bor/span/{id}:
+        - zena
+  /zena/span/{id}:
     get:
       description: It returns the span based on ID
-      operationId: borSpanById
+      operationId: zenaSpanById
       parameters:
         - description: Id number of the span
           format: int64
@@ -2346,13 +2346,13 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borSpanResponse"
+          $ref: "#/responses/zenaSpanResponse"
       tags:
-        - bor
-  /bor/span/list:
+        - zena
+  /zena/span/list:
     get:
-      description: It returns the list of Bor Span
-      operationId: borSpanList
+      description: It returns the list of Zena Span
+      operationId: zenaSpanList
       parameters:
         - description: Page Number
           format: int64
@@ -2375,9 +2375,9 @@ paths:
           x-go-name: Height
       responses:
         "200":
-          $ref: "#/responses/borSpanListResponse"
+          $ref: "#/responses/zenaSpanListResponse"
       tags:
-        - bor
+        - zena
   /chainmanager/params:
     get:
       description: It returns the chain-manager parameters
@@ -3695,26 +3695,26 @@ responses:
     description: It represents transfer msg.
     schema:
       $ref: "#/definitions/output"
-  borNextSpanSeedResponse:
+  zenaNextSpanSeedResponse:
     description: It represents the next span seed
     schema:
       $ref: "#/definitions/spanSeed"
-  borProposeSpanResponse:
+  zenaProposeSpanResponse:
     description: It represents Propose Span msg.
     schema:
       $ref: "#/definitions/output"
-  borSpanListResponse:
+  zenaSpanListResponse:
     description: It represents the list of spans
     schema:
-      $ref: "#/definitions/borSpanList"
-  borSpanParamsResponse:
-    description: It represents the bor span parameters
+      $ref: "#/definitions/zenaSpanList"
+  zenaSpanParamsResponse:
+    description: It represents the zena span parameters
     schema:
-      $ref: "#/definitions/borSpanParams"
-  borSpanResponse:
+      $ref: "#/definitions/zenaSpanParams"
+  zenaSpanResponse:
     description: It represents the span
     schema:
-      $ref: "#/definitions/borSpan"
+      $ref: "#/definitions/zenaSpan"
   chainManagerParamsResponse:
     description: It represents the bank balance of particluar account
     schema:

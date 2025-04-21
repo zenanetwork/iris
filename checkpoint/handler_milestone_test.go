@@ -6,16 +6,16 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	errs "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
+	cmTypes "github.com/zenanetwork/iris/chainmanager/types"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	errs "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 func TestMilestoneHandlerTestSuite(t *testing.T) {
@@ -28,7 +28,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 	keeper := app.CheckpointKeeper
 	stakingKeeper := app.StakingKeeper
 	start := uint64(0)
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "0000"
 	milestoneLength := helper.MilestoneLength
 
@@ -55,7 +55,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			header.StartBlock,
 			header.EndBlock,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -75,7 +75,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			header.StartBlock,
 			header.EndBlock-1,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -95,7 +95,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			uint64(1),
 			header.EndBlock+1,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -114,7 +114,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			header.StartBlock,
 			header.EndBlock,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -139,7 +139,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			start,
 			start+milestoneLength-1,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -173,7 +173,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			start,
 			start+milestoneLength-1,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -202,7 +202,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestone() {
 			start,
 			start+milestoneLength-1,
 			header.Hash,
-			borChainId,
+			zenaChainId,
 			milestoneID,
 		)
 
@@ -252,7 +252,7 @@ func (suite *HandlerTestSuite) SendMilestone(header hmTypes.Milestone) (res sdk.
 
 	// keeper := app.MilestoneKeeper
 
-	borChainId := header.BorChainID
+	zenaChainId := header.ZenaChainID
 	milestoneID := header.MilestoneID
 	// create milestone msg
 	msgMilestone := types.NewMsgMilestoneBlock(
@@ -260,7 +260,7 @@ func (suite *HandlerTestSuite) SendMilestone(header hmTypes.Milestone) (res sdk.
 		header.StartBlock,
 		header.EndBlock,
 		header.Hash,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 	)
 
@@ -289,7 +289,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestoneTimeout() {
 	hash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(0)
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "0000"
 
 	proposer := hmTypes.IrisAddress{}
@@ -312,7 +312,7 @@ func (suite *HandlerTestSuite) TestHandleMsgMilestoneTimeout() {
 		endBlock,
 		hash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 		timestamp,
 	)

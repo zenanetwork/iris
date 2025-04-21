@@ -10,16 +10,16 @@ import (
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	bor "github.com/ethereum/go-ethereum"
+	zena "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/helper"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/helper"
 
 	"github.com/tendermint/tendermint/libs/log"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // TxBroadcaster uses to broadcast transaction to each chain
@@ -106,7 +106,7 @@ func (tb *TxBroadcaster) BroadcastToIris(msg sdk.Msg, event interface{}, testOpt
 }
 
 // BroadcastToMatic broadcast to matic
-func (tb *TxBroadcaster) BroadcastToMatic(msg bor.CallMsg) error {
+func (tb *TxBroadcaster) BroadcastToMatic(msg zena.CallMsg) error {
 	tb.maticMutex.Lock()
 	defer tb.maticMutex.Unlock()
 
@@ -131,10 +131,10 @@ func (tb *TxBroadcaster) BroadcastToMatic(msg bor.CallMsg) error {
 		return err
 	}
 
-	tb.logger.Info("Sending transaction to bor", "txHash", signedTx.Hash())
+	tb.logger.Info("Sending transaction to zena", "txHash", signedTx.Hash())
 
 	// create a context with timeout
-	ctx, cancel := context.WithTimeout(context.Background(), helper.GetConfig().BorRPCTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), helper.GetConfig().ZenaRPCTimeout)
 	defer cancel()
 
 	// broadcast transaction

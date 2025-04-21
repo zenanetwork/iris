@@ -1301,7 +1301,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -2804,7 +2804,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -4307,7 +4307,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -5810,7 +5810,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -7313,7 +7313,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -8816,7 +8816,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -10319,7 +10319,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -11822,7 +11822,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -13325,7 +13325,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -14828,7 +14828,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -16331,7 +16331,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -17834,7 +17834,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -19337,7 +19337,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -20840,7 +20840,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -22343,7 +22343,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -23846,7 +23846,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -25349,7 +25349,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -26852,7 +26852,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -28355,7 +28355,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -29858,7 +29858,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -31361,7 +31361,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -32864,7 +32864,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -34367,7 +34367,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -35870,7 +35870,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -37373,7 +37373,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -38876,7 +38876,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -40379,7 +40379,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -41882,7 +41882,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -43385,7 +43385,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -44888,7 +44888,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -46391,7 +46391,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -47894,7 +47894,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -49397,7 +49397,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -50900,7 +50900,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -52403,7 +52403,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -53906,7 +53906,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -55409,7 +55409,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -56912,7 +56912,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -58415,7 +58415,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -59918,7 +59918,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -61421,7 +61421,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -62924,7 +62924,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -64427,7 +64427,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -65930,7 +65930,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -67433,7 +67433,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -68936,7 +68936,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -70439,7 +70439,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -71942,7 +71942,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -73445,7 +73445,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	},
 	{
@@ -74948,7 +74948,7 @@ var mainnetSpanJSON = []byte(`[
 					"accum": 0
 				}
 			],
-			"bor_chain_id": "137"
+			"zena_chain_id": "137"
 		}
 	}
 ]`)

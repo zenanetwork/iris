@@ -8,10 +8,10 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/clerk"
-	"github.com/maticnetwork/heimdall/clerk/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/clerk"
+	"github.com/zenanetwork/iris/clerk/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 //

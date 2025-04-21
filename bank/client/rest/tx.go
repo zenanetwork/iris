@@ -9,10 +9,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	bankTypes "github.com/maticnetwork/heimdall/bank/types"
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	"github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	bankTypes "github.com/zenanetwork/iris/bank/types"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	"github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 // It represents transfer msg.

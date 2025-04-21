@@ -3,7 +3,7 @@ package auth
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
 )
 
 // InitGenesis - Init store state from genesis data

@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/bank/types"
+	"github.com/zenanetwork/iris/bank/types"
 )
 
 // NewQuerier returns a new sdk.Keeper instance.

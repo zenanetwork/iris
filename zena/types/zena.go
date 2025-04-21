@@ -13,7 +13,7 @@ type ResponseWithHeight struct {
 	Result json.RawMessage `json:"result"`
 }
 
-// Span Bor represents a current bor span
+// Span Zena represents a current zena span
 type Span struct {
 	ID         uint64 `json:"span_id" yaml:"span_id"`
 	StartBlock uint64 `json:"start_block" yaml:"start_block"`
@@ -43,5 +43,5 @@ type IrisSpan struct {
 	Span
 	ValidatorSet      ValidatorSet `json:"validator_set" yaml:"validator_set"`
 	SelectedProducers []Validator  `json:"selected_producers" yaml:"selected_producers"`
-	ChainID           string       `json:"bor_chain_id" yaml:"bor_chain_id"`
+	ChainID           string       `json:"zena_chain_id" yaml:"zena_chain_id"`
 }

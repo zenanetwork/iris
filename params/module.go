@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/maticnetwork/heimdall/params/types"
+	"github.com/zenanetwork/iris/params/types"
 )
 
 var (

@@ -13,11 +13,11 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/zena/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/version"
 )
 
 // GetQueryCmd returns the cli query commands for this module
@@ -25,7 +25,7 @@ func GetQueryCmd(cdc *codec.Codec) *cobra.Command {
 	// Group supply queries under a subcommand
 	queryCmds := &cobra.Command{
 		Use:                        types.ModuleName,
-		Short:                      "Querying commands for the bor module",
+		Short:                      "Querying commands for the zena module",
 		DisableFlagParsing:         true,
 		SuggestionsMinimumDistance: 2,
 		RunE:                       hmClient.ValidateCmd,
@@ -127,12 +127,12 @@ func GetQueryParams(cdc *codec.Codec) *cobra.Command {
 	return &cobra.Command{
 		Use:   "params",
 		Args:  cobra.NoArgs,
-		Short: "show the current bor parameters information",
+		Short: "show the current zena parameters information",
 		Long: strings.TrimSpace(
-			fmt.Sprintf(`Query values set as bor parameters.
+			fmt.Sprintf(`Query values set as zena parameters.
 
 Example:
-$ %s query bor params
+$ %s query zena params
 `,
 				version.ClientName,
 			),
@@ -276,9 +276,9 @@ func GetPreparedProposeSpan(cdc *codec.Codec) *cobra.Command {
 		Short: "send propose span tx",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
-			borChainID := viper.GetString(FlagBorChainId)
-			if borChainID == "" {
-				return fmt.Errorf("BorChainID cannot be empty")
+			zenaChainID := viper.GetString(FlagZenaChainId)
+			if zenaChainID == "" {
+				return fmt.Errorf("ZenaChainID cannot be empty")
 			}
 
 			// get proposer
@@ -361,7 +361,7 @@ func GetPreparedProposeSpan(cdc *codec.Codec) *cobra.Command {
 					proposer,
 					startBlock,
 					startBlock+spanDuration-1,
-					borChainID,
+					zenaChainID,
 					seedResponse.Seed,
 				)
 
@@ -375,7 +375,7 @@ func GetPreparedProposeSpan(cdc *codec.Codec) *cobra.Command {
 					proposer,
 					startBlock,
 					startBlock+spanDuration-1,
-					borChainID,
+					zenaChainID,
 					seedResponse.Seed,
 					seedResponse.SeedAuthor,
 				)
@@ -393,11 +393,11 @@ func GetPreparedProposeSpan(cdc *codec.Codec) *cobra.Command {
 
 	cmd.Flags().StringP(FlagProposerAddress, "p", "", "--proposer=<proposer-address>")
 	cmd.Flags().String(FlagSpanId, "", "--span-id=<span-id>")
-	cmd.Flags().String(FlagBorChainId, "", "--bor-chain-id=<bor-chain-id>")
+	cmd.Flags().String(FlagZenaChainId, "", "--zena-chain-id=<zena-chain-id>")
 	cmd.Flags().String(FlagStartBlock, "", "--start-block=<start-block-number>")
 
-	if err := cmd.MarkFlagRequired(FlagBorChainId); err != nil {
-		cliLogger.Error("GetPreparedProposeSpan | MarkFlagRequired | FlagBorChainId", "Error", err)
+	if err := cmd.MarkFlagRequired(FlagZenaChainId); err != nil {
+		cliLogger.Error("GetPreparedProposeSpan | MarkFlagRequired | FlagZenaChainId", "Error", err)
 	}
 
 	if err := cmd.MarkFlagRequired(FlagStartBlock); err != nil {

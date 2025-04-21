@@ -15,11 +15,11 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var logger = helper.Logger.With("module", "checkpoint/client/cli")
@@ -148,10 +148,10 @@ func SendCheckpointTx(cdc *codec.Codec) *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
 
-			// bor chain id
-			borChainID := viper.GetString(FlagBorChainID)
-			if borChainID == "" {
-				return fmt.Errorf("bor chain id cannot be empty")
+			// zena chain id
+			zenaChainId := viper.GetString(FlagZenaChainID)
+			if zenaChainId == "" {
+				return fmt.Errorf("zena chain id cannot be empty")
 			}
 
 			if viper.GetBool(FlagAutoConfigure) {
@@ -169,9 +169,9 @@ func SendCheckpointTx(cdc *codec.Codec) *cobra.Command {
 					return fmt.Errorf("Please wait for your turn to propose checkpoint. Checkpoint proposer:%v", checkpointProposer.String())
 				}
 
-				// create bor chain id params
-				borChainIDParams := types.NewQueryBorChainID(borChainID)
-				bz, err := cliCtx.Codec.MarshalJSON(borChainIDParams)
+				// create zena chain id params
+				zenaChainIdParams := types.NewQueryZenaChainID(zenaChainId)
+				bz, err := cliCtx.Codec.MarshalJSON(zenaChainIdParams)
 				if err != nil {
 					return err
 				}
@@ -236,7 +236,7 @@ func SendCheckpointTx(cdc *codec.Codec) *cobra.Command {
 				endBlock,
 				hmTypes.HexToIrisHash(rootHashStr),
 				hmTypes.HexToIrisHash(accountRootHashStr),
-				borChainID,
+				zenaChainId,
 			)
 
 			return helper.BroadcastMsgsWithCLI(cliCtx, []sdk.Msg{msg})
@@ -247,7 +247,7 @@ func SendCheckpointTx(cdc *codec.Codec) *cobra.Command {
 	cmd.Flags().String(FlagEndBlock, "", "--end-block=<end-block-number>")
 	cmd.Flags().StringP(FlagRootHash, "r", "", "--root-hash=<root-hash>")
 	cmd.Flags().String(FlagAccountRootHash, "", "--account-root=<account-root>")
-	cmd.Flags().String(FlagBorChainID, "", "--bor-chain-id=<bor-chain-id>")
+	cmd.Flags().String(FlagZenaChainID, "", "--zena-chain-id=<zena-chain-id>")
 	cmd.Flags().Bool(FlagAutoConfigure, false, "--auto-configure=true/false")
 
 	if err := cmd.MarkFlagRequired(FlagRootHash); err != nil {
@@ -258,8 +258,8 @@ func SendCheckpointTx(cdc *codec.Codec) *cobra.Command {
 		logger.Error("SendCheckpointTx | MarkFlagRequired | FlagAccountRootHash", "Error", err)
 	}
 
-	if err := cmd.MarkFlagRequired(FlagBorChainID); err != nil {
-		logger.Error("SendCheckpointTx | MarkFlagRequired | FlagBorChainID", "Error", err)
+	if err := cmd.MarkFlagRequired(FlagZenaChainID); err != nil {
+		logger.Error("SendCheckpointTx | MarkFlagRequired | FlagZenaChainID", "Error", err)
 	}
 
 	return cmd

@@ -16,10 +16,10 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"github.com/maticnetwork/heimdall/contracts/erc20"
-	"github.com/maticnetwork/heimdall/contracts/rootchain"
-	"github.com/maticnetwork/heimdall/contracts/slashmanager"
-	"github.com/maticnetwork/heimdall/contracts/stakemanager"
+	"github.com/zenanetwork/iris/contracts/erc20"
+	"github.com/zenanetwork/iris/contracts/rootchain"
+	"github.com/zenanetwork/iris/contracts/slashmanager"
+	"github.com/zenanetwork/iris/contracts/stakemanager"
 )
 
 func GenerateAuthObj(client *ethclient.Client, address common.Address, data []byte) (auth *bind.TransactOpts, err error) {

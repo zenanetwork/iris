@@ -10,11 +10,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	bankTypes "github.com/maticnetwork/heimdall/bank/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	bankTypes "github.com/zenanetwork/iris/bank/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
 )
 
 // GetTxCmd returns the transaction commands for this module

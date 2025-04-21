@@ -10,11 +10,11 @@ import (
 	"github.com/tendermint/tendermint/crypto"
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/chainmanager"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/chainmanager"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
 )
 
 var (

@@ -1,9 +1,9 @@
 package client
 
 import (
-	govclient "github.com/maticnetwork/heimdall/gov/client"
-	"github.com/maticnetwork/heimdall/params/client/cli"
-	"github.com/maticnetwork/heimdall/params/client/rest"
+	govclient "github.com/zenanetwork/iris/gov/client"
+	"github.com/zenanetwork/iris/params/client/cli"
+	"github.com/zenanetwork/iris/params/client/rest"
 )
 
 // param change proposal handler

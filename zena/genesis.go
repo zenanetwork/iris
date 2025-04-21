@@ -1,10 +1,10 @@
-package bor
+package zena
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // InitGenesis sets distribution information for genesis.

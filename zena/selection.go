@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"encoding/binary"
@@ -8,9 +8,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // XXXSelectNextProducers selects producers for next span by converting power to tickets

@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 const (

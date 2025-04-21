@@ -10,8 +10,8 @@ import (
 	"github.com/spf13/viper"
 	amino "github.com/tendermint/go-amino"
 
-	"github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/helper"
 )
 
 var logger = helper.Logger.With("module", "auth/client/cli")

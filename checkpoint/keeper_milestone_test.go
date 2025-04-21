@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	cmn "github.com/maticnetwork/heimdall/common"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	cmn "github.com/zenanetwork/iris/common"
+	hmTypes "github.com/zenanetwork/iris/types"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -25,7 +25,7 @@ func (suite *KeeperTestSuite) TestAddMilestone() {
 	hash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "0000"
 
 	milestone := hmTypes.CreateMilestone(
@@ -33,7 +33,7 @@ func (suite *KeeperTestSuite) TestAddMilestone() {
 		endBlock,
 		hash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 		timestamp,
 	)
@@ -45,7 +45,7 @@ func (suite *KeeperTestSuite) TestAddMilestone() {
 	require.Equal(t, startBlock, result.StartBlock)
 	require.Equal(t, endBlock, result.EndBlock)
 	require.Equal(t, hash, result.Hash)
-	require.Equal(t, borChainId, result.BorChainID)
+	require.Equal(t, zenaChainId, result.ZenaChainID)
 	require.Equal(t, proposerAddress, result.Proposer)
 	require.Equal(t, timestamp, result.TimeStamp)
 
@@ -54,7 +54,7 @@ func (suite *KeeperTestSuite) TestAddMilestone() {
 	require.Equal(t, startBlock, result.StartBlock)
 	require.Equal(t, endBlock, result.EndBlock)
 	require.Equal(t, hash, result.Hash)
-	require.Equal(t, borChainId, result.BorChainID)
+	require.Equal(t, zenaChainId, result.ZenaChainID)
 	require.Equal(t, proposerAddress, result.Proposer)
 	require.Equal(t, timestamp, result.TimeStamp)
 
@@ -72,7 +72,7 @@ func (suite *KeeperTestSuite) TestPruneMilestone() {
 	hash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "0000"
 
 	milestone := hmTypes.CreateMilestone(
@@ -80,7 +80,7 @@ func (suite *KeeperTestSuite) TestPruneMilestone() {
 		endBlock,
 		hash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 		timestamp,
 	)
@@ -110,7 +110,7 @@ func (suite *KeeperTestSuite) TestGetCount() {
 	hash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 	milestoneID := "0000"
 
 	milestone := hmTypes.CreateMilestone(
@@ -118,7 +118,7 @@ func (suite *KeeperTestSuite) TestGetCount() {
 		endBlock,
 		hash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		milestoneID,
 		timestamp,
 	)

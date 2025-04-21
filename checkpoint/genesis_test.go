@@ -6,13 +6,13 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/checkpoint"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/checkpoint"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 type GenesisTestSuite struct {
@@ -46,14 +46,14 @@ func (suite *GenesisTestSuite) TestInitExportGenesis() {
 
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	bufferedCheckpoint := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		timestamp,
 	)
 

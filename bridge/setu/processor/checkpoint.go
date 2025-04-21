@@ -17,13 +17,13 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/contracts/rootchain"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/contracts/rootchain"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // CheckpointProcessor - processor for checkpoint queue.
@@ -485,7 +485,7 @@ func (cp *CheckpointProcessor) createAndSendCheckpointToIris(checkpointContext *
 		end,
 		hmTypes.BytesToIrisHash(root),
 		accountRootHash,
-		chainParams.BorChainID,
+		chainParams.ZenaChainID,
 	)
 
 	// return broadcast to iris

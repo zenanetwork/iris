@@ -6,10 +6,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/module"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/module"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 func RandomizedGenState(simState *module.SimulationState) {

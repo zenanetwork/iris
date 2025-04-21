@@ -11,10 +11,10 @@ import (
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	simapparams "github.com/maticnetwork/heimdall/app/params"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/types/module"
-	simtypes "github.com/maticnetwork/heimdall/types/simulation"
+	simapparams "github.com/zenanetwork/iris/app/params"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/types/module"
+	simtypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 // AppStateFn returns the initial application state using a genesis or the simulation parameters.

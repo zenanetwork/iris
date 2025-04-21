@@ -7,13 +7,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/server"
 	"github.com/cosmos/cosmos-sdk/store/rootmulti"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/helper"
-	stakingcli "github.com/maticnetwork/heimdall/staking/client/cli"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/tendermint/tendermint/cmd/tendermint/commands"
 	"github.com/tendermint/tendermint/libs/cli"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/helper"
+	stakingcli "github.com/zenanetwork/iris/staking/client/cli"
 )
 
 const flagForce = "force"

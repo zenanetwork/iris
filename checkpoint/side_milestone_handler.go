@@ -7,11 +7,11 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	cmTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // SideHandleMsgMilestone handles MsgMilestone message for external call
@@ -135,8 +135,8 @@ func PostHandleMsgMilestone(ctx sdk.Context, k Keeper, msg types.MsgMilestone, s
 				Events: ctx.EventManager().Events(),
 			}
 		}
-	} else if msg.StartBlock != helper.GetMilestoneBorBlockHeight() {
-		logger.Error("First milestone to start from", "block", helper.GetMilestoneBorBlockHeight(), "Error", err)
+	} else if msg.StartBlock != helper.GetMilestoneZenaBlockHeight() {
+		logger.Error("First milestone to start from", "block", helper.GetMilestoneZenaBlockHeight(), "Error", err)
 
 		k.SetNoAckMilestone(ctx, msg.MilestoneID)
 
@@ -152,7 +152,7 @@ func PostHandleMsgMilestone(ctx sdk.Context, k Keeper, msg types.MsgMilestone, s
 		EndBlock:    msg.EndBlock,
 		Hash:        msg.Hash,
 		Proposer:    msg.Proposer,
-		BorChainID:  msg.BorChainID,
+		ZenaChainID:  msg.ZenaChainID,
 		MilestoneID: msg.MilestoneID,
 		TimeStamp:   timeStamp,
 	}); err != nil {

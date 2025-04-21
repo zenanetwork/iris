@@ -10,8 +10,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
 
-	bankTypes "github.com/maticnetwork/heimdall/bank/types"
-	"github.com/maticnetwork/heimdall/types"
+	bankTypes "github.com/zenanetwork/iris/bank/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 // It represents the bank balance of particluar account

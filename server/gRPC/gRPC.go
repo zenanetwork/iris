@@ -6,15 +6,15 @@ import (
 	"time"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	proto "github.com/maticnetwork/polyproto/heimdall"
 	tmLog "github.com/tendermint/tendermint/libs/log"
+	proto "github.com/zenanetwork/zenaproto/iris"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 const (
-	spanURL                 = "/bor/span/%v"
+	spanURL                 = "/zena/span/%v"
 	eventRecordList         = "/clerk/event-record/list"
 	fetchCheckpointCount    = "/checkpoints/count"
 	fetchCheckpoint         = "/checkpoints/%s"

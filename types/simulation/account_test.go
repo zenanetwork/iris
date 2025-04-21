@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 func TestRandomAccounts(t *testing.T) {

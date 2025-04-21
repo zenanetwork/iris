@@ -4,9 +4,9 @@ package simulation
 import (
 	"time"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/module"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/module"
 )
 
 // RandomizedGenState return dummy genesis
@@ -19,14 +19,14 @@ func RandomizedGenState(simState *module.SimulationState) {
 
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainID := "1234"
+	zenaChainID := "1234"
 
 	bufferedCheckpoint := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainID,
+		zenaChainID,
 		timestamp,
 	)
 

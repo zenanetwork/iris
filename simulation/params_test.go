@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 func TestParamChange(t *testing.T) {

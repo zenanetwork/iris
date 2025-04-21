@@ -2,8 +2,8 @@
 
 ## Table of Contents
 
-* [Overview](#overview)
-* [Query commands](#query-commands)
+- [Overview](#overview)
+- [Query commands](#query-commands)
 
 ## Overview
 
@@ -14,10 +14,10 @@ provides a pattern for modules to hold/interact with coins, and introduces the i
 
 One can run the following query commands from the bank module :
 
-* `total` - Query for a total supply of the chain with different coins. Takes params for checking the total supply of a particular coin
+- `total` - Query for a total supply of the chain with different coins. Takes params for checking the total supply of a particular coin
 
 ### CLI commands
 
 ```
-heimdallcli query supply total [denom]
+iriscli query supply total [denom]
 ```

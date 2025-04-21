@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"fmt"
@@ -7,8 +7,8 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewQuerier creates a querier for auth REST endpoints

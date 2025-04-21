@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package rest
 
 import (
@@ -8,15 +8,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gorilla/mux"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	clerkTypes "github.com/maticnetwork/heimdall/clerk/types"
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	clerkTypes "github.com/zenanetwork/iris/clerk/types"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
-//It represents New checkpoint msg.
+// It represents New checkpoint msg.
+//
 //swagger:response clerkNewEventResponse
 type clerkNewEventResponse struct {
 	//in:body
@@ -46,7 +47,7 @@ type clerkNewEventVal struct {
 	BlockNumber     string `json:"block_number" yaml:"block_number"`
 	ID              string `json:"id"`
 	ContractAddress string `json:"contract_address" yaml:"contract_address"`
-	BorChainID      string `json:"bor_chain_id"`
+	ZenaChainID     string `json:"zena_chain_id"`
 	Data            string `json:"data"`
 }
 
@@ -62,12 +63,12 @@ type AddRecordReq struct {
 	BaseReq rest.BaseReq `json:"base_req"`
 
 	TxHash          types.IrisHash `json:"tx_hash"`
-	LogIndex        uint64             `json:"log_index"`
-	BlockNumber     uint64             `json:"block_number" yaml:"block_number"`
-	ID              uint64             `json:"id"`
-	ContractAddress string             `json:"contract_address" yaml:"contract_address"`
-	BorChainID      string             `json:"bor_chain_id"`
-	Data            string             `json:"data"`
+	LogIndex        uint64         `json:"log_index"`
+	BlockNumber     uint64         `json:"block_number" yaml:"block_number"`
+	ID              uint64         `json:"id"`
+	ContractAddress string         `json:"contract_address" yaml:"contract_address"`
+	ZenaChainID     string         `json:"zena_chain_id"`
+	Data            string         `json:"data"`
 }
 
 //swagger:parameters clerkNewEvent
@@ -87,7 +88,7 @@ type clerkNewEventInput struct {
 	BlockNumber     string `json:"block_number"`
 	ID              string `json:"id"`
 	ContractAddress string `json:"contract_address"`
-	BorChainID      string `json:"bor_chain_id"`
+	ZenaChainID     string `json:"zena_chain_id"`
 	Data            string `json:"data"`
 }
 
@@ -138,7 +139,7 @@ func newEventRecordHandler(cliCtx context.CLIContext) http.HandlerFunc {
 			req.ID,
 			contractAddress,
 			types.HexToHexBytes(req.Data),
-			req.BorChainID,
+			req.ZenaChainID,
 		)
 
 		// send response

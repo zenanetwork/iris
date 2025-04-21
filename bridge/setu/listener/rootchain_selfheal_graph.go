@@ -16,7 +16,7 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // StakeUpdate represents the StakeUpdate event

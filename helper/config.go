@@ -23,9 +23,9 @@ import (
 	"github.com/tendermint/tendermint/privval"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	borgrpc "github.com/maticnetwork/heimdall/bor/client/grpc"
-	"github.com/maticnetwork/heimdall/file"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	zenagrpc "github.com/zenanetwork/iris/zena/client/grpc"
+	"github.com/zenanetwork/iris/file"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 const (
@@ -47,9 +47,9 @@ const (
 
 	// iris-config flags
 	MainRPCUrlFlag               = "eth_rpc_url"
-	BorRPCUrlFlag                = "bor_rpc_url"
-	BorGRPCUrlFlag               = "bor_grpc_url"
-	BorGRPCFlag                  = "bor_grpc_flag"
+	ZenaRPCUrlFlag                = "zena_rpc_url"
+	ZenaGRPCUrlFlag               = "zena_grpc_url"
+	ZenaGRPCFlag                  = "zena_grpc_flag"
 	TendermintNodeURLFlag        = "tendermint_rpc_url"
 	IrisServerURLFlag            = "iris_rest_server"
 	AmqpURLFlag                  = "amqp_url"
@@ -82,12 +82,12 @@ const (
 
 	// RPC Endpoints
 	DefaultMainRPCUrl = "http://localhost:9545"
-	DefaultBorRPCUrl  = "http://localhost:8545"
-	DefaultBorGRPCUrl = "localhost:3131"
+	DefaultZenaRPCUrl  = "http://localhost:8545"
+	DefaultZenaGRPCUrl = "localhost:3131"
 
 	// RPC Timeouts
 	DefaultEthRPCTimeout = 5 * time.Second
-	DefaultBorRPCTimeout = 5 * time.Second
+	DefaultZenaRPCTimeout = 5 * time.Second
 
 	// Services
 
@@ -116,7 +116,7 @@ const (
 
 	DefaultMainchainMaxGasPrice = 400000000000 // 400 Gwei
 
-	DefaultBorChainID = "15001"
+	DefaultZenaChainID = "15001"
 
 	DefaultLogsType = "json"
 	DefaultChain    = MainChain
@@ -169,14 +169,14 @@ func init() {
 // Configuration represents iris config
 type Configuration struct {
 	EthRPCUrl        string `mapstructure:"eth_rpc_url"`        // RPC endpoint for main chain
-	BorRPCUrl        string `mapstructure:"bor_rpc_url"`        // RPC endpoint for bor chain
-	BorGRPCUrl       string `mapstructure:"bor_grpc_url"`       // gRPC endpoint for bor chain
-	BorGRPCFlag      bool   `mapstructure:"bor_grpc_flag"`      // gRPC flag for bor chain
+	ZenaRPCUrl        string `mapstructure:"zena_rpc_url"`        // RPC endpoint for zena chain
+	ZenaGRPCUrl       string `mapstructure:"zena_grpc_url"`       // gRPC endpoint for zena chain
+	ZenaGRPCFlag      bool   `mapstructure:"zena_grpc_flag"`      // gRPC flag for zena chain
 	TendermintRPCUrl string `mapstructure:"tendermint_rpc_url"` // tendemint node url
 	SubGraphUrl      string `mapstructure:"sub_graph_url"`      // sub graph url
 
 	EthRPCTimeout time.Duration `mapstructure:"eth_rpc_timeout"` // timeout for eth rpc
-	BorRPCTimeout time.Duration `mapstructure:"bor_rpc_timeout"` // timeout for bor rpc
+	ZenaRPCTimeout time.Duration `mapstructure:"zena_rpc_timeout"` // timeout for zena rpc
 
 	AmqpURL       string `mapstructure:"amqp_url"`         // amqp url
 	IrisServerURL string `mapstructure:"iris_rest_server"` // iris server url
@@ -217,7 +217,7 @@ var mainRPCClient *rpc.Client
 // MaticClient stores eth/rpc client for Matic Network
 var maticClient *ethclient.Client
 var maticRPCClient *rpc.Client
-var maticGRPCClient *borgrpc.BorGRPCClient
+var maticGRPCClient *zenagrpc.ZenaGRPCClient
 
 // private key object
 var privObject secp256k1.PrivKeySecp256k1
@@ -234,9 +234,9 @@ var newSelectionAlgoHeight int64 = 0
 
 var spanOverrideHeight int64 = 0
 
-var milestoneBorBlockHeight uint64 = 0
+var milestoneZenaBlockHeight uint64 = 0
 
-var aalborgHeight int64 = 0
+var aalzenagHeight int64 = 0
 
 var newHexToStringAlgoHeight int64 = 0
 
@@ -284,7 +284,7 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 		return
 	}
 
-	if strings.Compare(conf.BorRPCUrl, "") != 0 || strings.Compare(conf.BorGRPCUrl, "") != 0 {
+	if strings.Compare(conf.ZenaRPCUrl, "") != 0 || strings.Compare(conf.ZenaGRPCUrl, "") != 0 {
 		return
 	}
 
@@ -350,10 +350,10 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 		conf.EthRPCTimeout = DefaultEthRPCTimeout
 	}
 
-	if conf.BorRPCTimeout == 0 {
+	if conf.ZenaRPCTimeout == 0 {
 		// fallback to default
-		Logger.Debug("Missing BOR RPC timeout or invalid value provided, falling back to default", "timeout", DefaultBorRPCTimeout)
-		conf.BorRPCTimeout = DefaultBorRPCTimeout
+		Logger.Debug("Missing BOR RPC timeout or invalid value provided, falling back to default", "timeout", DefaultZenaRPCTimeout)
+		conf.ZenaRPCTimeout = DefaultZenaRPCTimeout
 	}
 
 	if conf.SHStateSyncedInterval == 0 {
@@ -381,13 +381,13 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 
 	mainChainClient = ethclient.NewClient(mainRPCClient)
 
-	if maticRPCClient, err = rpc.Dial(conf.BorRPCUrl); err != nil {
+	if maticRPCClient, err = rpc.Dial(conf.ZenaRPCUrl); err != nil {
 		log.Fatal(err)
 	}
 
 	maticClient = ethclient.NewClient(maticRPCClient)
 
-	maticGRPCClient = borgrpc.NewBorGRPCClient(conf.BorGRPCUrl)
+	maticGRPCClient = zenagrpc.NewZenaGRPCClient(conf.ZenaGRPCUrl)
 
 	// Loading genesis doc
 	genDoc, err := tmTypes.GenesisDocFromFile(filepath.Join(configDir, "genesis.json"))
@@ -412,28 +412,28 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 		newSelectionAlgoHeight = 375300
 		spanOverrideHeight = 8664000
 		newHexToStringAlgoHeight = 9266260
-		aalborgHeight = 15950759
+		aalzenagHeight = 15950759
 		jorvikHeight = 22393043
 		danelawHeight = 22393043
 	case MumbaiChain:
 		newSelectionAlgoHeight = 282500
 		spanOverrideHeight = 10205000
 		newHexToStringAlgoHeight = 12048023
-		aalborgHeight = 18035772
+		aalzenagHeight = 18035772
 		jorvikHeight = -1
 		danelawHeight = -1
 	case AmoyChain:
 		newSelectionAlgoHeight = 0
 		spanOverrideHeight = 0
 		newHexToStringAlgoHeight = 0
-		aalborgHeight = 0
+		aalzenagHeight = 0
 		jorvikHeight = 5768528
 		danelawHeight = 6490424
 	default:
 		newSelectionAlgoHeight = 0
 		spanOverrideHeight = 0
 		newHexToStringAlgoHeight = 0
-		aalborgHeight = 0
+		aalzenagHeight = 0
 		jorvikHeight = 0
 		danelawHeight = 0
 	}
@@ -443,12 +443,12 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 func GetDefaultIrisConfig() Configuration {
 	return Configuration{
 		EthRPCUrl:        DefaultMainRPCUrl,
-		BorRPCUrl:        DefaultBorRPCUrl,
-		BorGRPCUrl:       DefaultBorGRPCUrl,
+		ZenaRPCUrl:        DefaultZenaRPCUrl,
+		ZenaGRPCUrl:       DefaultZenaGRPCUrl,
 		TendermintRPCUrl: DefaultTendermintNodeURL,
 
 		EthRPCTimeout: DefaultEthRPCTimeout,
-		BorRPCTimeout: DefaultBorRPCTimeout,
+		ZenaRPCTimeout: DefaultZenaRPCTimeout,
 
 		AmqpURL:       DefaultAmqpURL,
 		IrisServerURL: DefaultIrisServerURL,
@@ -528,7 +528,7 @@ func GetMaticRPCClient() *rpc.Client {
 }
 
 // GetMaticGRPCClient returns matic's gRPC client
-func GetMaticGRPCClient() *borgrpc.BorGRPCClient {
+func GetMaticGRPCClient() *zenagrpc.ZenaGRPCClient {
 	return maticGRPCClient
 }
 
@@ -573,14 +573,14 @@ func GetSpanOverrideHeight() int64 {
 	return spanOverrideHeight
 }
 
-// GetAalborgHardForkHeight returns AalborgHardForkHeight
-func GetAalborgHardForkHeight() int64 {
-	return aalborgHeight
+// GetAalzenagHardForkHeight returns AalzenagHardForkHeight
+func GetAalzenagHardForkHeight() int64 {
+	return aalzenagHeight
 }
 
-// GetMilestoneBorBlockHeight returns milestoneBorBlockHeight
-func GetMilestoneBorBlockHeight() uint64 {
-	return milestoneBorBlockHeight
+// GetMilestoneZenaBlockHeight returns milestoneZenaBlockHeight
+func GetMilestoneZenaBlockHeight() uint64 {
+	return milestoneZenaBlockHeight
 }
 
 // GetNewHexToStringAlgoHeight returns newHexToStringAlgoHeight
@@ -633,36 +633,36 @@ func DecorateWithIrisFlags(cmd *cobra.Command, v *viper.Viper, loggerInstance lo
 		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, MainRPCUrlFlag), "Error", err)
 	}
 
-	// add BorRPCUrlFlag flag
+	// add ZenaRPCUrlFlag flag
 	cmd.PersistentFlags().String(
-		BorRPCUrlFlag,
+		ZenaRPCUrlFlag,
 		"",
-		"Set RPC endpoint for bor chain",
+		"Set RPC endpoint for zena chain",
 	)
 
-	if err := v.BindPFlag(BorRPCUrlFlag, cmd.PersistentFlags().Lookup(BorRPCUrlFlag)); err != nil {
-		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, BorRPCUrlFlag), "Error", err)
+	if err := v.BindPFlag(ZenaRPCUrlFlag, cmd.PersistentFlags().Lookup(ZenaRPCUrlFlag)); err != nil {
+		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, ZenaRPCUrlFlag), "Error", err)
 	}
 
-	// add BorGRPCUrlFlag flag
+	// add ZenaGRPCUrlFlag flag
 	cmd.PersistentFlags().String(
-		BorGRPCUrlFlag,
+		ZenaGRPCUrlFlag,
 		"",
-		"Set gRPC endpoint for bor chain",
+		"Set gRPC endpoint for zena chain",
 	)
 
-	if err := v.BindPFlag(BorGRPCUrlFlag, cmd.PersistentFlags().Lookup(BorGRPCUrlFlag)); err != nil {
-		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, BorGRPCUrlFlag), "Error", err)
+	if err := v.BindPFlag(ZenaGRPCUrlFlag, cmd.PersistentFlags().Lookup(ZenaGRPCUrlFlag)); err != nil {
+		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, ZenaGRPCUrlFlag), "Error", err)
 	}
 
 	cmd.PersistentFlags().Bool(
-		BorGRPCFlag,
+		ZenaGRPCFlag,
 		false,
-		"Set if iris will use gRPC or Rest to interact with bor chain",
+		"Set if iris will use gRPC or Rest to interact with zena chain",
 	)
 
-	if err := v.BindPFlag(BorGRPCFlag, cmd.PersistentFlags().Lookup(BorGRPCFlag)); err != nil {
-		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, BorGRPCFlag), "Error", err)
+	if err := v.BindPFlag(ZenaGRPCFlag, cmd.PersistentFlags().Lookup(ZenaGRPCFlag)); err != nil {
+		loggerInstance.Error(fmt.Sprintf("%v | BindPFlag | %v", caller, ZenaGRPCFlag), "Error", err)
 	}
 
 	// add TendermintNodeURLFlag flag
@@ -829,22 +829,22 @@ func (c *Configuration) UpdateWithFlags(v *viper.Viper, loggerInstance logger.Lo
 		c.EthRPCUrl = stringConfgValue
 	}
 
-	// get endpoint for bor chain from viper/cobra
-	stringConfgValue = v.GetString(BorRPCUrlFlag)
+	// get endpoint for zena chain from viper/cobra
+	stringConfgValue = v.GetString(ZenaRPCUrlFlag)
 	if stringConfgValue != "" {
-		c.BorRPCUrl = stringConfgValue
+		c.ZenaRPCUrl = stringConfgValue
 	}
 
-	// get endpoint for bor chain from viper/cobra
-	stringConfgValue = v.GetString(BorGRPCUrlFlag)
+	// get endpoint for zena chain from viper/cobra
+	stringConfgValue = v.GetString(ZenaGRPCUrlFlag)
 	if stringConfgValue != "" {
-		c.BorGRPCUrl = stringConfgValue
+		c.ZenaGRPCUrl = stringConfgValue
 	}
 
-	// get gRPC flag for bor chain from viper/cobra
-	boolConfgValue := v.GetBool(BorGRPCFlag)
+	// get gRPC flag for zena chain from viper/cobra
+	boolConfgValue := v.GetBool(ZenaGRPCFlag)
 	if boolConfgValue {
-		c.BorGRPCFlag = boolConfgValue
+		c.ZenaGRPCFlag = boolConfgValue
 	}
 
 	// get endpoint for tendermint from viper/cobra
@@ -962,12 +962,12 @@ func (c *Configuration) Merge(cc *Configuration) {
 		c.EthRPCUrl = cc.EthRPCUrl
 	}
 
-	if cc.BorRPCUrl != "" {
-		c.BorRPCUrl = cc.BorRPCUrl
+	if cc.ZenaRPCUrl != "" {
+		c.ZenaRPCUrl = cc.ZenaRPCUrl
 	}
 
-	if cc.BorGRPCUrl != "" {
-		c.BorGRPCUrl = cc.BorGRPCUrl
+	if cc.ZenaGRPCUrl != "" {
+		c.ZenaGRPCUrl = cc.ZenaGRPCUrl
 	}
 
 	if cc.TendermintRPCUrl != "" {

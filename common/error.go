@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 type CodeType = sdk.CodeType
@@ -55,7 +55,7 @@ const (
 	CodeSpanNotFound              CodeType = 3503
 	CodeValSetMisMatch            CodeType = 3504
 	CodeProducerMisMatch          CodeType = 3505
-	CodeInvalidBorChainID         CodeType = 3506
+	CodeInvalidZenaChainID         CodeType = 3506
 	CodeInvalidSpanDuration       CodeType = 3507
 	CodeUnableToGetSpan           CodeType = 3508
 	CodeUnableToGetSeed           CodeType = 3509
@@ -259,10 +259,10 @@ func ErrValidatorAlreadyJoined(codespace sdk.CodespaceType) sdk.Error {
 	return newError(codespace, CodeValAlreadyJoined, "Validator already joined")
 }
 
-// Bor Errors --------------------------------
+// Zena Errors --------------------------------
 
-func ErrInvalidBorChainID(codespace sdk.CodespaceType) sdk.Error {
-	return newError(codespace, CodeInvalidBorChainID, "Invalid Bor chain id")
+func ErrInvalidZenaChainID(codespace sdk.CodespaceType) sdk.Error {
+	return newError(codespace, CodeInvalidZenaChainID, "Invalid Zena chain id")
 }
 
 func ErrSpanNotInContinuity(codespace sdk.CodespaceType) sdk.Error {
@@ -386,8 +386,8 @@ func CodeToDefaultMsg(code CodeType) string {
 		return "Validator set mismatch"
 	case CodeProducerMisMatch:
 		return "Producer set mismatch"
-	case CodeInvalidBorChainID:
-		return "Invalid Bor chain id"
+	case CodeInvalidZenaChainID:
+		return "Invalid Zena chain id"
 	default:
 		return sdk.CodeToDefaultMsg(code)
 	}

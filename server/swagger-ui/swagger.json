@@ -29,7 +29,7 @@
     },
     "ContractAddresses": {
       "properties": {
-        "BorChainId": {
+        "ZenaChainId": {
           "type": "string"
         },
         "matic_token_address": {
@@ -106,9 +106,9 @@
         "base_req": {
           "$ref": "#/definitions/BaseReq"
         },
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainID"
+          "x-go-name": "ZenaChainID"
         },
         "span_id": {
           "format": "uint64",
@@ -126,10 +126,10 @@
         "amount",
         "span_id",
         "start_block",
-        "bor_chain_id"
+        "zena_chain_id"
       ],
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "StdTx": {
       "properties": {
@@ -331,7 +331,7 @@
       "type": "object",
       "x-go-package": "_/Users/vaibhavjindal/iris/bank/client/rest"
     },
-    "borSpan": {
+    "zenaSpan": {
       "properties": {
         "height": {
           "type": "string",
@@ -342,9 +342,9 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
-    "borSpanList": {
+    "zenaSpanList": {
       "properties": {
         "height": {
           "type": "string",
@@ -359,9 +359,9 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
-    "borSpanParams": {
+    "zenaSpanParams": {
       "properties": {
         "height": {
           "type": "string",
@@ -372,7 +372,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "chainManager": {
       "properties": {
@@ -408,9 +408,9 @@
     },
     "checkpoint": {
       "properties": {
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainId"
+          "x-go-name": "ZenaChainId"
         },
         "end_block": {
           "format": "int64",
@@ -625,9 +625,9 @@
         "base_req": {
           "$ref": "#/definitions/BaseReq"
         },
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainID"
+          "x-go-name": "ZenaChainID"
         },
         "end_block": {
           "type": "string",
@@ -668,9 +668,9 @@
           "type": "string",
           "x-go-name": "AccountRootHash"
         },
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainId"
+          "x-go-name": "ZenaChainId"
         },
         "end_block": {
           "type": "string",
@@ -840,9 +840,9 @@
           "type": "string",
           "x-go-name": "BlockNumber"
         },
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainID"
+          "x-go-name": "ZenaChainID"
         },
         "contract_address": {
           "type": "string",
@@ -887,9 +887,9 @@
           "type": "string",
           "x-go-name": "BlockNumber"
         },
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainID"
+          "x-go-name": "ZenaChainID"
         },
         "contract_address": {
           "type": "string",
@@ -1001,9 +1001,9 @@
     },
     "event": {
       "properties": {
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainId"
+          "x-go-name": "ZenaChainId"
         },
         "contract": {
           "type": "string",
@@ -1337,7 +1337,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "output": {
       "properties": {
@@ -1350,7 +1350,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "overview": {
       "properties": {
@@ -1904,9 +1904,9 @@
     },
     "span": {
       "properties": {
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainId"
+          "x-go-name": "ZenaChainId"
         },
         "end_block": {
           "format": "int64",
@@ -1935,7 +1935,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "spanParams": {
       "properties": {
@@ -1959,7 +1959,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "spanSeed": {
       "properties": {
@@ -1973,7 +1973,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "stakingNewValidatorInput": {
       "properties": {
@@ -2809,9 +2809,9 @@
     },
     "val": {
       "properties": {
-        "bor_chain_id": {
+        "zena_chain_id": {
           "type": "string",
-          "x-go-name": "BorChainId"
+          "x-go-name": "ZenaChainId"
         },
         "end_block": {
           "type": "string",
@@ -2835,7 +2835,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "validator": {
       "properties": {
@@ -2932,7 +2932,7 @@
         }
       },
       "type": "object",
-      "x-go-package": "_/Users/vaibhavjindal/iris/bor/client/rest"
+      "x-go-package": "_/Users/vaibhavjindal/iris/zena/client/rest"
     },
     "vote": {
       "properties": {
@@ -3071,10 +3071,10 @@
         "tags": ["bank"]
       }
     },
-    "/bor/latest-span": {
+    "/zena/latest-span": {
       "get": {
         "description": "It returns the latest-span",
-        "operationId": "borSpanLatest",
+        "operationId": "zenaSpanLatest",
         "parameters": [
           {
             "description": "Block Height",
@@ -3086,16 +3086,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borSpanResponse"
+            "$ref": "#/responses/zenaSpanResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/next-span-seed": {
+    "/zena/next-span-seed": {
       "get": {
         "description": "It returns the seed for the next span",
-        "operationId": "borNextSpanSeed",
+        "operationId": "zenaNextSpanSeed",
         "parameters": [
           {
             "description": "Block Height",
@@ -3107,16 +3107,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borNextSpanSeedRespose"
+            "$ref": "#/responses/zenaNextSpanSeedRespose"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/params": {
+    "/zena/params": {
       "get": {
         "description": "It returns the span parameters",
-        "operationId": "borSpanParams",
+        "operationId": "zenaSpanParams",
         "parameters": [
           {
             "description": "Block Height",
@@ -3128,16 +3128,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borSpanParamsResponse"
+            "$ref": "#/responses/zenaSpanParamsResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/prepare-next-span": {
+    "/zena/prepare-next-span": {
       "get": {
         "description": "It returns the prepared next span",
-        "operationId": "borPrepareNextSpan",
+        "operationId": "zenaPrepareNextSpan",
         "parameters": [
           {
             "description": "Start Block",
@@ -3176,16 +3176,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borSpanResponse"
+            "$ref": "#/responses/zenaSpanResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/propose-span": {
+    "/zena/propose-span": {
       "post": {
         "description": "It returns the prepared msg for proposing the span",
-        "operationId": "borProposeSpan",
+        "operationId": "zenaProposeSpan",
         "parameters": [
           {
             "description": "Body",
@@ -3200,16 +3200,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borProposeSpanResponse"
+            "$ref": "#/responses/zenaProposeSpanResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/span/{id}": {
+    "/zena/span/{id}": {
       "get": {
         "description": "It returns the span based on ID",
-        "operationId": "borSpanById",
+        "operationId": "zenaSpanById",
         "parameters": [
           {
             "description": "Id number of the span",
@@ -3230,16 +3230,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borSpanResponse"
+            "$ref": "#/responses/zenaSpanResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
-    "/bor/span/list": {
+    "/zena/span/list": {
       "get": {
-        "description": "It returns the list of Bor Span",
-        "operationId": "borSpanList",
+        "description": "It returns the list of Zena Span",
+        "operationId": "zenaSpanList",
         "parameters": [
           {
             "description": "Page Number",
@@ -3269,10 +3269,10 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/responses/borSpanListResponse"
+            "$ref": "#/responses/zenaSpanListResponse"
           }
         },
-        "tags": ["bor"]
+        "tags": ["zena"]
       }
     },
     "/chainmanager/params": {
@@ -5069,34 +5069,34 @@
         "$ref": "#/definitions/output"
       }
     },
-    "borNextSpanSeedResponse": {
+    "zenaNextSpanSeedResponse": {
       "description": "It represents the next span seed",
       "schema": {
         "$ref": "#/definitions/spanSeed"
       }
     },
-    "borProposeSpanResponse": {
+    "zenaProposeSpanResponse": {
       "description": "It represents Propose Span msg.",
       "schema": {
         "$ref": "#/definitions/output"
       }
     },
-    "borSpanListResponse": {
+    "zenaSpanListResponse": {
       "description": "It represents the list of spans",
       "schema": {
-        "$ref": "#/definitions/borSpanList"
+        "$ref": "#/definitions/zenaSpanList"
       }
     },
-    "borSpanParamsResponse": {
-      "description": "It represents the bor span parameters",
+    "zenaSpanParamsResponse": {
+      "description": "It represents the zena span parameters",
       "schema": {
-        "$ref": "#/definitions/borSpanParams"
+        "$ref": "#/definitions/zenaSpanParams"
       }
     },
-    "borSpanResponse": {
+    "zenaSpanResponse": {
       "description": "It represents the span",
       "schema": {
-        "$ref": "#/definitions/borSpan"
+        "$ref": "#/definitions/zenaSpan"
       }
     },
     "chainManagerParamsResponse": {

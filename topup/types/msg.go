@@ -3,8 +3,8 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/types"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/types"
 )
 
 //
@@ -15,10 +15,10 @@ import (
 type MsgTopup struct {
 	FromAddress types.IrisAddress `json:"from_address"`
 	User        types.IrisAddress `json:"user"`
-	Fee         sdk.Int               `json:"fee"`
+	Fee         sdk.Int           `json:"fee"`
 	TxHash      types.IrisHash    `json:"tx_hash"`
-	LogIndex    uint64                `json:"log_index"`
-	BlockNumber uint64                `json:"block_number"`
+	LogIndex    uint64            `json:"log_index"`
+	BlockNumber uint64            `json:"block_number"`
 }
 
 var _ sdk.Msg = MsgTopup{}
@@ -96,7 +96,7 @@ func (msg MsgTopup) GetSideSignBytes() []byte {
 // MsgWithdrawFee - high level transaction of the fee coin withdrawal module
 type MsgWithdrawFee struct {
 	UserAddress types.IrisAddress `json:"from_address"`
-	Amount      sdk.Int               `json:"amount"`
+	Amount      sdk.Int           `json:"amount"`
 }
 
 var _ sdk.Msg = MsgWithdrawFee{}

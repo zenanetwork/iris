@@ -11,19 +11,19 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/bridge/setu/broadcaster"
-	"github.com/maticnetwork/heimdall/bridge/setu/listener"
-	"github.com/maticnetwork/heimdall/bridge/setu/processor"
-	"github.com/maticnetwork/heimdall/bridge/setu/queue"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/common"
 	httpClient "github.com/tendermint/tendermint/rpc/client"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/bridge/setu/broadcaster"
+	"github.com/zenanetwork/iris/bridge/setu/listener"
+	"github.com/zenanetwork/iris/bridge/setu/processor"
+	"github.com/zenanetwork/iris/bridge/setu/queue"
+	"github.com/zenanetwork/iris/bridge/setu/util"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/maticnetwork/heimdall/helper"
 	"github.com/spf13/viper"
+	"github.com/zenanetwork/iris/helper"
 )
 
 const (

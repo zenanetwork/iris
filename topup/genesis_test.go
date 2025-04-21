@@ -7,12 +7,12 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/topup"
-	"github.com/maticnetwork/heimdall/topup/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/topup"
+	"github.com/zenanetwork/iris/topup/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // GenesisTestSuite integrate test suite context object

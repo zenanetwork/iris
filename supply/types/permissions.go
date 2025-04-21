@@ -5,7 +5,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 // permissions

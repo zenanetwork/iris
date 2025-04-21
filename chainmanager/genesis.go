@@ -3,7 +3,7 @@ package chainmanager
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/chainmanager/types"
+	"github.com/zenanetwork/iris/chainmanager/types"
 )
 
 // InitGenesis sets distribution information for genesis.

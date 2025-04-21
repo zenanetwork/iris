@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package rest
 
 import (
@@ -11,14 +11,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	gcutils "github.com/maticnetwork/heimdall/gov/client/utils"
-	"github.com/maticnetwork/heimdall/gov/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	gcutils "github.com/zenanetwork/iris/gov/client/utils"
+	"github.com/zenanetwork/iris/gov/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
-//It represents the gov deposit parameters
+// It represents the gov deposit parameters
+//
 //swagger:response govParametersDepositResponse
 type govParametersDepositResponse struct {
 	//in:body
@@ -40,7 +41,8 @@ type deposit struct {
 	Account string `json:"amount"`
 }
 
-//It represents the gov tallying parameters
+// It represents the gov tallying parameters
+//
 //swagger:response govParametersTallyingResponse
 type govParametersTallyingResponse struct {
 	//in:body
@@ -58,7 +60,8 @@ type govParameterTallying struct {
 	Veto      string `json:"veto"`
 }
 
-//It represents the gov voting parameters
+// It represents the gov voting parameters
+//
 //swagger:response govParametersVotingResponse
 type govParametersVotingResponse struct {
 	//in:body
@@ -74,7 +77,8 @@ type govParameterVoting struct {
 	VotingPeriod string `json:"voting_period"`
 }
 
-//It represents the gov proposals
+// It represents the gov proposals
+//
 //swagger:response govProposalsResponse
 type govProposalsResponse struct {
 	//in:body
@@ -122,7 +126,8 @@ type TallyResult struct {
 	NoWithVeto string `json:"no_with_veto"`
 }
 
-//It represents the gov proposal
+// It represents the gov proposal
+//
 //swagger:response govProposalResponse
 type govProposalResponse struct {
 	//in:body
@@ -134,7 +139,8 @@ type govProposalStructure struct {
 	Result proposal `json:"result"`
 }
 
-//It represents the gov proposer
+// It represents the gov proposer
+//
 //swagger:response govProposerResponse
 type govProposerResponse struct {
 	//in:body
@@ -151,7 +157,8 @@ type proposer struct {
 	Proposer   string `json:"proposer"`
 }
 
-//It represents the gov Tally based on Id
+// It represents the gov Tally based on Id
+//
 //swagger:response govTallyResponse
 type govTallyResponse struct {
 	//in:body
@@ -163,7 +170,8 @@ type govTallyStructure struct {
 	Result TallyResult `json:"result"`
 }
 
-//It represents the votes responses
+// It represents the votes responses
+//
 //swagger:response govVotesResponse
 type govVotesResponse struct {
 	//in:body
@@ -181,7 +189,8 @@ type vote struct {
 	Option     string `json:"option"`
 }
 
-//It represents the vote response
+// It represents the vote response
+//
 //swagger:response govVoteResponse
 type govVoteResponse struct {
 	//in:body
@@ -193,7 +202,8 @@ type govVoteStructure struct {
 	Result vote   `json:"result"`
 }
 
-//It represents the vote response
+// It represents the vote response
+//
 //swagger:response govDepositResponse
 type govDepositResponse struct {
 	//in:body
@@ -211,7 +221,8 @@ type deposited struct {
 	Amount     []deposit `json:"amount"`
 }
 
-//It represents the vote response
+// It represents the vote response
+//
 //swagger:response govDepositsResponse
 type govDepositsResponse struct {
 	//in:body
@@ -274,12 +285,12 @@ func RegisterRoutes(cliCtx context.CLIContext, r *mux.Router, phs []ProposalREST
 type PostProposalReq struct {
 	BaseReq rest.BaseReq `json:"base_req" yaml:"base_req"`
 
-	Title          string                  `json:"title" yaml:"title"`                     // Title of the proposal
-	Description    string                  `json:"description" yaml:"description"`         // Description of the proposal
-	ProposalType   string                  `json:"proposal_type" yaml:"proposal_type"`     // Type of proposal. Initial set {PlainTextProposal, SoftwareUpgradeProposal}
+	Title          string              `json:"title" yaml:"title"`                     // Title of the proposal
+	Description    string              `json:"description" yaml:"description"`         // Description of the proposal
+	ProposalType   string              `json:"proposal_type" yaml:"proposal_type"`     // Type of proposal. Initial set {PlainTextProposal, SoftwareUpgradeProposal}
 	Proposer       hmTypes.IrisAddress `json:"proposer" yaml:"proposer"`               // Address of the proposer
-	Validator      hmTypes.ValidatorID     `json:"validator" yaml:"validator"`             // id of the validator
-	InitialDeposit sdk.Coins               `json:"initial_deposit" yaml:"initial_deposit"` // Coins to add to the proposal's deposit
+	Validator      hmTypes.ValidatorID `json:"validator" yaml:"validator"`             // id of the validator
+	InitialDeposit sdk.Coins           `json:"initial_deposit" yaml:"initial_deposit"` // Coins to add to the proposal's deposit
 }
 
 // DepositReq defines the properties of a deposit request's body.
@@ -287,8 +298,8 @@ type DepositReq struct {
 	BaseReq rest.BaseReq `json:"base_req" yaml:"base_req"`
 
 	Depositor hmTypes.IrisAddress `json:"depositor" yaml:"depositor"` // Address of the depositor
-	Amount    sdk.Coins               `json:"amount" yaml:"amount"`       // Coins to add to the proposal's deposit
-	Validator hmTypes.ValidatorID     `json:"validator" yaml:"validator"` // id of the validator
+	Amount    sdk.Coins           `json:"amount" yaml:"amount"`       // Coins to add to the proposal's deposit
+	Validator hmTypes.ValidatorID `json:"validator" yaml:"validator"` // id of the validator
 }
 
 // VoteReq defines the properties of a vote request's body.
@@ -296,8 +307,8 @@ type VoteReq struct {
 	BaseReq rest.BaseReq `json:"base_req" yaml:"base_req"`
 
 	Voter     hmTypes.IrisAddress `json:"voter" yaml:"voter"`         // address of the voter
-	Option    string                  `json:"option" yaml:"option"`       // option from OptionSet chosen by the voter
-	Validator hmTypes.ValidatorID     `json:"validator" yaml:"validator"` // id of the validator
+	Option    string              `json:"option" yaml:"option"`       // option from OptionSet chosen by the voter
+	Validator hmTypes.ValidatorID `json:"validator" yaml:"validator"` // id of the validator
 }
 
 //swagger:parameters govProposals
@@ -340,7 +351,8 @@ type BaseReq struct {
 // swagger:route POST /gov/proposals gov govProposals
 // It returns the prepared msg for gov Proposals
 // responses:
-//   200: interface{}
+//
+//	200: interface{}
 func postProposalHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req PostProposalReq
@@ -453,7 +465,8 @@ type govProposalsVotesInput struct {
 // swagger:route POST /gov/proposals/{proposal-id}/votes gov govProposalsVotes
 // It returns the prepared msg for gov proposal votes
 // responses:
-//   200: interface{}
+//
+//	200: interface{}
 func voteHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -536,7 +549,8 @@ func queryParamsHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /gov/proposals/{proposal-id} gov govProposalById
 // It returns the proposal based on the proposal Id
 // responses:
-//   200: govProposalResponse
+//
+//	200: govProposalResponse
 func queryProposalHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -580,7 +594,8 @@ func queryProposalHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /gov/proposals/{proposal-id}/deposits gov govDepositByProposalId
 // It returns the gov deposit parameters
 // responses:
-//   200: govDepositsResponse
+//
+//	200: govDepositsResponse
 func queryDepositsHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -644,7 +659,8 @@ type ProposalId struct {
 // swagger:route GET /gov/proposals/{proposal-id}/proposer gov govProposerByProposalId
 // It returns the proposer based on the proposal.
 // responses:
-//   200: govProposerResponse
+//
+//	200: govProposerResponse
 func queryProposerHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -684,7 +700,8 @@ type DepositQuery struct {
 // swagger:route GET /gov/proposals/{proposal-id}/deposits/{depositor} gov govDepositBasedOnDepositor
 // It returns the deposit for a particular proposal based on depositor Id
 // responses:
-//   200: govDepositResponse
+//
+//	200: govDepositResponse
 func queryDepositHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -780,7 +797,8 @@ type VotesQuery struct {
 // swagger:route GET /gov/proposals/{proposal-id}/votes/{voter} gov govVotesBasedOnVoterId
 // It returns the votes on the specific proposal Id based on voter Id.
 // responses:
-//   200: govVoteResponse
+//
+//	200: govVoteResponse
 func queryVoteHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)
@@ -865,7 +883,9 @@ func queryVoteHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /gov/proposals/{proposal-id}/votes gov govProposalVotesByProposalId
 // It returns the proposal votes based on proposal id
 // responses:
-//   200: govVotesResponse
+//
+//	200: govVotesResponse
+//
 // todo: Split this functionality into helper functions to remove the above
 func queryVotesOnProposalHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -949,7 +969,9 @@ type ProposalsQuery struct {
 // swagger:route GET /gov/proposals gov govProposalsGet
 // It returns the gov proposals
 // responses:
-//   200: govProposalsResponse
+//
+//	200: govProposalsResponse
+//
 // todo: Split this functionality into helper functions to remove the above
 func queryProposalsWithParameterFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -1016,7 +1038,8 @@ func queryProposalsWithParameterFn(cliCtx context.CLIContext) http.HandlerFunc {
 // swagger:route GET /gov/proposals/{proposal-id}/tally gov govTallyByProposalId
 // It returns the tally on the proposal ID
 // responses:
-//   200: govTallyResponse
+//
+//	200: govTallyResponse
 func queryTallyOnProposalHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		cliCtx, ok := rest.ParseQueryHeightOrReturnBadRequest(w, cliCtx, r)

@@ -11,10 +11,10 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 )
 
 //swagger:response clerkEventListResponse
@@ -40,13 +40,13 @@ type clerkEventById struct {
 }
 
 type event struct {
-	Id         int64  `json:"id"`
-	Contract   string `json:"contract"`
-	Data       string `json:"data"`
-	TxHash     string `json:"tx_hash"`
-	LogIndex   int64  `json:"log_index"`
-	BorChainId string `json:"bor_chain_id"`
-	RecoedTime string `json:"record_time"`
+	Id          int64  `json:"id"`
+	Contract    string `json:"contract"`
+	Data        string `json:"data"`
+	TxHash      string `json:"tx_hash"`
+	LogIndex    int64  `json:"log_index"`
+	ZenaChainId string `json:"zena_chain_id"`
+	RecoedTime  string `json:"record_time"`
 }
 
 //swagger:response clerkIsOldTxResponse

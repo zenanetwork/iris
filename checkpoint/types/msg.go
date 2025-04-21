@@ -7,9 +7,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
 )
 
 //
@@ -98,7 +98,7 @@ type MsgCheckpoint struct {
 	EndBlock        uint64            `json:"end_block"`
 	RootHash        types.IrisHash    `json:"root_hash"`
 	AccountRootHash types.IrisHash    `json:"account_root_hash"`
-	BorChainID      string            `json:"bor_chain_id"`
+	ZenaChainID     string            `json:"zena_chain_id"`
 }
 
 // NewMsgCheckpointBlock creates new checkpoint message using mentioned arguments
@@ -108,7 +108,7 @@ func NewMsgCheckpointBlock(
 	endBlock uint64,
 	roothash types.IrisHash,
 	accountRootHash types.IrisHash,
-	borChainID string,
+	zenaChainID string,
 ) MsgCheckpoint {
 	return MsgCheckpoint{
 		Proposer:        proposer,
@@ -116,7 +116,7 @@ func NewMsgCheckpointBlock(
 		EndBlock:        endBlock,
 		RootHash:        roothash,
 		AccountRootHash: accountRootHash,
-		BorChainID:      borChainID,
+		ZenaChainID:     zenaChainID,
 	}
 }
 
@@ -161,8 +161,8 @@ func (msg MsgCheckpoint) ValidateBasic() sdk.Error {
 
 // GetSideSignBytes returns side sign bytes
 func (msg MsgCheckpoint) GetSideSignBytes() []byte {
-	// keccak256(abi.encoded(proposer, startBlock, endBlock, rootHash, accountRootHash, bor chain id))
-	borChainID, _ := strconv.ParseUint(msg.BorChainID, 10, 64)
+	// keccak256(abi.encoded(proposer, startBlock, endBlock, rootHash, accountRootHash, zena chain id))
+	zenaChainID, _ := strconv.ParseUint(msg.ZenaChainID, 10, 64)
 
 	return appendBytes32(
 		msg.Proposer.Bytes(),
@@ -170,7 +170,7 @@ func (msg MsgCheckpoint) GetSideSignBytes() []byte {
 		new(big.Int).SetUint64(msg.EndBlock).Bytes(),
 		msg.RootHash.Bytes(),
 		msg.AccountRootHash.Bytes(),
-		new(big.Int).SetUint64(borChainID).Bytes(),
+		new(big.Int).SetUint64(zenaChainID).Bytes(),
 	)
 }
 

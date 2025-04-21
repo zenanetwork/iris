@@ -5,7 +5,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/chainmanager/types"
+	"github.com/zenanetwork/iris/chainmanager/types"
 )
 
 // NewQuerier creates a querier for auth REST endpoints

@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package tx
 
 import (
@@ -13,9 +13,9 @@ import (
 	"github.com/spf13/cobra"
 	amino "github.com/tendermint/go-amino"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types/rest"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 type (

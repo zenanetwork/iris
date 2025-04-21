@@ -51,14 +51,14 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	bridgeCmd "github.com/maticnetwork/heimdall/bridge/cmd"
-	"github.com/maticnetwork/heimdall/helper"
-	restServer "github.com/maticnetwork/heimdall/server"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	bridgeCmd "github.com/zenanetwork/iris/bridge/cmd"
+	"github.com/zenanetwork/iris/helper"
+	restServer "github.com/zenanetwork/iris/server"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
+	"github.com/zenanetwork/iris/version"
 )
 
 var logger = helper.Logger.With("module", "cmd/irisd")

@@ -10,9 +10,9 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/sidechannel/types"
 	"github.com/tendermint/tendermint/libs/log"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 // Keeper stores all related data

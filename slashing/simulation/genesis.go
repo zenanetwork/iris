@@ -11,9 +11,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/slashing/types"
-	"github.com/maticnetwork/heimdall/types/module"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/slashing/types"
+	"github.com/zenanetwork/iris/types/module"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // Simulation parameter constants

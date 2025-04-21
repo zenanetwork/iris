@@ -14,8 +14,8 @@ import (
 	tendermintLogger "github.com/tendermint/tendermint/libs/log"
 	rpcserver "github.com/tendermint/tendermint/rpc/lib/server"
 
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/version"
 )
 
 const (
@@ -86,8 +86,8 @@ func DecorateWithBridgeRootFlags(cmd *cobra.Command, v *viper.Viper, loggerInsta
 	// bridge chain id
 	cmd.PersistentFlags().String(
 		zenaChainIDFlag,
-		helper.DefaultBorChainID,
-		"Bor chain id",
+		helper.DefaultZenaChainID,
+		"Zena chain id",
 	)
 
 	// bridge logging type
@@ -130,7 +130,7 @@ func AdjustBridgeDBValue(cmd *cobra.Command, v *viper.Viper) {
 	homeValue, _ := cmd.Flags().GetString(helper.HomeFlag)
 	withIrisConfigValue, _ := cmd.Flags().GetString(helper.WithIrisConfigFlag)
 	bridgeDBValue, _ := cmd.Flags().GetString(bridgeDBFlag)
-	borChainIDValue, _ := cmd.Flags().GetString(zenaChainIDFlag)
+	zenaChainIDValue, _ := cmd.Flags().GetString(zenaChainIDFlag)
 	logsTypeValue, _ := cmd.Flags().GetString(logsTypeFlag)
 
 	// bridge-db directory (default storage)
@@ -143,7 +143,7 @@ func AdjustBridgeDBValue(cmd *cobra.Command, v *viper.Viper) {
 	viper.Set(helper.HomeFlag, homeValue)
 	viper.Set(helper.WithIrisConfigFlag, withIrisConfigValue)
 	viper.Set(bridgeDBFlag, bridgeDBValue)
-	viper.Set(zenaChainIDFlag, borChainIDValue)
+	viper.Set(zenaChainIDFlag, zenaChainIDValue)
 	viper.Set(logsTypeFlag, logsTypeValue)
 }
 

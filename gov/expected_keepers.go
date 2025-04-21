@@ -3,8 +3,8 @@ package gov
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	supplyTypes "github.com/maticnetwork/heimdall/supply/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	supplyTypes "github.com/zenanetwork/iris/supply/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // SupplyKeeper defines the supply Keeper for module accounts

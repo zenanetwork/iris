@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
 )
 
 //

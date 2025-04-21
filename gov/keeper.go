@@ -8,11 +8,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/gov/types"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/staking"
-	"github.com/maticnetwork/heimdall/supply"
-	supplyTypes "github.com/maticnetwork/heimdall/supply/types"
+	"github.com/zenanetwork/iris/gov/types"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/staking"
+	"github.com/zenanetwork/iris/supply"
+	supplyTypes "github.com/zenanetwork/iris/supply/types"
 )
 
 // Keeper governance Keeper

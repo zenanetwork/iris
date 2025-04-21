@@ -4,7 +4,7 @@ package simulation
 import (
 	"time"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 const TestMilestoneID = "17ce48fe-0a18-41a8-ab7e-59d8002f027b - 0x901a64406d97a3fa9b87b320cbeb86b3c62328f5"
@@ -12,7 +12,7 @@ const TestMilestoneID = "17ce48fe-0a18-41a8-ab7e-59d8002f027b - 0x901a64406d97a3
 // GenRandMilestone return headers
 func GenRandMilestone(start uint64, sprintLength uint64) (milestone types.Milestone, err error) {
 	end := start + sprintLength - 1
-	borChainID := "1234"
+	zenaChainID := "1234"
 	rootHash := types.HexToIrisHash("123")
 	proposer := types.IrisAddress{}
 	milestoneID := TestMilestoneID
@@ -21,7 +21,7 @@ func GenRandMilestone(start uint64, sprintLength uint64) (milestone types.Milest
 		end,
 		rootHash,
 		proposer,
-		borChainID,
+		zenaChainID,
 		milestoneID,
 		uint64(time.Now().UTC().Unix()))
 

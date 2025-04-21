@@ -3,12 +3,12 @@ package types
 import (
 	"encoding/json"
 
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/gov/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/gov/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
-// GenesisState is the bor state that must be provided at genesis.
+// GenesisState is the zena state that must be provided at genesis.
 type GenesisState struct {
 	Params Params          `json:"params" yaml:"params"`
 	Spans  []*hmTypes.Span `json:"spans" yaml:"spans"` // list of spans
@@ -27,7 +27,7 @@ func DefaultGenesisState() GenesisState {
 	return NewGenesisState(DefaultParams(), nil)
 }
 
-// ValidateGenesis performs basic validation of bor genesis data returning an
+// ValidateGenesis performs basic validation of zena genesis data returning an
 // error for any failed validation criteria.
 func ValidateGenesis(data GenesisState) error {
 	if err := data.Params.Validate(); err != nil {
@@ -73,12 +73,12 @@ func GetGenesisStateFromAppState(appState map[string]json.RawMessage) GenesisSta
 
 // SetGenesisStateToAppState sets state into app state
 func SetGenesisStateToAppState(appState map[string]json.RawMessage, currentValSet hmTypes.ValidatorSet) (map[string]json.RawMessage, error) {
-	// set state to bor state
-	borState := GetGenesisStateFromAppState(appState)
+	// set state to zena state
+	zenaState := GetGenesisStateFromAppState(appState)
 	chainState := chainmanagerTypes.GetGenesisStateFromAppState(appState)
-	borState.Spans = genFirstSpan(currentValSet, chainState.Params.ChainParams.BorChainID)
+	zenaState.Spans = genFirstSpan(currentValSet, chainState.Params.ChainParams.ZenaChainID)
 
-	appState[ModuleName] = types.ModuleCdc.MustMarshalJSON(borState)
+	appState[ModuleName] = types.ModuleCdc.MustMarshalJSON(zenaState)
 
 	return appState, nil
 }

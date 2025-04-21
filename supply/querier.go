@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/helper"
-	supplyTypes "github.com/maticnetwork/heimdall/supply/types"
+	"github.com/zenanetwork/iris/helper"
+	supplyTypes "github.com/zenanetwork/iris/supply/types"
 )
 
 // NewQuerier creates a querier for supply REST endpoints

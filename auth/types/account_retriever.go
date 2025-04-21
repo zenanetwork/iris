@@ -3,7 +3,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 var (

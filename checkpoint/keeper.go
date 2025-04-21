@@ -8,12 +8,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	cmn "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/staking"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	cmn "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/staking"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 const maxCheckpointListLimit = 10_000 // a checkpoint is ~100 bytes => can fit 10k in 1 MB response
@@ -169,7 +169,7 @@ func (k *Keeper) GetCheckpointList(ctx sdk.Context, page uint64, limit uint64) (
 				StartBlock: checkpoint.StartBlock,
 				EndBlock:   checkpoint.EndBlock,
 				RootHash:   checkpoint.RootHash,
-				BorChainID: checkpoint.BorChainID,
+				ZenaChainID: checkpoint.ZenaChainID,
 				TimeStamp:  checkpoint.TimeStamp,
 			}
 

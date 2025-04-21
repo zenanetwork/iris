@@ -34,7 +34,7 @@ type MsgTopup struct {
 
 Handler processes the withdraw by deducting the balance from the given validator and prepares the state to send the next checkpoint. The next possible checkpoint will contain the withdraw related state for the specific validator.
 
-Handler gets validator information based on `ValidatorAddress` and processes the withdraw. 
+Handler gets validator information based on `ValidatorAddress` and processes the withdraw.
 
 ```go
 // MsgWithdrawFee - high-level transaction of the fee coin withdrawal module
@@ -49,19 +49,19 @@ type MsgWithdrawFee struct {
 ### Topup fee
 
 ```bash
-heimdallcli tx topup fee --fee-amount <fee-amount> --log-index <log-index>  --tx-hash <transaction-hash> --user <validator ID> --block-number <block-number>
+iriscli tx topup fee --fee-amount <fee-amount> --log-index <log-index>  --tx-hash <transaction-hash> --user <validator ID> --block-number <block-number>
 ```
 
 ### Withdraw fee
 
 ```bash
-heimdallcli tx topup withdraw --amount=<withdraw-amount>
+iriscli tx topup withdraw --amount=<withdraw-amount>
 ```
 
 To check reflected topup on account run following command
 
 ```bash
-heimdallcli query auth account <validator-address> --trust-node
+iriscli query auth account <validator-address> --trust-node
 ```
 
 ## REST APIs

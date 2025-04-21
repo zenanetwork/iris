@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/maticnetwork/heimdall/sidechannel/simulation"
-	"github.com/maticnetwork/heimdall/sidechannel/types"
+	"github.com/zenanetwork/iris/sidechannel/simulation"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 func TestDefaultGenesisState(t *testing.T) {

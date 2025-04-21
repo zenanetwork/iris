@@ -8,10 +8,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gorilla/mux"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 // It represents New checkpoint msg.
@@ -44,7 +44,7 @@ type checkpointNewVal struct {
 	EndBlock        string `json:"end_block"`
 	RootHash        string `json:"root_hash"`
 	AccountRootHash string `json:"account_root_hash"`
-	BorChainId      string `json:"bor_chain_id"`
+	ZenaChainId     string `json:"zena_chain_id"`
 }
 
 // It represents Propose Span msg.
@@ -129,7 +129,7 @@ type (
 		AccountRootHash hmTypes.IrisHash    `json:"account_root_hash"`
 		StartBlock      uint64              `json:"start_block"`
 		EndBlock        uint64              `json:"end_block"`
-		BorChainID      string              `json:"bor_chain_id"`
+		ZenaChainID     string              `json:"zena_chain_id"`
 	}
 
 	// HeaderACKReq struct for sending ACK for a new headers
@@ -171,7 +171,7 @@ type checkpointNewInput struct {
 	AccountRootHash string  `json:"account_root_hash"`
 	StartBlock      string  `json:"start_block"`
 	EndBlock        string  `json:"end_block"`
-	BorChainID      string  `json:"bor_chain_id"`
+	ZenaChainId     string  `json:"zena_chain_id"`
 }
 
 type BaseReq struct {
@@ -207,7 +207,7 @@ func newCheckpointHandler(cliCtx context.CLIContext) http.HandlerFunc {
 			req.EndBlock,
 			req.RootHash,
 			req.AccountRootHash,
-			req.BorChainID,
+			req.ZenaChainID,
 		)
 
 		// send response

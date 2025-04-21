@@ -11,10 +11,10 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/maticnetwork/heimdall/params"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/params/types"
-	paramTypes "github.com/maticnetwork/heimdall/params/types"
+	"github.com/zenanetwork/iris/params"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/params/types"
+	paramTypes "github.com/zenanetwork/iris/params/types"
 )
 
 type testInput struct {

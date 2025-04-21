@@ -15,19 +15,19 @@ import (
 
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 
-	"github.com/maticnetwork/heimdall/app"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	errs "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/contracts/stakinginfo"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	"github.com/maticnetwork/heimdall/staking"
-	stakingSim "github.com/maticnetwork/heimdall/staking/simulation"
-	"github.com/maticnetwork/heimdall/staking/types"
-	"github.com/maticnetwork/heimdall/topup"
-	topupTypes "github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/app"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	errs "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/contracts/stakinginfo"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/helper/mocks"
+	"github.com/zenanetwork/iris/staking"
+	stakingSim "github.com/zenanetwork/iris/staking/simulation"
+	"github.com/zenanetwork/iris/staking/types"
+	"github.com/zenanetwork/iris/topup"
+	topupTypes "github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 type HandlerTestSuite struct {

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/maticnetwork/heimdall/bridge/cmd"
-	"github.com/maticnetwork/heimdall/helper"
 	"github.com/spf13/viper"
+	"github.com/zenanetwork/iris/bridge/cmd"
+	"github.com/zenanetwork/iris/helper"
 )
 
 func main() {

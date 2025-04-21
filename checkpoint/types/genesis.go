@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena/types"
 )
 
 // GenesisState is the checkpoint state that must be provided at genesis.
@@ -43,7 +43,7 @@ func DefaultGenesisState() GenesisState {
 	}
 }
 
-// ValidateGenesis performs basic validation of bor genesis data returning an
+// ValidateGenesis performs basic validation of zena genesis data returning an
 // error for any failed validation criteria.
 func ValidateGenesis(data GenesisState) error {
 	if err := data.Params.Validate(); err != nil {

@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"crypto/sha256"

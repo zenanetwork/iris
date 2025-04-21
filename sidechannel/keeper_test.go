@@ -11,7 +11,7 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/app"
+	"github.com/zenanetwork/iris/app"
 )
 
 //

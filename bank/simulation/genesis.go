@@ -1,8 +1,8 @@
 package simulation
 
 import (
-	"github.com/maticnetwork/heimdall/bank/types"
-	"github.com/maticnetwork/heimdall/types/module"
+	"github.com/zenanetwork/iris/bank/types"
+	"github.com/zenanetwork/iris/types/module"
 )
 
 // RandomizedGenState returns bank genesis

@@ -11,13 +11,13 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/clerk"
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/clerk"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 //
@@ -41,7 +41,7 @@ func (suite *HandlerTestSuite) SetupTest() {
 	suite.handler = clerk.NewHandler(suite.app.ClerkKeeper, &suite.contractCaller)
 
 	// fetch chain id
-	suite.chainID = suite.app.ChainKeeper.GetParams(suite.ctx).ChainParams.BorChainID
+	suite.chainID = suite.app.ChainKeeper.GetParams(suite.ctx).ChainParams.ZenaChainID
 
 	// random generator
 	s1 := rand.NewSource(time.Now().UnixNano())
@@ -171,8 +171,8 @@ func (suite *HandlerTestSuite) TestHandleMsgEventRecordChainID() {
 		"random chain id",
 	)
 	result := suite.handler(ctx, msg)
-	require.False(t, result.IsOK(), "error invalid bor chain id %v", result.Code)
-	require.Equal(t, common.CodeInvalidBorChainID, result.Code)
+	require.False(t, result.IsOK(), "error invalid zena chain id %v", result.Code)
+	require.Equal(t, common.CodeInvalidZenaChainID, result.Code)
 
 	// there should be no stored event record
 	storedEventRecord, err := app.ClerkKeeper.GetEventRecord(ctx, id)

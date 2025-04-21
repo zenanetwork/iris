@@ -5,17 +5,17 @@ import (
 	"github.com/gorilla/mux"
 	tmLog "github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/helper"
 )
 
-// RestLogger for bor module logger
+// RestLogger for zena module logger
 var RestLogger tmLog.Logger
 
 func init() {
-	RestLogger = helper.Logger.With("module", "bor/rest")
+	RestLogger = helper.Logger.With("module", "zena/rest")
 }
 
-// RegisterRoutes registers  bor-related REST handlers to a router
+// RegisterRoutes registers  zena-related REST handlers to a router
 func RegisterRoutes(cliCtx context.CLIContext, r *mux.Router) {
 	registerQueryRoutes(cliCtx, r)
 	registerTxRoutes(cliCtx, r)

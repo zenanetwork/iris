@@ -15,15 +15,15 @@ import (
 	"github.com/tendermint/tendermint/libs/common"
 	tmtime "github.com/tendermint/tendermint/types/time"
 
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	borTypes "github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/helper"
-	slashingTypes "github.com/maticnetwork/heimdall/slashing/types"
-	stakingcli "github.com/maticnetwork/heimdall/staking/client/cli"
-	stakingTypes "github.com/maticnetwork/heimdall/staking/types"
-	topupTypes "github.com/maticnetwork/heimdall/topup/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	zenaTypes "github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/helper"
+	slashingTypes "github.com/zenanetwork/iris/slashing/types"
+	stakingcli "github.com/zenanetwork/iris/staking/client/cli"
+	stakingTypes "github.com/zenanetwork/iris/staking/types"
+	topupTypes "github.com/zenanetwork/iris/topup/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // TestnetCmd initialises files required to start iris testnet
@@ -164,8 +164,8 @@ testnet --v 4 --n 8 --output-dir ./output --starting-ip-address 192.168.10.2
 				return err
 			}
 
-			// bor state change
-			appStateBytes, err = borTypes.SetGenesisStateToAppState(appStateBytes, *validatorSet)
+			// zena state change
+			appStateBytes, err = zenaTypes.SetGenesisStateToAppState(appStateBytes, *validatorSet)
 			if err != nil {
 				return err
 			}

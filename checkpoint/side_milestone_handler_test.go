@@ -8,12 +8,12 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/helper/mocks"
+	cmTypes "github.com/zenanetwork/iris/chainmanager/types"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/helper/mocks"
 )
 
 func TestMilestoneSideHandlerTestSuite(t *testing.T) {
@@ -31,7 +31,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 	milestone, err := chSim.GenRandMilestone(start, milestoneLength)
 	require.NoError(t, err)
 
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	suite.Run("Success", func() {
 		suite.contractCaller = mocks.IContractCaller{}
@@ -42,7 +42,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
@@ -66,7 +66,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
@@ -92,7 +92,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock-1,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
@@ -115,11 +115,11 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock-1,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
-		msgMilestone.BorChainID = msgMilestone.MilestoneID
+		msgMilestone.ZenaChainID = msgMilestone.MilestoneID
 
 		suite.contractCaller.On("CheckIfBlocksExist", milestone.EndBlock+cmTypes.DefaultMaticchainMilestoneTxConfirmations).Return(true)
 		suite.contractCaller.On("GetVoteOnHash", milestone.StartBlock, milestone.EndBlock, milestoneLength, milestone.Hash.String(), milestone.MilestoneID).Return(true, nil)
@@ -140,11 +140,11 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock-1,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
-		msgMilestone.BorChainID = msgMilestone.MilestoneID
+		msgMilestone.ZenaChainID = msgMilestone.MilestoneID
 
 		suite.contractCaller.On("CheckIfBlocksExist", milestone.EndBlock+cmTypes.DefaultMaticchainMilestoneTxConfirmations).Return(true)
 		suite.contractCaller.On("GetVoteOnHash", milestone.StartBlock, milestone.EndBlock, milestoneLength, milestone.Hash.String(), milestone.MilestoneID).Return(true, nil)
@@ -168,7 +168,7 @@ func (suite *SideHandlerTestSuite) TestSideHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			milestone.MilestoneID,
 		)
 
@@ -204,7 +204,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 	// add current proposer to header
 	milestone.Proposer = stakingKeeper.GetValidatorSet(ctx).Proposer.Signer
 
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	suite.Run("Failure", func() {
 		// create milestone msg
@@ -213,7 +213,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00000",
 		)
 
@@ -241,7 +241,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock+1,
 			milestone.EndBlock+1,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00000",
 		)
 
@@ -268,7 +268,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00001",
 		)
 		_ = suite.postHandler(ctx, msgMilestone, abci.SideTxResultType_Yes)
@@ -278,7 +278,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 		require.Equal(t, bufferedHeader.EndBlock, milestone.EndBlock)
 		require.Equal(t, bufferedHeader.Hash, milestone.Hash)
 		require.Equal(t, bufferedHeader.Proposer, milestone.Proposer)
-		require.Equal(t, bufferedHeader.BorChainID, milestone.BorChainID)
+		require.Equal(t, bufferedHeader.ZenaChainID, milestone.ZenaChainID)
 		require.Empty(t, err, "Unable to set milestone, Error: %v", err)
 
 		lastNoAckMilestone := keeper.GetLastNoAckMilestone(ctx)
@@ -299,7 +299,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00002",
 		)
 		_ = suite.postHandler(ctx, msgMilestone, abci.SideTxResultType_Yes)
@@ -319,7 +319,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock+64+1,
 			milestone.EndBlock+64+1,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00003",
 		)
 		_ = suite.postHandler(ctx, msgMilestone, abci.SideTxResultType_Yes)
@@ -339,7 +339,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgMilestone() {
 			milestone.StartBlock,
 			milestone.EndBlock,
 			milestone.Hash,
-			borChainId,
+			zenaChainId,
 			"00004",
 		)
 		_ = suite.postHandler(ctx, msgMilestone, abci.SideTxResultType_No)

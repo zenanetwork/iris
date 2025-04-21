@@ -129,11 +129,11 @@ jobs:
           cd matic-cli/devnet
           bash ../util-scripts/docker/devnet_setup.sh
           cd -
-          timeout 2m bash iris/integration-tests/bor_health.sh
+          timeout 2m bash iris/integration-tests/zena_health.sh
 
       - name: Run smoke tests
         run: |
-          echo "Deposit 100 matic for each account to bor network"
+          echo "Deposit 100 matic for each account to zena network"
           cd matic-cli/devnet/devnet
           SCRIPT_ADDRESS=$(jq -r '.[0].address' signer-dump.json)
           SCRIPT_PRIVATE_KEY=$(jq -r '.[0].priv_key' signer-dump.json)

@@ -1,4 +1,4 @@
-package bor_test
+package zena_test
 
 import (
 	"math/big"
@@ -7,15 +7,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	ethTypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/bor"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/zena"
+	"github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
-type BorKeeperTestSuite struct {
+type ZenaKeeperTestSuite struct {
 	suite.Suite
 
 	app            *app.IrisApp
@@ -30,19 +30,19 @@ func createTestApp(isCheckTx bool) (*app.IrisApp, sdk.Context) {
 	return app, ctx
 }
 
-func (suite *BorKeeperTestSuite) SetupTest() {
+func (suite *ZenaKeeperTestSuite) SetupTest() {
 	suite.app, suite.ctx = createTestApp(false)
 	suite.contractCaller = &mocks.IContractCaller{}
-	suite.app.BorKeeper.SetContractCaller(suite.contractCaller)
+	suite.app.ZenaKeeper.SetContractCaller(suite.contractCaller)
 }
 
 func TestKeeperTestSuite(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(BorKeeperTestSuite))
+	suite.Run(t, new(ZenaKeeperTestSuite))
 }
 
-func (s *BorKeeperTestSuite) TestGetNextSpanSeed() {
-	require, ctx, borKeeper := s.Require(), s.ctx, s.app.BorKeeper
+func (s *ZenaKeeperTestSuite) TestGetNextSpanSeed() {
+	require, ctx, zenaKeeper := s.Require(), s.ctx, s.app.ZenaKeeper
 	valSet := s.setupValSet()
 	vals := make([]hmTypes.Validator, 0, len(valSet.Validators))
 	for _, val := range valSet.Validators {
@@ -57,7 +57,7 @@ func (s *BorKeeperTestSuite) TestGetNextSpanSeed() {
 	}
 
 	for _, span := range spans {
-		err := borKeeper.AddNewSpan(ctx, span)
+		err := zenaKeeper.AddNewSpan(ctx, span)
 		require.NoError(err)
 	}
 
@@ -65,28 +65,28 @@ func (s *BorKeeperTestSuite) TestGetNextSpanSeed() {
 	val2Addr := vals[1].PubKey.Address()
 	val3Addr := vals[2].PubKey.Address()
 
-	borParams := borKeeper.GetParams(ctx)
+	zenaParams := zenaKeeper.GetParams(ctx)
 
 	seedBlock1 := spans[0].EndBlock
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(seedBlock1))).Return(&val2Addr, nil)
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(seedBlock1))).Return(&val2Addr, nil)
 
-	seedBlock2 := spans[1].EndBlock - borParams.SprintDuration
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(spans[1].EndBlock))).Return(&val2Addr, nil)
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(seedBlock2))).Return(&val1Addr, nil)
-	for block := spans[1].EndBlock - (2 * borParams.SprintDuration); block >= spans[1].StartBlock; block -= borParams.SprintDuration {
-		s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(block))).Return(&val1Addr, nil)
+	seedBlock2 := spans[1].EndBlock - zenaParams.SprintDuration
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(spans[1].EndBlock))).Return(&val2Addr, nil)
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(seedBlock2))).Return(&val1Addr, nil)
+	for block := spans[1].EndBlock - (2 * zenaParams.SprintDuration); block >= spans[1].StartBlock; block -= zenaParams.SprintDuration {
+		s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(block))).Return(&val1Addr, nil)
 	}
 
-	seedBlock3 := spans[2].EndBlock - (2 * borParams.SprintDuration)
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(spans[2].EndBlock))).Return(&val1Addr, nil)
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(spans[2].EndBlock-borParams.SprintDuration))).Return(&val2Addr, nil)
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(seedBlock3))).Return(&val3Addr, nil)
+	seedBlock3 := spans[2].EndBlock - (2 * zenaParams.SprintDuration)
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(spans[2].EndBlock))).Return(&val1Addr, nil)
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(spans[2].EndBlock-zenaParams.SprintDuration))).Return(&val2Addr, nil)
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(seedBlock3))).Return(&val3Addr, nil)
 
-	seedBlock4 := spans[3].EndBlock - borParams.SprintDuration
-	s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(spans[3].EndBlock))).Return(&val1Addr, nil)
+	seedBlock4 := spans[3].EndBlock - zenaParams.SprintDuration
+	s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(spans[3].EndBlock))).Return(&val1Addr, nil)
 
-	for block := spans[3].EndBlock; block >= spans[3].StartBlock; block -= borParams.SprintDuration {
-		s.contractCaller.On("GetBorChainBlockAuthor", big.NewInt(int64(block))).Return(&val2Addr, nil)
+	for block := spans[3].EndBlock; block >= spans[3].StartBlock; block -= zenaParams.SprintDuration {
+		s.contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(int64(block))).Return(&val2Addr, nil)
 	}
 
 	blockHeader1 := ethTypes.Header{Number: big.NewInt(int64(seedBlock1))}
@@ -143,18 +143,18 @@ func (s *BorKeeperTestSuite) TestGetNextSpanSeed() {
 	lastSpanID := uint64(0)
 
 	for _, tc := range testcases {
-		err := borKeeper.StoreSeedProducer(ctx, tc.lastSpanId, tc.lastSeedProducer)
+		err := zenaKeeper.StoreSeedProducer(ctx, tc.lastSpanId, tc.lastSeedProducer)
 		require.NoError(err)
 
 		lastSpanID = tc.lastSpanId
 	}
 
-	err := borKeeper.StoreSeedProducer(ctx, lastSpanID+1, &val1Addr)
+	err := zenaKeeper.StoreSeedProducer(ctx, lastSpanID+1, &val1Addr)
 	require.NoError(err)
 
 	for _, tc := range testcases {
 		s.T().Run(tc.name, func(t *testing.T) {
-			seed, author, err := borKeeper.GetNextSpanSeed(ctx, tc.lastSpanId+2)
+			seed, author, err := zenaKeeper.GetNextSpanSeed(ctx, tc.lastSpanId+2)
 			require.NoError(err)
 			require.Equal(tc.expSeed.Bytes(), seed.Bytes())
 			require.Equal(tc.expAuthor.Bytes(), author.Bytes())
@@ -162,47 +162,47 @@ func (s *BorKeeperTestSuite) TestGetNextSpanSeed() {
 	}
 }
 
-func (s *BorKeeperTestSuite) TestProposeSpanOne() {
+func (s *ZenaKeeperTestSuite) TestProposeSpanOne() {
 	app, ctx := createTestApp(false)
 	contractCaller := &mocks.IContractCaller{}
-	app.BorKeeper.SetContractCaller(contractCaller)
+	app.ZenaKeeper.SetContractCaller(contractCaller)
 
 	valSet := setupValSet()
 	vals := make([]hmTypes.Validator, 0, len(valSet.Validators))
 	for _, val := range valSet.Validators {
 		vals = append(vals, *val)
 	}
-	err := app.BorKeeper.AddNewSpan(ctx, hmTypes.NewSpan(0, 0, 256, *valSet, vals, "test-chain"))
+	err := app.ZenaKeeper.AddNewSpan(ctx, hmTypes.NewSpan(0, 0, 256, *valSet, vals, "test-chain"))
 	s.Require().NoError(err)
 
 	val1Addr := vals[0].PubKey.Address()
 
 	seedBlock1 := int64(1)
-	contractCaller.On("GetBorChainBlockAuthor", big.NewInt(seedBlock1)).Return(&val1Addr, nil)
+	contractCaller.On("GetZenaChainBlockAuthor", big.NewInt(seedBlock1)).Return(&val1Addr, nil)
 
 	blockHeader1 := ethTypes.Header{Number: big.NewInt(seedBlock1)}
 	blockHash1 := blockHeader1.Hash()
 	contractCaller.On("GetMaticChainBlock", big.NewInt(seedBlock1)).Return(&blockHeader1, nil)
 
-	seed, author, err := app.BorKeeper.GetNextSpanSeed(ctx, 1)
+	seed, author, err := app.ZenaKeeper.GetNextSpanSeed(ctx, 1)
 	s.Require().NoError(err)
 	s.Require().Equal(blockHash1.Bytes(), seed.Bytes())
 	s.Require().Equal(val1Addr.Bytes(), author.Bytes())
 }
 
-func (s *BorKeeperTestSuite) TestGetSeedProducer() {
-	borKeeper := s.app.BorKeeper
+func (s *ZenaKeeperTestSuite) TestGetSeedProducer() {
+	zenaKeeper := s.app.ZenaKeeper
 	producer := common.HexToAddress("0xc0ffee254729296a45a3885639AC7E10F9d54979")
-	err := borKeeper.StoreSeedProducer(s.ctx, 1, &producer)
+	err := zenaKeeper.StoreSeedProducer(s.ctx, 1, &producer)
 	s.Require().NoError(err)
 
-	author, err := borKeeper.GetSeedProducer(s.ctx, 1)
+	author, err := zenaKeeper.GetSeedProducer(s.ctx, 1)
 	s.Require().NoError(err)
 	s.Require().Equal(producer.Bytes(), author.Bytes())
 
 }
 
-func (s *BorKeeperTestSuite) TestRollbackVotingPowers() {
+func (s *ZenaKeeperTestSuite) TestRollbackVotingPowers() {
 	testcases := []struct {
 		name    string
 		valsOld []hmTypes.Validator
@@ -231,13 +231,13 @@ func (s *BorKeeperTestSuite) TestRollbackVotingPowers() {
 
 	for _, tc := range testcases {
 		s.T().Run(tc.name, func(t *testing.T) {
-			res := bor.RollbackVotingPowers(s.ctx, tc.valsNew, tc.valsOld)
+			res := zena.RollbackVotingPowers(s.ctx, tc.valsNew, tc.valsOld)
 			s.Require().Equal(tc.expRes, res)
 		})
 	}
 }
 
-func (suite *BorKeeperTestSuite) setupValSet() *hmTypes.ValidatorSet {
+func (suite *ZenaKeeperTestSuite) setupValSet() *hmTypes.ValidatorSet {
 	suite.T().Helper()
 	return setupValSet()
 }

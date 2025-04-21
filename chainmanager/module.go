@@ -12,13 +12,13 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	chainmanagerCli "github.com/maticnetwork/heimdall/chainmanager/client/cli"
-	chainmanagerRest "github.com/maticnetwork/heimdall/chainmanager/client/rest"
-	"github.com/maticnetwork/heimdall/chainmanager/simulation"
-	"github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
-	simTypes "github.com/maticnetwork/heimdall/types/simulation"
+	chainmanagerCli "github.com/zenanetwork/iris/chainmanager/client/cli"
+	chainmanagerRest "github.com/zenanetwork/iris/chainmanager/client/rest"
+	"github.com/zenanetwork/iris/chainmanager/simulation"
+	"github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/helper"
+	hmModule "github.com/zenanetwork/iris/types/module"
+	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
 var (

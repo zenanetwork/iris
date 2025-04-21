@@ -1,7 +1,7 @@
 package types
 
 import (
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // query endpoints supported by the governance Querier

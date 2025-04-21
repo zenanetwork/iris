@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package rest
 
 import (
@@ -10,13 +10,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	topupTypes "github.com/maticnetwork/heimdall/topup/types"
-	"github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	topupTypes "github.com/zenanetwork/iris/topup/types"
+	"github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
-//It represents topup fee msg.
+// It represents topup fee msg.
+//
 //swagger:response topupFeeResponse
 type topupFeeResponse struct {
 	//in:body
@@ -48,7 +49,8 @@ type topupFeeVal struct {
 	BlockNumber uint64 `json:"block_number"`
 }
 
-//It represents topup withdraw msg.
+// It represents topup withdraw msg.
+//
 //swagger:response topupWithdrawResponse
 type topupWithdrawResponse struct {
 	//in:body
@@ -131,7 +133,9 @@ type BaseReq struct {
 // swagger:route POST /topup/fee topup topupFee
 // It returns the prepared msg for topup fee
 // responses:
-//   200: topupFeeResponse
+//
+//	200: topupFeeResponse
+//
 // TopupHandlerFn - http request handler to topup coins to an address.
 func TopupHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -197,7 +201,9 @@ type topupWithdrawInput struct {
 // swagger:route POST /topup/withdraw topup topupWithdraw
 // It returns the prepared msg for topup withdraw
 // responses:
-//   200: topupWithdrawResponse
+//
+//	200: topupWithdrawResponse
+//
 // WithdrawFeeHandlerFn - http request handler to withdraw fee coins from an address.
 func WithdrawFeeHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {

@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/auth"
-	"github.com/maticnetwork/heimdall/bank/types"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/auth"
+	"github.com/zenanetwork/iris/bank/types"
+	"github.com/zenanetwork/iris/params/subspace"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var (

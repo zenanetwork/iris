@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"reflect"
@@ -9,7 +9,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 const testValidators = `[

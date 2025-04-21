@@ -11,11 +11,11 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/gov/client"
-	"github.com/maticnetwork/heimdall/gov/client/cli"
-	"github.com/maticnetwork/heimdall/gov/client/rest"
-	"github.com/maticnetwork/heimdall/gov/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
+	"github.com/zenanetwork/iris/gov/client"
+	"github.com/zenanetwork/iris/gov/client/cli"
+	"github.com/zenanetwork/iris/gov/client/rest"
+	"github.com/zenanetwork/iris/gov/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
 )
 
 var (

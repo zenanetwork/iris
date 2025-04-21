@@ -7,8 +7,8 @@ import (
 	"time"
 
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
-	"github.com/maticnetwork/heimdall/helper"
-	proto "github.com/maticnetwork/polyproto/heimdall"
+	"github.com/zenanetwork/iris/helper"
+	proto "github.com/zenanetwork/zenaproto/iris"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -20,7 +20,7 @@ type Event struct {
 	Data       string `json:"data"`
 	TxHash     string `json:"tx_hash"`
 	LogIndex   uint64 `json:"log_index"`
-	BorChainId string `json:"bor_chain_id"`
+	ZenaChainId string `json:"zena_chain_id"`
 	RecordTime string `json:"record_time"`
 }
 
@@ -90,7 +90,7 @@ func parseEvents(result json.RawMessage) ([]*proto.EventRecord, error) {
 			Data:     event.Data,
 			TxHash:   event.TxHash,
 			LogIndex: event.LogIndex,
-			ChainID:  event.BorChainId,
+			ChainID:  event.ZenaChainId,
 			Time:     timestamppb.New(eventTime),
 		}
 	}

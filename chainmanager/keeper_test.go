@@ -4,10 +4,10 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/chainmanager/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/chainmanager/types"
 )
 
 type KeeperTestSuite struct {

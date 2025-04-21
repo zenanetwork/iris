@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/maticnetwork/heimdall/auth/exported"
+	"github.com/zenanetwork/iris/auth/exported"
 )
 
 // AccountProcessor is an interface to process account as per module

@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
 )
 
 var _ sdk.Msg = &MsgMilestone{}
@@ -18,7 +18,7 @@ type MsgMilestone struct {
 	StartBlock  uint64            `json:"start_block"`
 	EndBlock    uint64            `json:"end_block"`
 	Hash        types.IrisHash    `json:"hash"`
-	BorChainID  string            `json:"bor_chain_id"`
+	ZenaChainID string            `json:"zena_chain_id"`
 	MilestoneID string            `json:"milestone_id"`
 }
 
@@ -28,7 +28,7 @@ func NewMsgMilestoneBlock(
 	startBlock uint64,
 	endBlock uint64,
 	hash types.IrisHash,
-	borChainID string,
+	zenaChainID string,
 	milestoneID string,
 ) MsgMilestone {
 	return MsgMilestone{
@@ -36,7 +36,7 @@ func NewMsgMilestoneBlock(
 		StartBlock:  startBlock,
 		EndBlock:    endBlock,
 		Hash:        hash,
-		BorChainID:  borChainID,
+		ZenaChainID: zenaChainID,
 		MilestoneID: milestoneID,
 	}
 }

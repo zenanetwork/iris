@@ -7,7 +7,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/spf13/viper"
 
-	govutils "github.com/maticnetwork/heimdall/gov/client/utils"
+	govutils "github.com/zenanetwork/iris/gov/client/utils"
 )
 
 func parseSubmitProposalFlags() (*proposal, error) {

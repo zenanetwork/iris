@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/maticnetwork/heimdall/sidechannel/types"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 func TestCodec(t *testing.T) {

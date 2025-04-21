@@ -16,11 +16,11 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	httpClient "github.com/tendermint/tendermint/rpc/client"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/broadcaster"
-	"github.com/maticnetwork/heimdall/bridge/setu/queue"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	clerkTypes "github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/bridge/setu/broadcaster"
+	"github.com/zenanetwork/iris/bridge/setu/queue"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	clerkTypes "github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/helper"
 )
 
 // Processor defines a block header listener for Rootchain, Maticchain, Iris

@@ -6,14 +6,14 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-// Contract is how we represent contracts at heimdall
+// Contract is how we represent contracts at iris
 type Contract struct {
 	name    string
 	address common.Address
 	abi     abi.ABI
 	// Location of contract
 	// 0 - Ethereum Chain
-	// 1 - Bor Chain
+	// 1 - Zena Chain
 	location int
 	instance bind.ContractBackend
 }

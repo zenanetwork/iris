@@ -7,13 +7,13 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/common"
-	hmCommon "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/common"
+	hmCommon "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewSideTxHandler returns a side handler for "topup" type messages.
@@ -166,8 +166,8 @@ func PostHandleMsgEventRecord(ctx sdk.Context, k Keeper, msg types.MsgEventRecor
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			types.EventTypeRecord,
-			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                                  // action
-			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),                // module name
+			sdk.NewAttribute(sdk.AttributeKeyAction, msg.Type()),                              // action
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.AttributeValueCategory),            // module name
 			sdk.NewAttribute(hmTypes.AttributeKeyTxHash, hmTypes.BytesToIrisHash(hash).Hex()), // tx hash
 			sdk.NewAttribute(types.AttributeKeyRecordTxLogIndex, strconv.FormatUint(msg.LogIndex, 10)),
 			sdk.NewAttribute(hmTypes.AttributeKeySideTxResult, sideTxResult.String()), // result

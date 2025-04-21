@@ -7,12 +7,12 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/staking"
-	"github.com/maticnetwork/heimdall/topup"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/staking"
+	"github.com/zenanetwork/iris/topup"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewQuerier creates a querier for auth REST endpoints
@@ -139,7 +139,7 @@ func handleQueryCheckpointList(ctx sdk.Context, req abci.RequestQuery, keeper Ke
 }
 
 func handleQueryNextCheckpoint(ctx sdk.Context, req abci.RequestQuery, keeper Keeper, sk staking.Keeper, tk topup.Keeper, contractCaller helper.IContractCaller) ([]byte, sdk.Error) {
-	var queryParams types.QueryBorChainID
+	var queryParams types.QueryZenaChainID
 	if err := keeper.cdc.UnmarshalJSON(req.Data, &queryParams); err != nil {
 		return nil, sdk.ErrInternal(fmt.Sprintf("failed to parse query params: %s", err))
 	}
@@ -183,7 +183,7 @@ func handleQueryNextCheckpoint(ctx sdk.Context, req abci.RequestQuery, keeper Ke
 		start+params.AvgCheckpointLength,
 		hmTypes.BytesToIrisHash(rootHash),
 		hmTypes.BytesToIrisHash(accRootHash),
-		queryParams.BorChainID,
+		queryParams.ZenaChainID,
 	)
 
 	bz, err := jsoniter.ConfigFastest.Marshal(checkpointMsg)

@@ -8,9 +8,9 @@ import (
 	"github.com/tendermint/tendermint/crypto"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/maticnetwork/heimdall/auth/types"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/auth/types"
+	"github.com/zenanetwork/iris/params/subspace"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // AccountKeeper encodes/decodes accounts using the go-amino (binary)

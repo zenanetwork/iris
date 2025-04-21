@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/gov/types"
+	"github.com/zenanetwork/iris/gov/types"
 )
 
 // EndBlocker called every block, process inflation, update validator set.

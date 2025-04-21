@@ -11,16 +11,16 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-// Validator heimdall validator
+// Validator iris validator
 type Validator struct {
-	ID          ValidatorID     `json:"ID"`
-	StartEpoch  uint64          `json:"startEpoch"`
-	EndEpoch    uint64          `json:"endEpoch"`
-	Nonce       uint64          `json:"nonce"`
-	VotingPower int64           `json:"power"` // TODO add 10^-18 here so that we dont overflow easily
-	PubKey      PubKey          `json:"pubKey"`
+	ID          ValidatorID `json:"ID"`
+	StartEpoch  uint64      `json:"startEpoch"`
+	EndEpoch    uint64      `json:"endEpoch"`
+	Nonce       uint64      `json:"nonce"`
+	VotingPower int64       `json:"power"` // TODO add 10^-18 here so that we dont overflow easily
+	PubKey      PubKey      `json:"pubKey"`
 	Signer      IrisAddress `json:"signer"`
-	LastUpdated string          `json:"last_updated"`
+	LastUpdated string      `json:"last_updated"`
 
 	Jailed           bool  `json:"jailed"`
 	ProposerPriority int64 `json:"accum"`
@@ -219,9 +219,9 @@ func (valID ValidatorID) String() string {
 // --------
 
 // MinimalVal is the minimal validator representation
-// Used to send validator information to bor validator contract
+// Used to send validator information to zena validator contract
 type MinimalVal struct {
-	ID          ValidatorID     `json:"ID"`
-	VotingPower uint64          `json:"power"` // TODO add 10^-18 here so that we dont overflow easily
+	ID          ValidatorID `json:"ID"`
+	VotingPower uint64      `json:"power"` // TODO add 10^-18 here so that we dont overflow easily
 	Signer      IrisAddress `json:"signer"`
 }

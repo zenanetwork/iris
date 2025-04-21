@@ -6,8 +6,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // InitGenesis sets distribution information for genesis.

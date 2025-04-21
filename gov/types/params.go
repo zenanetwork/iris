@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/params/subspace"
+	"github.com/zenanetwork/iris/params/subspace"
 )
 
 // Parameter store key

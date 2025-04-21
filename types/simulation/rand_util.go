@@ -8,7 +8,7 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/helper"
 )
 
 const (

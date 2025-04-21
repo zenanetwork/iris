@@ -13,13 +13,13 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	clerkTypes "github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/common/tracing"
-	"github.com/maticnetwork/heimdall/contracts/statesender"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	clerkTypes "github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/common/tracing"
+	"github.com/zenanetwork/iris/contracts/statesender"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // ClerkContext for bridge
@@ -101,7 +101,7 @@ func (cp *ClerkProcessor) sendStateSyncedToIris(eventName string, logBytes strin
 				"id", event.Id,
 				"contract", event.ContractAddress,
 				"data", hex.EncodeToString(event.Data),
-				"borChainId", chainParams.BorChainID,
+				"zenaChainId", chainParams.ZenaChainID,
 				"txHash", hmTypes.BytesToIrisHash(vLog.TxHash.Bytes()),
 				"logIndex", uint64(vLog.Index),
 				"blockNumber", vLog.BlockNumber,
@@ -116,7 +116,7 @@ func (cp *ClerkProcessor) sendStateSyncedToIris(eventName string, logBytes strin
 			"id", event.Id,
 			"contract", event.ContractAddress,
 			"data", hex.EncodeToString(event.Data),
-			"borChainId", chainParams.BorChainID,
+			"zenaChainId", chainParams.ZenaChainID,
 			"txHash", hmTypes.BytesToIrisHash(vLog.TxHash.Bytes()),
 			"logIndex", uint64(vLog.Index),
 			"blockNumber", vLog.BlockNumber,
@@ -140,7 +140,7 @@ func (cp *ClerkProcessor) sendStateSyncedToIris(eventName string, logBytes strin
 			event.Id.Uint64(),
 			hmTypes.BytesToIrisAddress(event.ContractAddress.Bytes()),
 			event.Data,
-			chainParams.BorChainID,
+			chainParams.ZenaChainID,
 		)
 
 		_, checkTxAgainstMempoolSpan := tracing.StartSpan(sendStateSyncedToIrisCtx, "checkTxAgainstMempool")

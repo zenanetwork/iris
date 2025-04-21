@@ -6,10 +6,10 @@ import (
 	"fmt"
 
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
-	proto "github.com/maticnetwork/polyproto/heimdall"
-	protoutils "github.com/maticnetwork/polyproto/utils"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
+	proto "github.com/zenanetwork/zenaproto/iris"
+	protoutils "github.com/zenanetwork/zenaproto/utils"
 )
 
 func (h *IrisGRPCServer) Span(ctx context.Context, in *proto.SpanRequest) (*proto.SpanResponse, error) {

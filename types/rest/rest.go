@@ -18,7 +18,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/types"
 )
 
 const (

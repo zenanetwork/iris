@@ -13,10 +13,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	zenaTypes "github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/bridge/setu/util"
-	"github.com/maticnetwork/heimdall/helper"
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/bridge/setu/util"
+	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/types"
+	zenaTypes "github.com/zenanetwork/iris/zena/types"
 )
 
 // SpanProcessor - process span related events
@@ -95,7 +95,7 @@ func (sp *SpanProcessor) checkAndPropose() {
 		}
 
 		if latestBlock.Number.Uint64() < lastSpan.StartBlock {
-			sp.Logger.Debug("Current bor block is less than last span start block, skipping proposing span", "currentBlock", latestBlock.Number.Uint64(), "lastSpanStartBlock", lastSpan.StartBlock)
+			sp.Logger.Debug("Current zena block is less than last span start block, skipping proposing span", "currentBlock", latestBlock.Number.Uint64(), "lastSpanStartBlock", lastSpan.StartBlock)
 			return
 		}
 	}
@@ -241,7 +241,7 @@ func (sp *SpanProcessor) fetchNextSpanDetails(id uint64, start uint64) (*types.S
 	q := req.URL.Query()
 	q.Add("span_id", strconv.FormatUint(id, 10))
 	q.Add("start_block", strconv.FormatUint(start, 10))
-	q.Add("chain_id", configParams.ChainParams.BorChainID)
+	q.Add("chain_id", configParams.ChainParams.ZenaChainID)
 	q.Add("proposer", helper.GetFromAddress(sp.cliCtx).String())
 	req.URL.RawQuery = q.Encode()
 
@@ -275,7 +275,7 @@ func (sp *SpanProcessor) fetchNextSpanSeed(id uint64) (common.Hash, common.Addre
 
 	sp.Logger.Info("Next span seed fetched")
 
-	var nextSpanSeedResponse borTypes.QuerySpanSeedResponse
+	var nextSpanSeedResponse zenaTypes.QuerySpanSeedResponse
 
 	if err = jsoniter.ConfigFastest.Unmarshal(response.Result, &nextSpanSeedResponse); err != nil {
 		sp.Logger.Error("Error unmarshalling nextSpanSeed received from Iris Server", "error", err)

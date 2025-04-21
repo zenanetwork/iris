@@ -12,17 +12,17 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/golang/mock/gomock"
-	"github.com/maticnetwork/heimdall/app"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	borTypes "github.com/maticnetwork/heimdall/bor/types"
-	checkpointTypes "github.com/maticnetwork/heimdall/checkpoint/types"
-	"github.com/maticnetwork/heimdall/helper"
-	helperMocks "github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/crypto/secp256k1"
+	"github.com/zenanetwork/iris/app"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	checkpointTypes "github.com/zenanetwork/iris/checkpoint/types"
+	"github.com/zenanetwork/iris/helper"
+	helperMocks "github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
+	zenaTypes "github.com/zenanetwork/iris/zena/types"
 )
 
 var (
@@ -90,25 +90,25 @@ var (
 			63,
 			hmTypes.HexToIrisHash("0x5bd83f679c8ce7c48d6fa52ce41532fcacfbbd99d5dab415585f397bf44a0b6e"),
 			hmTypes.HexToIrisHash("0xd10b5c16c25efe0b0f5b3d75038834223934ae8c2ec2b63a62bbe42aa21e2d2d"),
-			"borChainID",
+			"zenaChainID",
 		),
 		checkpointTypes.NewMsgMilestoneBlock(
 			irisAddress,
 			0,
 			63,
 			hmTypes.HexToIrisHash("0x5bd83f679c8ce7c48d6fa52ce41532fcacfbbd99d5dab415585f397bf44a0b6e"),
-			"testBorChainID",
+			"testZenaChainID",
 			"testMilestoneID",
 		),
 		checkpointTypes.NewMsgMilestoneTimeout(
 			irisAddress,
 		),
-		borTypes.NewMsgProposeSpan(
+		zenaTypes.NewMsgProposeSpan(
 			1,
 			irisAddress,
 			0,
 			63,
-			"testBorChainID",
+			"testZenaChainID",
 			common.Hash(hmTypes.BytesToIrisHash([]byte("randseed"))),
 		),
 	}
@@ -220,7 +220,7 @@ func createTestApp(isCheckTx bool, testOpts *helper.TestOpts) (*app.IrisApp, sdk
 	hApp.BankKeeper.SetSendEnabled(ctx, true)
 	hApp.AccountKeeper.SetParams(ctx, authTypes.DefaultParams())
 	hApp.CheckpointKeeper.SetParams(ctx, checkpointTypes.DefaultParams())
-	hApp.BorKeeper.SetParams(ctx, borTypes.DefaultParams())
+	hApp.ZenaKeeper.SetParams(ctx, zenaTypes.DefaultParams())
 
 	coins := sdk.Coins{sdk.Coin{Denom: authTypes.FeeToken, Amount: defaultBalance}}
 	acc := authTypes.NewBaseAccount(irisAddress,

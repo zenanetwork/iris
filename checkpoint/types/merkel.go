@@ -10,8 +10,8 @@ import (
 
 	"github.com/tendermint/crypto/sha3"
 
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // ValidateCheckpoint - Validates if checkpoint rootHash matches or not

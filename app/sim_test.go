@@ -15,12 +15,12 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	govTypes "github.com/maticnetwork/heimdall/gov/types"
-	paramTypes "github.com/maticnetwork/heimdall/params/types"
-	"github.com/maticnetwork/heimdall/simulation"
-	stakingTypes "github.com/maticnetwork/heimdall/staking/types"
-	supplyTypes "github.com/maticnetwork/heimdall/supply/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	govTypes "github.com/zenanetwork/iris/gov/types"
+	paramTypes "github.com/zenanetwork/iris/params/types"
+	"github.com/zenanetwork/iris/simulation"
+	stakingTypes "github.com/zenanetwork/iris/staking/types"
+	supplyTypes "github.com/zenanetwork/iris/supply/types"
 )
 
 // Get flags every time the simulator is run

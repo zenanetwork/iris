@@ -13,10 +13,10 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	sidechannel "github.com/maticnetwork/heimdall/sidechannel"
-	simulation "github.com/maticnetwork/heimdall/sidechannel/simulation"
-	sidechannelTypes "github.com/maticnetwork/heimdall/sidechannel/types"
+	"github.com/zenanetwork/iris/app"
+	sidechannel "github.com/zenanetwork/iris/sidechannel"
+	simulation "github.com/zenanetwork/iris/sidechannel/simulation"
+	sidechannelTypes "github.com/zenanetwork/iris/sidechannel/types"
 )
 
 //

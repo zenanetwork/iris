@@ -2,30 +2,30 @@
 
 ## Table of Contents
 
-* [Preliminary terminology](#preliminary-terminology)
-* [Overview](#overview)
-* [How does one join the network as a validator](#how-does-one-join-the-network-as-a-validator)
-	* [How to propose a MsgValidatorJoin transaction](#how-to-propose-a-msgvalidatorjoin-transaction)
-* [How does an existing validator exit the network](#how-does-an-existing-validator-exit-the-network)
-	* [How to propose a MsgValidatorExit transaction](#how-to-propose-a-msgvalidatorexit-transaction)
-* [How does a validator update its stake](#how-does-a-validator-update-its-stake)
-	* [How to propose a MsgStakeUpdate transaction](#how-to-propose-a-msgstakeupdate-transaction)
-* [How does a validator update its signer address](#how-does-a-validator-update-its-signer-address)
-	* [How to propose a MsgSignerUpdate transaction](#how-to-propose-a-msgsignerupdate-transaction)
-* [Query commands](#query-commands)
+- [Preliminary terminology](#preliminary-terminology)
+- [Overview](#overview)
+- [How does one join the network as a validator](#how-does-one-join-the-network-as-a-validator)
+  - [How to propose a MsgValidatorJoin transaction](#how-to-propose-a-msgvalidatorjoin-transaction)
+- [How does an existing validator exit the network](#how-does-an-existing-validator-exit-the-network)
+  - [How to propose a MsgValidatorExit transaction](#how-to-propose-a-msgvalidatorexit-transaction)
+- [How does a validator update its stake](#how-does-a-validator-update-its-stake)
+  - [How to propose a MsgStakeUpdate transaction](#how-to-propose-a-msgstakeupdate-transaction)
+- [How does a validator update its signer address](#how-does-a-validator-update-its-signer-address)
+  - [How to propose a MsgSignerUpdate transaction](#how-to-propose-a-msgsignerupdate-transaction)
+- [Query commands](#query-commands)
 
 ## Preliminary terminology
 
-* An `epoch` represents the period until a checkpoint is submitted on Ethereum (i.e. one `epoch` ends when a checkpoint is committed on Ethereum and the next one begins).
+- An `epoch` represents the period until a checkpoint is submitted on Ethereum (i.e. one `epoch` ends when a checkpoint is committed on Ethereum and the next one begins).
 
 ## Overview
 
 The `staking` module in Heimdall is responsible for a validator's stake related operations. It primarily aids in
 
-* A node joining the protocol as a validator.
-* A node leaving the protocol as a validator.
-* Updating an existing validator's stake in the network.
-* Updating the signer address of an existing validator.
+- A node joining the protocol as a validator.
+- A node leaving the protocol as a validator.
+- Updating an existing validator's stake in the network.
+- Updating the signer address of an existing validator.
 
 ## How does one join the network as a validator
 
@@ -34,7 +34,7 @@ The node that wants to be a validator stakes its tokens by invoking the `stakeFo
 ```
 /// @param signer validator address.
 /// @param validatorId unique integer to identify a validator.
-/// @param nonce to synchronize the events in heimdall.
+/// @param nonce to synchronize the events in iris.
 /// @param activationEpoch validator's first epoch as proposer.
 /// @param amount staking amount.
 /// @param total total staking amount.
@@ -65,17 +65,18 @@ type MsgValidatorJoin struct {
 	Nonce           uint64                  `json:"nonce"`
 }
 ```
+
 where
 
-* `From` represents the address of the validator that initiated the `MsgValidatorJoin` transaction on heimdall.
-* `ID` represents the id of the new validator.
-* `ActivationEpoch` is the `epoch` at which the new validator will be activated.
-* `Amount` is the total staked amount.
-* `SignerPubKey` is the signer public key of the new validator.
-* `TxHash` is the hash of the staking transaction on L1.
-* `LogIndex` is the index of the `Staked` log in the staking transaction receipt.
-* `BlockNumber` is the L1 block number in which the staking transaction was included.
-* `Nonce` is the count representing all the staking related transactions performed from the new validator's account. This is meant to keep Heimdall and L1 in sync.
+- `From` represents the address of the validator that initiated the `MsgValidatorJoin` transaction on iris.
+- `ID` represents the id of the new validator.
+- `ActivationEpoch` is the `epoch` at which the new validator will be activated.
+- `Amount` is the total staked amount.
+- `SignerPubKey` is the signer public key of the new validator.
+- `TxHash` is the hash of the staking transaction on L1.
+- `LogIndex` is the index of the `Staked` log in the staking transaction receipt.
+- `BlockNumber` is the L1 block number in which the staking transaction was included.
+- `Nonce` is the count representing all the staking related transactions performed from the new validator's account. This is meant to keep Heimdall and L1 in sync.
 
 Upon broadcasting the message, it goes through `HandleMsgValidatorJoin` handler which checks the basic sanity of the transaction (verifying the validator doesn't already exist, voting power, etc.).
 
@@ -108,7 +109,7 @@ if err = k.AddValidator(ctx, newValidator); err != nil {
 }
 ```
 
-The `EndBlocker` hook, which is executed at the end of a heimdall block, then adds the new validator and updates the validator set once activation `epoch` is completed:
+The `EndBlocker` hook, which is executed at the end of a iris block, then adds the new validator and updates the validator set once activation `epoch` is completed:
 
 ```
 // --- Start update to new validators
@@ -147,10 +148,10 @@ if len(setUpdates) > 0 {
 
 ### How to propose a MsgValidatorJoin transaction
 
-The `bridge` service in an existing validator's heimdall process polls for `Staked` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
+The `bridge` service in an existing validator's iris process polls for `Staked` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
 
 ```
-heimdallcli tx staking validator-join --proposer <PROPOSER_ADDRESS> --tx-hash <ETH_TX_HASH> --signer-pubkey <PUB_KEY> --staked-amount <STAKED_AMOUNT> --activation-epoch <ACTIVATION_EPOCH>
+iriscli tx staking validator-join --proposer <PROPOSER_ADDRESS> --tx-hash <ETH_TX_HASH> --signer-pubkey <PUB_KEY> --staked-amount <STAKED_AMOUNT> --activation-epoch <ACTIVATION_EPOCH>
 ```
 
 Or the REST server :
@@ -166,7 +167,7 @@ If a validator wishes to exit the network and unbond its stake, it invokes the `
 ```
 /// @param user address of the validator.
 /// @param validatorId unique integer to identify a validator.
-/// @param nonce to synchronize the events in heimdall.
+/// @param nonce to synchronize the events in iris.
 /// @param deactivationEpoch last epoch for validator.
 /// @param amount staking amount.
 event UnstakeInit(
@@ -191,15 +192,16 @@ type MsgValidatorExit struct {
 	Nonce             uint64                  `json:"nonce"`
 }
 ```
+
 where
 
-* `From` represents the address of the validator that initiated the `MsgValidatorExit` transaction on heimdall.
-* `ID` represents the id of the validator to be unstaked.
-* `DeactivationEpoch` is the last `epoch` as a validator.
-* `TxHash` is the hash of the unstake transaction on L1.
-* `LogIndex` is the index of the `UnstakeInit` log in the unstake transaction receipt.
-* `BlockNumber` is the L1 block number in which the unstake transaction was included.
-* `Nonce` is the count representing all the staking related transactions performed from the validator's account.
+- `From` represents the address of the validator that initiated the `MsgValidatorExit` transaction on iris.
+- `ID` represents the id of the validator to be unstaked.
+- `DeactivationEpoch` is the last `epoch` as a validator.
+- `TxHash` is the hash of the unstake transaction on L1.
+- `LogIndex` is the index of the `UnstakeInit` log in the unstake transaction receipt.
+- `BlockNumber` is the L1 block number in which the unstake transaction was included.
+- `Nonce` is the count representing all the staking related transactions performed from the validator's account.
 
 Upon broadcasting the message, it goes through `HandleMsgValidatorExit` handler which checks the basic sanity of the data in the transaction.
 
@@ -234,10 +236,10 @@ The `EndBlocker` hook then updates the validator set once deactivation epoch is 
 
 ### How to propose a MsgValidatorExit transaction
 
-The `bridge` service in an existing validator's heimdall process polls for `UnstakeInit` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
+The `bridge` service in an existing validator's iris process polls for `UnstakeInit` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
 
 ```
-heimdallcli tx staking validator-exit --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --tx-hash <ETH_TX_HASH> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER> --deactivation-epoch <DEACTIVATION_EPOCH>
+iriscli tx staking validator-exit --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --tx-hash <ETH_TX_HASH> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER> --deactivation-epoch <DEACTIVATION_EPOCH>
 ```
 
 Or the REST server :
@@ -252,7 +254,7 @@ A validator can update its stake in the network by invoking the `restake` functi
 
 ```
 /// @param validatorId unique integer to identify a validator.
-/// @param nonce to synchronize the events in heimdall.
+/// @param nonce to synchronize the events in iris.
 /// @param newAmount the updated stake amount.
 event StakeUpdate(
     uint256 indexed validatorId,
@@ -274,15 +276,16 @@ type MsgStakeUpdate struct {
 	Nonce       uint64                  `json:"nonce"`
 }
 ```
+
 where
 
-* `From` represents the address of the validator that initiated the `MsgStakeUpdate` transaction on heimdall.
-* `ID` represents the id of the validator whose stake is to be updated.
-* `NewAmount` is the new staked amount.
-* `TxHash` is the hash of the stake update transaction on L1.
-* `LogIndex` is the index of the `StakeUpdate` log in the stake update transaction receipt.
-* `BlockNumber` is the L1 block number in which the stake update transaction was included.
-* `Nonce` is the count representing all the staking related transactions performed from the validator's account.
+- `From` represents the address of the validator that initiated the `MsgStakeUpdate` transaction on iris.
+- `ID` represents the id of the validator whose stake is to be updated.
+- `NewAmount` is the new staked amount.
+- `TxHash` is the hash of the stake update transaction on L1.
+- `LogIndex` is the index of the `StakeUpdate` log in the stake update transaction receipt.
+- `BlockNumber` is the L1 block number in which the stake update transaction was included.
+- `Nonce` is the count representing all the staking related transactions performed from the validator's account.
 
 Upon broadcasting the message, it goes through `HandleMsgStakeUpdate` handler which checks the basic sanity of the data in the transaction.
 
@@ -311,10 +314,10 @@ The `EndBlocker` hook then updates the changes in the validator set.
 
 ### How to propose a MsgStakeUpdate transaction
 
-The `bridge` service in an existing validator's heimdall process polls for `StakeUpdate` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
+The `bridge` service in an existing validator's iris process polls for `StakeUpdate` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
 
 ```
-heimdallcli tx staking stake-update --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --tx-hash <ETH_TX_HASH> --staked-amount <STAKED_AMOUNT> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER>
+iriscli tx staking stake-update --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --tx-hash <ETH_TX_HASH> --staked-amount <STAKED_AMOUNT> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER>
 ```
 
 Or the REST server :
@@ -329,7 +332,7 @@ A validator can update its signer address in the network by invoking the `update
 
 ```
 /// @param validatorId unique integer to identify a validator.
-/// @param nonce to synchronize the events in heimdall.
+/// @param nonce to synchronize the events in iris.
 /// @param oldSigner old address of the validator.
 /// @param newSigner new address of the validator.
 /// @param signerPubkey public key of the validator.
@@ -355,15 +358,16 @@ type MsgSignerUpdate struct {
 	Nonce           uint64                  `json:"nonce"`
 }
 ```
+
 where
 
-* `From` represents the address of the validator that initiated the `MsgSignerUpdate` transaction on heimdall.
-* `ID` represents the id of the validator whose signer address is to be updated.
-* `NewSignerPubKey` is new public key of the validator.
-* `TxHash` is the hash of the signer update transaction on L1.
-* `LogIndex` is the index of the `SignerChange` log in the signer update transaction receipt.
-* `BlockNumber` is the L1 block number in which the signer update transaction was included.
-* `Nonce` is the count representing all the staking related transactions performed from the validator's account.
+- `From` represents the address of the validator that initiated the `MsgSignerUpdate` transaction on iris.
+- `ID` represents the id of the validator whose signer address is to be updated.
+- `NewSignerPubKey` is new public key of the validator.
+- `TxHash` is the hash of the signer update transaction on L1.
+- `LogIndex` is the index of the `SignerChange` log in the signer update transaction receipt.
+- `BlockNumber` is the L1 block number in which the signer update transaction was included.
+- `Nonce` is the count representing all the staking related transactions performed from the validator's account.
 
 Upon broadcasting the message, it goes through `HandleMsgSignerUpdate` handler which checks the basic sanity of the data in the transaction.
 
@@ -418,13 +422,13 @@ The `EndBlocker` hook then updates the validator set upon completion of the epoc
 
 ### How to propose a MsgSignerUpdate transaction
 
-The `bridge` service in an existing validator's heimdall process polls for `SignerChange` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
+The `bridge` service in an existing validator's iris process polls for `SignerChange` event periodically and generates and broadcasts the transaction once it detects and parses the event. An existing validator on the network can also leverage the CLI to send the transaction:
 
 ```
-heimdallcli tx staking signer-update --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --new-pubkey <NEW_PUBKEY> --tx-hash <ETH_TX_HASH> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER>
+iriscli tx staking signer-update --proposer <PROPOSER_ADDRESS> --id <VALIDATOR_ID> --new-pubkey <NEW_PUBKEY> --tx-hash <ETH_TX_HASH> --nonce <VALIDATOR_NONCE> --log-index <LOG_INDEX> --block-number <BLOCK_NUMBER>
 ```
 
-Or the REST server : 
+Or the REST server :
 
 ```
 curl -X POST "localhost:1317/staking/signer-update?proposer=<PROPOSER_ADDRESS>&id=<VALIDATOR_ID>&new-pubkey=<NEW_PUBKEY>&tx-hash=<ETH_TX_HASH>&nonce=<VALIDATOR_NONCE>&log-index=<LOG_INDEX>&block-number=<BLOCK_NUMBER>"
@@ -434,48 +438,47 @@ curl -X POST "localhost:1317/staking/signer-update?proposer=<PROPOSER_ADDRESS>&i
 
 One can run the following query commands from the staking module :
 
-* `validator-info` - Query validator information via validator id or validator address.
-* `current-validator-set` - Query the current validator set.
-* `staking-power` - Query the current staking power.
-* `validator-status` - Query the validator status by validator address.
-* `proposer` - Fetch the first `<TIMES>` validators from the validator set, sorted by priority as a checkpoint proposer.
-* `current-proposer` - Fetch the validator info selected as proposer of the current checkpoint.
-* `is-old-tx` - Check whether the staking transaction is old.
+- `validator-info` - Query validator information via validator id or validator address.
+- `current-validator-set` - Query the current validator set.
+- `staking-power` - Query the current staking power.
+- `validator-status` - Query the validator status by validator address.
+- `proposer` - Fetch the first `<TIMES>` validators from the validator set, sorted by priority as a checkpoint proposer.
+- `current-proposer` - Fetch the validator info selected as proposer of the current checkpoint.
+- `is-old-tx` - Check whether the staking transaction is old.
 
 ### CLI commands
 
 ```
-heimdallcli query staking validator-info --id=<VALIDATOR_ID>
+iriscli query staking validator-info --id=<VALIDATOR_ID>
 
 OR
 
-heimdallcli query staking validator-info --validator=<VALIDATOR_ADDRESS>
+iriscli query staking validator-info --validator=<VALIDATOR_ADDRESS>
 ```
 
 ```
-heimdallcli query staking current-validator-set
+iriscli query staking current-validator-set
 ```
 
 ```
-heimdallcli query staking staking-power
+iriscli query staking staking-power
 ```
 
 ```
-heimdallcli query staking validator-status --validator=<VALIDATOR_ADDRESS>
+iriscli query staking validator-status --validator=<VALIDATOR_ADDRESS>
 ```
 
 ```
-heimdallcli query staking proposer --times=<TIMES>
+iriscli query staking proposer --times=<TIMES>
 ```
 
 ```
-heimdallcli query staking current-proposer 
+iriscli query staking current-proposer
 ```
 
 ```
-heimdallcli query staking is-old-tx --tx-hash=<ETH_TX_HASH> --log-index=<LOG_INDEX>
+iriscli query staking is-old-tx --tx-hash=<ETH_TX_HASH> --log-index=<LOG_INDEX>
 ```
-
 
 ### REST endpoints
 
@@ -513,13 +516,13 @@ curl localhost:1317/staking/isoldtx?tx-hash=<ETH_TX_HASH>&log-index=<LOG_INDEX>
 
 Some other utility REST URLs:
 
-* To query validator by signer address:
+- To query validator by signer address:
 
 ```
 curl "localhost:1317/staking/signer/<SIGNER_ADDRESS>
 ```
 
-* To fetch the first `<TIMES>` validators from the validator set, sorted by priority as a milestone proposer:
+- To fetch the first `<TIMES>` validators from the validator set, sorted by priority as a milestone proposer:
 
 ```
 curl "localhost:1317/staking/milestoneProposer/<TIMES>

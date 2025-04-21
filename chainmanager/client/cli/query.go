@@ -10,8 +10,8 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/spf13/cobra"
 
-	"github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/version"
 )
 
 // GetQueryCmd returns the transaction commands for this module

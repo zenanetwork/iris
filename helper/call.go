@@ -19,16 +19,16 @@ import (
 	"github.com/ethereum/go-ethereum/rpc"
 	lru "github.com/hashicorp/golang-lru"
 
-	"github.com/maticnetwork/heimdall/bor/client/grpc"
-	"github.com/maticnetwork/heimdall/contracts/erc20"
-	"github.com/maticnetwork/heimdall/contracts/rootchain"
-	"github.com/maticnetwork/heimdall/contracts/slashmanager"
-	"github.com/maticnetwork/heimdall/contracts/stakemanager"
-	"github.com/maticnetwork/heimdall/contracts/stakinginfo"
-	"github.com/maticnetwork/heimdall/contracts/statereceiver"
-	"github.com/maticnetwork/heimdall/contracts/statesender"
-	"github.com/maticnetwork/heimdall/contracts/validatorset"
-	"github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/client/grpc"
+	"github.com/zenanetwork/iris/contracts/erc20"
+	"github.com/zenanetwork/iris/contracts/rootchain"
+	"github.com/zenanetwork/iris/contracts/slashmanager"
+	"github.com/zenanetwork/iris/contracts/stakemanager"
+	"github.com/zenanetwork/iris/contracts/stakinginfo"
+	"github.com/zenanetwork/iris/contracts/statereceiver"
+	"github.com/zenanetwork/iris/contracts/statesender"
+	"github.com/zenanetwork/iris/contracts/validatorset"
+	"github.com/zenanetwork/iris/types"
 )
 
 // smart contracts' events names
@@ -61,7 +61,7 @@ type IContractCaller interface {
 	GetCheckpointSign(txHash common.Hash) ([]byte, []byte, []byte, error)
 	GetMainChainBlock(*big.Int) (*ethTypes.Header, error)
 	GetMaticChainBlock(*big.Int) (*ethTypes.Header, error)
-	GetBorChainBlockAuthor(*big.Int) (*common.Address, error)
+	GetZenaChainBlockAuthor(*big.Int) (*common.Address, error)
 	IsTxConfirmed(common.Hash, uint64) bool
 	GetConfirmedTxReceipt(common.Hash, uint64) (*ethTypes.Receipt, error)
 	GetBlockNumberFromTxHash(common.Hash) (*big.Int, error)
@@ -87,7 +87,7 @@ type IContractCaller interface {
 	StakeFor(common.Address, *big.Int, *big.Int, bool, common.Address, *stakemanager.Stakemanager) error
 	CurrentAccountStateRoot(stakingInfoInstance *stakinginfo.Stakinginfo) ([32]byte, error)
 
-	// bor related contracts
+	// zena related contracts
 	CurrentSpanNumber(validatorSet *validatorset.Validatorset) (Number *big.Int)
 	GetSpanDetails(id *big.Int, validatorSet *validatorset.Validatorset) (*big.Int, *big.Int, *big.Int, error)
 	CurrentStateCounter(stateSenderInstance *statesender.Statesender) (Number *big.Int)
@@ -115,7 +115,7 @@ type ContractCaller struct {
 	MaticChainClient *ethclient.Client
 	MaticChainRPC    *rpc.Client
 
-	MaticGrpcClient *grpc.BorGRPCClient
+	MaticGrpcClient *grpc.ZenaGRPCClient
 
 	MaticChainTimeout time.Duration
 
@@ -149,11 +149,11 @@ func NewContractCaller() (contractCallerObj ContractCaller, err error) {
 	contractCallerObj.MainChainClient = GetMainClient()
 	contractCallerObj.MainChainTimeout = config.EthRPCTimeout
 	contractCallerObj.MaticChainClient = GetMaticClient()
-	contractCallerObj.MaticChainTimeout = config.BorRPCTimeout
+	contractCallerObj.MaticChainTimeout = config.ZenaRPCTimeout
 	contractCallerObj.MainChainRPC = GetMainChainRPCClient()
 	contractCallerObj.MaticChainRPC = GetMaticRPCClient()
 	contractCallerObj.ReceiptCache, err = lru.New(1000)
-	contractCallerObj.MaticGrpcFlag = config.BorGRPCFlag
+	contractCallerObj.MaticGrpcFlag = config.ZenaGRPCFlag
 	contractCallerObj.MaticGrpcClient = GetMaticGRPCClient()
 
 	if err != nil {
@@ -299,7 +299,7 @@ func (c *ContractCaller) GetHeaderInfo(number uint64, rootChainInstance *rootcha
 		nil
 }
 
-// GetRootHash get root hash from bor chain
+// GetRootHash get root hash from zena chain
 func (c *ContractCaller) GetRootHash(start uint64, end uint64, checkpointLength uint64) ([]byte, error) {
 	noOfBlock := end - start + 1
 
@@ -332,7 +332,7 @@ func (c *ContractCaller) GetRootHash(start uint64, end uint64, checkpointLength 
 	return common.FromHex(rootHash), nil
 }
 
-// GetVoteOnHash gets vote on hash from bor chain
+// GetVoteOnHash gets vote on hash from zena chain
 func (c *ContractCaller) GetVoteOnHash(start uint64, end uint64, milestoneLength uint64, hash string, milestoneID string) (bool, error) {
 	if start > end {
 		return false, errors.New("start block number is greater than the end block number")
@@ -505,15 +505,15 @@ func (c *ContractCaller) GetMaticChainBlock(blockNum *big.Int) (header *ethTypes
 	return latestBlock, nil
 }
 
-// GetBorChainBlockAuthor returns the producer of the bor block
-func (c *ContractCaller) GetBorChainBlockAuthor(blockNum *big.Int) (*common.Address, error) {
+// GetZenaChainBlockAuthor returns the producer of the zena block
+func (c *ContractCaller) GetZenaChainBlockAuthor(blockNum *big.Int) (*common.Address, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), c.MaticChainTimeout)
 	defer cancel()
 
 	var author *common.Address
-	err := c.MaticChainClient.Client().CallContext(ctx, &author, "bor_getAuthor", toBlockNumArg(blockNum))
+	err := c.MaticChainClient.Client().CallContext(ctx, &author, "zena_getAuthor", toBlockNumArg(blockNum))
 	if err != nil {
-		Logger.Error("Unable to connect to bor chain", "error", err)
+		Logger.Error("Unable to connect to zena chain", "error", err)
 		return nil, err
 	}
 
@@ -524,7 +524,7 @@ func (c *ContractCaller) GetBorChainBlockAuthor(blockNum *big.Int) (*common.Addr
 	return author, nil
 }
 
-// copied from bor/ethclient package
+// copied from zena/ethclient package
 func toBlockNumArg(number *big.Int) string {
 	if number == nil {
 		return "latest"
@@ -939,7 +939,7 @@ func (c *ContractCaller) CheckIfBlocksExist(end uint64) bool {
 	return end == block.NumberU64()
 }
 
-// GetBlockByNumber returns blocks by number from child chain (bor)
+// GetBlockByNumber returns blocks by number from child chain (zena)
 func (c *ContractCaller) GetBlockByNumber(ctx context.Context, blockNumber uint64) *ethTypes.Block {
 	var block *ethTypes.Block
 	var err error
@@ -989,7 +989,7 @@ func (c *ContractCaller) GetMaticTxReceipt(txHash common.Hash) (*ethTypes.Receip
 	return c.getTxReceipt(ctx, c.MaticChainClient, nil, txHash)
 }
 
-func (c *ContractCaller) getTxReceipt(ctx context.Context, client *ethclient.Client, grpcClient *grpc.BorGRPCClient, txHash common.Hash) (*ethTypes.Receipt, error) {
+func (c *ContractCaller) getTxReceipt(ctx context.Context, client *ethclient.Client, grpcClient *grpc.ZenaGRPCClient, txHash common.Hash) (*ethTypes.Receipt, error) {
 	if grpcClient != nil {
 		return grpcClient.TransactionReceipt(ctx, txHash)
 	}

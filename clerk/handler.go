@@ -7,10 +7,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/clerk/types"
-	"github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/clerk/types"
+	"github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // NewHandler creates new handler for handling messages for clerk module
@@ -47,9 +47,9 @@ func handleMsgEventRecord(ctx sdk.Context, msg types.MsgEventRecord, k Keeper, _
 	chainParams := params.ChainParams
 
 	// check chain id
-	if chainParams.BorChainID != msg.ChainID {
-		k.Logger(ctx).Error("Invalid Bor chain id", "msgChainID", msg.ChainID, "borChainId", chainParams.BorChainID)
-		return common.ErrInvalidBorChainID(k.Codespace()).Result()
+	if chainParams.ZenaChainID != msg.ChainID {
+		k.Logger(ctx).Error("Invalid Zena chain id", "msgChainID", msg.ChainID, "zenaChainId", chainParams.ZenaChainID)
+		return common.ErrInvalidZenaChainID(k.Codespace()).Result()
 	}
 
 	// sequence id

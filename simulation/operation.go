@@ -7,7 +7,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // entry kinds for use within OperationEntry

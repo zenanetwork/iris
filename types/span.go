@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-// Span stores details for a span on Bor chain
+// Span stores details for a span on Zena chain
 // span is indexed by start block
 type Span struct {
 	ID                uint64       `json:"span_id" yaml:"span_id"`
@@ -13,7 +13,7 @@ type Span struct {
 	EndBlock          uint64       `json:"end_block" yaml:"end_block"`
 	ValidatorSet      ValidatorSet `json:"validator_set" yaml:"validator_set"`
 	SelectedProducers []Validator  `json:"selected_producers" yaml:"selected_producers"`
-	ChainID           string       `json:"bor_chain_id" yaml:"bor_chain_id"`
+	ChainID           string       `json:"zena_chain_id" yaml:"zena_chain_id"`
 }
 
 // NewSpan creates new span

@@ -6,9 +6,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/checkpoint"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/checkpoint"
+	hmTypes "github.com/zenanetwork/iris/types"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -40,14 +40,14 @@ func (suite *KeeperTestSuite) TestAddCheckpoint() {
 	rootHash := hmTypes.HexToIrisHash("123")
 	proposerAddress := hmTypes.HexToIrisAddress("123")
 	timestamp := uint64(time.Now().Unix())
-	borChainId := "1234"
+	zenaChainId := "1234"
 
 	Checkpoint := hmTypes.CreateBlock(
 		startBlock,
 		endBlock,
 		rootHash,
 		proposerAddress,
-		borChainId,
+		zenaChainId,
 		timestamp,
 	)
 	err := keeper.AddCheckpoint(ctx, headerBlockNumber, Checkpoint)
@@ -58,7 +58,7 @@ func (suite *KeeperTestSuite) TestAddCheckpoint() {
 	require.Equal(t, startBlock, result.StartBlock)
 	require.Equal(t, endBlock, result.EndBlock)
 	require.Equal(t, rootHash, result.RootHash)
-	require.Equal(t, borChainId, result.BorChainID)
+	require.Equal(t, zenaChainId, result.ZenaChainID)
 	require.Equal(t, proposerAddress, result.Proposer)
 	require.Equal(t, timestamp, result.TimeStamp)
 }
@@ -80,14 +80,14 @@ func (suite *KeeperTestSuite) TestGetCheckpointList() {
 		rootHash := hmTypes.HexToIrisHash("123")
 		proposerAddress := hmTypes.HexToIrisAddress("123")
 		timestamp := uint64(time.Now().Unix()) + uint64(i)
-		borChainId := "1234"
+		zenaChainId := "1234"
 
 		Checkpoint := hmTypes.CreateBlock(
 			startBlock,
 			endBlock,
 			rootHash,
 			proposerAddress,
-			borChainId,
+			zenaChainId,
 			timestamp,
 		)
 

@@ -3,7 +3,7 @@ package types
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 
-	exported "github.com/maticnetwork/heimdall/supply/exported"
+	exported "github.com/zenanetwork/iris/supply/exported"
 )
 
 // RegisterCodec registers the account types and interface

@@ -11,15 +11,15 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/helper"
-	supplyCli "github.com/maticnetwork/heimdall/supply/client/cli"
-	"github.com/maticnetwork/heimdall/supply/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
+	"github.com/zenanetwork/iris/helper"
+	supplyCli "github.com/zenanetwork/iris/supply/client/cli"
+	"github.com/zenanetwork/iris/supply/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
 )
 
 var (
-	_ module.AppModule             = AppModule{}
-	_ module.AppModuleBasic        = AppModuleBasic{}
+	_ module.AppModule         = AppModule{}
+	_ module.AppModuleBasic    = AppModuleBasic{}
 	_ hmModule.IrisModuleBasic = AppModule{}
 	// _ module.AppModuleSimulation = AppModule{}
 )

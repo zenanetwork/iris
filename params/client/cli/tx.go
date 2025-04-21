@@ -4,19 +4,19 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/maticnetwork/heimdall/helper"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/zenanetwork/iris/helper"
 
 	"github.com/cosmos/cosmos-sdk/client/context"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	govTypes "github.com/maticnetwork/heimdall/gov/types"
-	paramscutils "github.com/maticnetwork/heimdall/params/client/utils"
-	"github.com/maticnetwork/heimdall/params/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	govTypes "github.com/zenanetwork/iris/gov/types"
+	paramscutils "github.com/zenanetwork/iris/params/client/utils"
+	"github.com/zenanetwork/iris/params/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 var logger = helper.Logger.With("module", "params/client/cli")

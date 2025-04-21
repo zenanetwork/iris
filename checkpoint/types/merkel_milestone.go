@@ -9,8 +9,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/google/uuid"
 
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // ValidateMilestone validates the structure of the milestone
@@ -32,10 +32,10 @@ func ValidateMilestone(start uint64, end uint64, rootHash hmTypes.IrisHash, mile
 
 	// Check if blocks+confirmations  exist locally
 	if !contractCaller.CheckIfBlocksExist(end + confirmations) {
-		return false, errors.New(fmt.Sprint("End block number with confirmation is not available in the Bor chain", "EndBlock", end, "Confirmation", confirmations))
+		return false, errors.New(fmt.Sprint("End block number with confirmation is not available in the Zena chain", "EndBlock", end, "Confirmation", confirmations))
 	}
 
-	// Get the vote on hash of milestone from Bor
+	// Get the vote on hash of milestone from Zena
 	vote, err := contractCaller.GetVoteOnHash(start, end, milestoneLength, rootHash.String(), milestoneID)
 	if err != nil {
 		return false, err

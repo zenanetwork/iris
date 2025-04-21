@@ -9,11 +9,11 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/sidechannel"
-	"github.com/maticnetwork/heimdall/sidechannel/simulation"
-	"github.com/maticnetwork/heimdall/sidechannel/types"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/sidechannel"
+	"github.com/zenanetwork/iris/sidechannel/simulation"
+	"github.com/zenanetwork/iris/sidechannel/types"
 )
 
 // GenesisTestSuite integrate test suite context object

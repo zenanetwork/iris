@@ -11,17 +11,17 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	restClient "github.com/maticnetwork/heimdall/client/rest"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/zena/types"
+	restClient "github.com/zenanetwork/iris/client/rest"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/rest"
 )
 
 // It represents Propose Span msg.
 //
-//swagger:response borProposeSpanResponse
-type borProposeSpanResponse struct {
+//swagger:response zenaProposeSpanResponse
+type zenaProposeSpanResponse struct {
 	//in:body
 	Output output `json:"output"`
 }
@@ -47,13 +47,13 @@ type val struct {
 	Proposer   string `json:"proposer"`
 	StartBlock string `json:"start_block"`
 	EndBlock   string `json:"end_block"`
-	BorChainId string `json:"bor_chain_id"`
+	ZenaChainId string `json:"zena_chain_id"`
 	Seed       string `json:"seed"`
 }
 
 func registerTxRoutes(cliCtx context.CLIContext, r *mux.Router) {
 	r.HandleFunc(
-		"/bor/propose-span",
+		"/zena/propose-span",
 		postProposeSpanHandlerFn(cliCtx),
 	).Methods("POST")
 }
@@ -64,11 +64,11 @@ type ProposeSpanReq struct {
 
 	ID         uint64 `json:"span_id"`
 	StartBlock uint64 `json:"start_block"`
-	BorChainID string `json:"bor_chain_id"`
+	ZenaChainID string `json:"zena_chain_id"`
 }
 
-//swagger:parameters borProposeSpan
-type borProposeSpan struct {
+//swagger:parameters zenaProposeSpan
+type zenaProposeSpan struct {
 
 	//Body
 	//required:true
@@ -92,7 +92,7 @@ type SendReqInput struct {
 
 	//required:true
 	//in:body
-	BorChainID string `json:"bor_chain_id"`
+	ZenaChainID string `json:"zena_chain_id"`
 }
 
 type BaseReq struct {
@@ -108,10 +108,10 @@ type BaseReq struct {
 	ChainID string `json:"chain_id"`
 }
 
-// swagger:route POST /bor/propose-span bor borProposeSpan
+// swagger:route POST /zena/propose-span zena zenaProposeSpan
 // It returns the prepared msg for proposing the span
 // responses:
-//   200: borProposeSpanResponse
+//   200: zenaProposeSpanResponse
 
 func postProposeSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -181,7 +181,7 @@ func postProposeSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 				hmTypes.HexToIrisAddress(req.BaseReq.From),
 				req.StartBlock,
 				req.StartBlock+spanDuration-1,
-				req.BorChainID,
+				req.ZenaChainID,
 				seedResponse.Seed,
 			)
 		} else {
@@ -191,7 +191,7 @@ func postProposeSpanHandlerFn(cliCtx context.CLIContext) http.HandlerFunc {
 				hmTypes.HexToIrisAddress(req.BaseReq.From),
 				req.StartBlock,
 				req.StartBlock+spanDuration-1,
-				req.BorChainID,
+				req.ZenaChainID,
 				seedResponse.Seed,
 				seedResponse.SeedAuthor,
 			)

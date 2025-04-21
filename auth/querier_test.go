@@ -11,12 +11,12 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/maticnetwork/heimdall/app"
-	"github.com/maticnetwork/heimdall/auth"
-	"github.com/maticnetwork/heimdall/auth/exported"
-	"github.com/maticnetwork/heimdall/auth/types"
-	authTypes "github.com/maticnetwork/heimdall/auth/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	"github.com/zenanetwork/iris/auth"
+	"github.com/zenanetwork/iris/auth/exported"
+	"github.com/zenanetwork/iris/auth/types"
+	authTypes "github.com/zenanetwork/iris/auth/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 //

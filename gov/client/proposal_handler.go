@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/context"
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/maticnetwork/heimdall/gov/client/rest"
+	"github.com/zenanetwork/iris/gov/client/rest"
 )
 
 // function to create the rest handler

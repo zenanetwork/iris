@@ -13,19 +13,19 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/maticnetwork/heimdall/bor/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/zena/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
-var cliLogger = helper.Logger.With("module", "bor/client/cli")
+var cliLogger = helper.Logger.With("module", "zena/client/cli")
 
 // GetTxCmd returns the transaction commands for this module
 func GetTxCmd(cdc *codec.Codec) *cobra.Command {
 	txCmd := &cobra.Command{
 		Use:                        types.ModuleName,
-		Short:                      "Bor transaction subcommands",
+		Short:                      "Zena transaction subcommands",
 		DisableFlagParsing:         true,
 		SuggestionsMinimumDistance: 2,
 		RunE:                       hmClient.ValidateCmd,
@@ -47,9 +47,9 @@ func PostSendProposeSpanTx(cdc *codec.Codec) *cobra.Command {
 		Short: "send propose span tx",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
-			borChainID := viper.GetString(FlagBorChainId)
-			if borChainID == "" {
-				return fmt.Errorf("BorChainID cannot be empty")
+			zenaChainID := viper.GetString(FlagZenaChainId)
+			if zenaChainID == "" {
+				return fmt.Errorf("ZenaChainID cannot be empty")
 			}
 
 			// get proposer
@@ -131,7 +131,7 @@ func PostSendProposeSpanTx(cdc *codec.Codec) *cobra.Command {
 					proposer,
 					startBlock,
 					startBlock+spanDuration-1,
-					borChainID,
+					zenaChainID,
 					seedResponse.Seed,
 				)
 			} else {
@@ -140,7 +140,7 @@ func PostSendProposeSpanTx(cdc *codec.Codec) *cobra.Command {
 					proposer,
 					startBlock,
 					startBlock+spanDuration-1,
-					borChainID,
+					zenaChainID,
 					seedResponse.Seed,
 					seedResponse.SeedAuthor,
 				)
@@ -152,11 +152,11 @@ func PostSendProposeSpanTx(cdc *codec.Codec) *cobra.Command {
 
 	cmd.Flags().StringP(FlagProposerAddress, "p", "", "--proposer=<proposer-address>")
 	cmd.Flags().String(FlagSpanId, "", "--span-id=<span-id>")
-	cmd.Flags().String(FlagBorChainId, "", "--bor-chain-id=<bor-chain-id>")
+	cmd.Flags().String(FlagZenaChainId, "", "--zena-chain-id=<zena-chain-id>")
 	cmd.Flags().String(FlagStartBlock, "", "--start-block=<start-block-number>")
 
-	if err := cmd.MarkFlagRequired(FlagBorChainId); err != nil {
-		cliLogger.Error("PostSendProposeSpanTx | MarkFlagRequired | FlagBorChainId", "Error", err)
+	if err := cmd.MarkFlagRequired(FlagZenaChainId); err != nil {
+		cliLogger.Error("PostSendProposeSpanTx | MarkFlagRequired | FlagZenaChainId", "Error", err)
 	}
 
 	if err := cmd.MarkFlagRequired(FlagStartBlock); err != nil {

@@ -10,12 +10,12 @@ import (
 	"strings"
 	"testing"
 
-	irisApp "github.com/maticnetwork/heimdall/app"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
 	tmTypes "github.com/tendermint/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
+	irisApp "github.com/zenanetwork/iris/app"
 )
 
 func TestModulesStreamedGenesisExport(t *testing.T) {
@@ -69,14 +69,14 @@ func TestModulesStreamedGenesisExport(t *testing.T) {
 		require.NotEmpty(t, eventRecord["data"])
 		require.NotEmpty(t, eventRecord["tx_hash"])
 		require.NotEmpty(t, eventRecord["log_index"])
-		require.NotEmpty(t, eventRecord["bor_chain_id"])
+		require.NotEmpty(t, eventRecord["zena_chain_id"])
 		require.NotEmpty(t, eventRecord["record_time"])
 	}
 
-	bor, err := traversePath(appState, "bor")
+	zena, err := traversePath(appState, "zena")
 	require.NoError(t, err)
 
-	spans, ok := bor["spans"].([]interface{})
+	spans, ok := zena["spans"].([]interface{})
 	require.True(t, ok, "spans should be an array")
 	require.Len(t, spans, 5)
 	for idx, span := range spans {
@@ -92,7 +92,7 @@ func TestModulesStreamedGenesisExport(t *testing.T) {
 		require.NotEmpty(t, spanMap["end_block"])
 		require.NotEmpty(t, spanMap["validator_set"])
 		require.NotEmpty(t, spanMap["selected_producers"])
-		require.NotEmpty(t, spanMap["bor_chain_id"])
+		require.NotEmpty(t, spanMap["zena_chain_id"])
 	}
 }
 

@@ -11,7 +11,7 @@ type Checkpoint struct {
 	StartBlock uint64          `json:"start_block"`
 	EndBlock   uint64          `json:"end_block"`
 	RootHash   IrisHash    `json:"root_hash"`
-	BorChainID string          `json:"bor_chain_id"`
+	ZenaChainID string          `json:"zena_chain_id"`
 	TimeStamp  uint64          `json:"timestamp"`
 }
 
@@ -21,7 +21,7 @@ type CheckpointWithID struct {
 	StartBlock uint64          `json:"start_block"`
 	EndBlock   uint64          `json:"end_block"`
 	RootHash   IrisHash    `json:"root_hash"`
-	BorChainID string          `json:"bor_chain_id"`
+	ZenaChainID string          `json:"zena_chain_id"`
 	TimeStamp  uint64          `json:"timestamp"`
 }
 
@@ -31,7 +31,7 @@ type Milestone struct {
 	StartBlock  uint64          `json:"start_block"`
 	EndBlock    uint64          `json:"end_block"`
 	Hash        IrisHash    `json:"hash"`
-	BorChainID  string          `json:"bor_chain_id"`
+	ZenaChainID  string          `json:"zena_chain_id"`
 	MilestoneID string          `json:"milestone_id"`
 	TimeStamp   uint64          `json:"timestamp"`
 }
@@ -42,7 +42,7 @@ func CreateBlock(
 	end uint64,
 	rootHash IrisHash,
 	proposer IrisAddress,
-	borChainID string,
+	zenaChainID string,
 	timestamp uint64,
 ) Checkpoint {
 	return Checkpoint{
@@ -50,7 +50,7 @@ func CreateBlock(
 		EndBlock:   end,
 		RootHash:   rootHash,
 		Proposer:   proposer,
-		BorChainID: borChainID,
+		ZenaChainID: zenaChainID,
 		TimeStamp:  timestamp,
 	}
 }
@@ -61,7 +61,7 @@ func CreateMilestone(
 	end uint64,
 	hash IrisHash,
 	proposer IrisAddress,
-	borChainID string,
+	zenaChainID string,
 	milestoneID string,
 	timestamp uint64,
 ) Milestone {
@@ -70,7 +70,7 @@ func CreateMilestone(
 		EndBlock:    end,
 		Hash:        hash,
 		Proposer:    proposer,
-		BorChainID:  borChainID,
+		ZenaChainID:  zenaChainID,
 		MilestoneID: milestoneID,
 		TimeStamp:   timestamp,
 	}
@@ -93,7 +93,7 @@ func (m Checkpoint) String() string {
 		m.StartBlock,
 		m.EndBlock,
 		m.RootHash.Hex(),
-		m.BorChainID,
+		m.ZenaChainID,
 		m.TimeStamp,
 	)
 }
@@ -106,7 +106,7 @@ func (m Milestone) String() string {
 		m.StartBlock,
 		m.EndBlock,
 		m.Hash.Hex(),
-		m.BorChainID,
+		m.ZenaChainID,
 		m.MilestoneID,
 		m.TimeStamp,
 	)

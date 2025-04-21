@@ -13,9 +13,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	gcutils "github.com/maticnetwork/heimdall/gov/client/utils"
-	"github.com/maticnetwork/heimdall/gov/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	gcutils "github.com/zenanetwork/iris/gov/client/utils"
+	"github.com/zenanetwork/iris/gov/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module

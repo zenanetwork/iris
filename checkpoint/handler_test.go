@@ -10,14 +10,14 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/maticnetwork/heimdall/app"
-	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/checkpoint"
-	chSim "github.com/maticnetwork/heimdall/checkpoint/simulation"
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	errs "github.com/maticnetwork/heimdall/common"
-	"github.com/maticnetwork/heimdall/helper/mocks"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/app"
+	cmTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/checkpoint"
+	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	errs "github.com/zenanetwork/iris/common"
+	"github.com/zenanetwork/iris/helper/mocks"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 type HandlerTestSuite struct {
@@ -62,7 +62,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpoint() {
 	topupKeeper := app.TopupKeeper
 	start := uint64(0)
 	maxSize := uint64(256)
-	borChainId := "1234"
+	zenaChainId := "1234"
 	params := keeper.GetParams(ctx)
 	dividendAccount := hmTypes.DividendAccount{
 		User:      hmTypes.HexToIrisAddress("123"),
@@ -100,7 +100,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			accountRoot,
-			borChainId,
+			zenaChainId,
 		)
 
 		// send checkpoint to handler
@@ -118,7 +118,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpoint() {
 			header.EndBlock,
 			header.RootHash,
 			accountRoot,
-			borChainId,
+			zenaChainId,
 		)
 
 		// send checkpoint to handler
@@ -148,7 +148,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpoint() {
 			start+256,
 			header.RootHash,
 			accountRoot,
-			borChainId,
+			zenaChainId,
 		)
 
 		// send checkpoint to handler
@@ -166,7 +166,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustCheckpointBuffer() {
 		StartBlock: 0,
 		EndBlock:   256,
 		RootHash:   hmTypes.HexToIrisHash("123"),
-		BorChainID: "testchainid",
+		ZenaChainID: "testchainid",
 		TimeStamp:  1,
 	}
 
@@ -194,7 +194,7 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustSameCheckpointAsMsg(
 		StartBlock: 0,
 		EndBlock:   256,
 		RootHash:   hmTypes.HexToIrisHash("123"),
-		BorChainID: "testchainid",
+		ZenaChainID: "testchainid",
 		TimeStamp:  1,
 	}
 
@@ -515,7 +515,7 @@ func (suite *HandlerTestSuite) SendCheckpoint(header hmTypes.Checkpoint) (res sd
 
 	accountRoot := hmTypes.BytesToIrisHash(accRootHash)
 
-	borChainId := "1234"
+	zenaChainId := "1234"
 	// create checkpoint msg
 	msgCheckpoint := types.NewMsgCheckpointBlock(
 		header.Proposer,
@@ -523,7 +523,7 @@ func (suite *HandlerTestSuite) SendCheckpoint(header hmTypes.Checkpoint) (res sd
 		header.EndBlock,
 		header.RootHash,
 		accountRoot,
-		borChainId,
+		zenaChainId,
 	)
 
 	suite.contractCaller.On("CheckIfBlocksExist", header.EndBlock+cmTypes.DefaultMaticchainTxConfirmations).Return(true)

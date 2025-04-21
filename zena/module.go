@@ -1,4 +1,4 @@
-package bor
+package zena
 
 import (
 	"encoding/json"
@@ -11,17 +11,17 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	borCli "github.com/maticnetwork/heimdall/bor/client/cli"
-	borRest "github.com/maticnetwork/heimdall/bor/client/rest"
-	"github.com/maticnetwork/heimdall/bor/types"
-	"github.com/maticnetwork/heimdall/helper"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
+	zenaCli "github.com/zenanetwork/iris/zena/client/cli"
+	zenaRest "github.com/zenanetwork/iris/zena/client/rest"
+	"github.com/zenanetwork/iris/zena/types"
+	"github.com/zenanetwork/iris/helper"
+	hmTypes "github.com/zenanetwork/iris/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
 )
 
 var (
-	_ module.AppModule             = AppModule{}
-	_ module.AppModuleBasic        = AppModuleBasic{}
+	_ module.AppModule         = AppModule{}
+	_ module.AppModuleBasic    = AppModuleBasic{}
 	_ hmModule.IrisModuleBasic = AppModule{}
 	// _ module.AppModuleSimulation = AppModule{}
 )
@@ -62,17 +62,17 @@ func (AppModuleBasic) VerifyGenesis(bz map[string]json.RawMessage) error {
 
 // RegisterRESTRoutes registers the REST routes for the auth module.
 func (AppModuleBasic) RegisterRESTRoutes(ctx context.CLIContext, rtr *mux.Router) {
-	borRest.RegisterRoutes(ctx, rtr)
+	zenaRest.RegisterRoutes(ctx, rtr)
 }
 
 // GetTxCmd returns the root tx command for the auth module.
 func (AppModuleBasic) GetTxCmd(cdc *codec.Codec) *cobra.Command {
-	return borCli.GetTxCmd(cdc)
+	return zenaCli.GetTxCmd(cdc)
 }
 
 // GetQueryCmd returns the root query command for the auth module.
 func (AppModuleBasic) GetQueryCmd(cdc *codec.Codec) *cobra.Command {
-	return borCli.GetQueryCmd(cdc)
+	return zenaCli.GetQueryCmd(cdc)
 }
 
 //____________________________________________________________________________

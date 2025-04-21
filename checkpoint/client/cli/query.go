@@ -15,12 +15,12 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/maticnetwork/heimdall/checkpoint/types"
-	hmClient "github.com/maticnetwork/heimdall/client"
-	"github.com/maticnetwork/heimdall/helper"
-	stakingTypes "github.com/maticnetwork/heimdall/staking/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/checkpoint/types"
+	hmClient "github.com/zenanetwork/iris/client"
+	"github.com/zenanetwork/iris/helper"
+	stakingTypes "github.com/zenanetwork/iris/staking/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/version"
 )
 
 var cliLogger = helper.Logger.With("module", "checkpoint/client/cli")
@@ -212,13 +212,13 @@ func GetCheckpointCount(cdc *codec.Codec) *cobra.Command {
 
 // Temporary Checkpoint struct to store the Checkpoint ID
 type CheckpointWithID struct {
-	ID         uint64              `json:"id"`
-	Proposer   hmTypes.IrisAddress `json:"proposer"`
-	StartBlock uint64              `json:"start_block"`
-	EndBlock   uint64              `json:"end_block"`
-	RootHash   hmTypes.IrisHash    `json:"root_hash"`
-	BorChainID string              `json:"bor_chain_id"`
-	TimeStamp  uint64              `json:"timestamp"`
+	ID          uint64              `json:"id"`
+	Proposer    hmTypes.IrisAddress `json:"proposer"`
+	StartBlock  uint64              `json:"start_block"`
+	EndBlock    uint64              `json:"end_block"`
+	RootHash    hmTypes.IrisHash    `json:"root_hash"`
+	ZenaChainID string              `json:"zena_chain_id"`
+	TimeStamp   uint64              `json:"timestamp"`
 }
 
 // GetCheckpointLatest get the latest checkpoint
@@ -274,13 +274,13 @@ func GetCheckpointLatest(cdc *codec.Codec) *cobra.Command {
 			}
 
 			checkpointWithID := &CheckpointWithID{
-				ID:         ackCount,
-				Proposer:   checkpointUnmarshal.Proposer,
-				StartBlock: checkpointUnmarshal.StartBlock,
-				EndBlock:   checkpointUnmarshal.EndBlock,
-				RootHash:   checkpointUnmarshal.RootHash,
-				BorChainID: checkpointUnmarshal.BorChainID,
-				TimeStamp:  checkpointUnmarshal.TimeStamp,
+				ID:          ackCount,
+				Proposer:    checkpointUnmarshal.Proposer,
+				StartBlock:  checkpointUnmarshal.StartBlock,
+				EndBlock:    checkpointUnmarshal.EndBlock,
+				RootHash:    checkpointUnmarshal.RootHash,
+				ZenaChainID: checkpointUnmarshal.ZenaChainID,
+				TimeStamp:   checkpointUnmarshal.TimeStamp,
 			}
 
 			resWithID, err := jsoniter.Marshal(checkpointWithID)
@@ -377,7 +377,7 @@ type stateDump struct {
 	LastNoACK        time.Time            `json:"last_noack_time"`
 }
 
-// GetOverview gives the complete state dump of heimdall
+// GetOverview gives the complete state dump of iris
 func GetOverview(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "overview",

@@ -1,7 +1,7 @@
 package exported
 
 import (
-	"github.com/maticnetwork/heimdall/auth/exported"
+	"github.com/zenanetwork/iris/auth/exported"
 )
 
 // ModuleAccountI defines an account interface for modules that hold tokens in

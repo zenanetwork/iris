@@ -1,3 +1,3 @@
-package bor
+package zena
 
 var RollbackVotingPowers = rollbackVotingPowers

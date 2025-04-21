@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/maticnetwork/heimdall/params/subspace"
+	"github.com/zenanetwork/iris/params/subspace"
 )
 
 const (

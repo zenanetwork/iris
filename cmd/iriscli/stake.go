@@ -11,9 +11,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	chainmanagerTypes "github.com/maticnetwork/heimdall/chainmanager/types"
-	"github.com/maticnetwork/heimdall/helper"
-	stakingcli "github.com/maticnetwork/heimdall/staking/client/cli"
+	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"
+	"github.com/zenanetwork/iris/helper"
+	stakingcli "github.com/zenanetwork/iris/staking/client/cli"
 )
 
 var checkpointEndpoint = "/chainmanager/params"

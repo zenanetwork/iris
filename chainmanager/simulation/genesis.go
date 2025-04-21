@@ -8,10 +8,10 @@ import (
 	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/maticnetwork/heimdall/chainmanager/types"
-	hmTypes "github.com/maticnetwork/heimdall/types"
-	"github.com/maticnetwork/heimdall/types/module"
-	"github.com/maticnetwork/heimdall/types/simulation"
+	"github.com/zenanetwork/iris/chainmanager/types"
+	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/types/module"
+	"github.com/zenanetwork/iris/types/simulation"
 )
 
 // Parameter keys
@@ -27,7 +27,7 @@ const (
 	StakingInfoAddress    = "staking_info_address"    //nolint
 	StateSenderAddress    = "state_sender_address"    //nolint
 
-	// Bor Chain Contracts
+	// Zena Chain Contracts
 	StateReceiverAddress = "state_receiver_address" //nolint
 	ValidatorSetAddress  = "validator_set_address"  //nolint
 )
@@ -44,8 +44,8 @@ func GenIrisAddress() hmTypes.IrisAddress {
 	return hmTypes.BytesToIrisAddress(simulation.RandHex(20))
 }
 
-// GenBorChainId returns randomc chainID
-func GenBorChainId(r *rand.Rand) string {
+// GenZenaChainId returns randomc chainID
+func GenZenaChainId(r *rand.Rand) string {
 	return strconv.Itoa(simulation.RandIntBetween(r, 0, math.MaxInt32))
 }
 
@@ -58,15 +58,15 @@ func RandomizedGenState(simState *module.SimulationState) {
 
 	var (
 		maticchainTxConfirmations uint64
-		borChainID                string
+		zenaChainID               string
 	)
 
 	simState.AppParams.GetOrGenerate(simState.Cdc, MaticchainTxConfirmations, &maticchainTxConfirmations, simState.Rand,
 		func(r *rand.Rand) { maticchainTxConfirmations = GenMaticchainTxConfirmations(r) },
 	)
 
-	simState.AppParams.GetOrGenerate(simState.Cdc, ZenaChainID, &borChainID, simState.Rand,
-		func(r *rand.Rand) { borChainID = GenBorChainId(r) },
+	simState.AppParams.GetOrGenerate(simState.Cdc, ZenaChainID, &zenaChainID, simState.Rand,
+		func(r *rand.Rand) { zenaChainID = GenZenaChainId(r) },
 	)
 
 	var (
@@ -81,7 +81,7 @@ func RandomizedGenState(simState *module.SimulationState) {
 	)
 
 	chainParams := types.ChainParams{
-		BorChainID:            borChainID,
+		ZenaChainID:           zenaChainID,
 		MaticTokenAddress:     maticTokenAddress,
 		StakingManagerAddress: stakingManagerAddress,
 		SlashManagerAddress:   slashManagerAddress,

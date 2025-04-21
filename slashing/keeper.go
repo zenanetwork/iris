@@ -9,11 +9,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	gogotypes "github.com/gogo/protobuf/types"
-	"github.com/maticnetwork/heimdall/chainmanager"
-	"github.com/maticnetwork/heimdall/params/subspace"
-	"github.com/maticnetwork/heimdall/slashing/types"
-	"github.com/maticnetwork/heimdall/staking"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	"github.com/zenanetwork/iris/chainmanager"
+	"github.com/zenanetwork/iris/params/subspace"
+	"github.com/zenanetwork/iris/slashing/types"
+	"github.com/zenanetwork/iris/staking"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // Keeper of the slashing store

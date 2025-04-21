@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	supplyExported "github.com/maticnetwork/heimdall/supply/exported"
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	supplyExported "github.com/zenanetwork/iris/supply/exported"
+	hmTypes "github.com/zenanetwork/iris/types"
 )
 
 // GenesisAccount is a struct for account initialization used exclusively during genesis

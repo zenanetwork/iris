@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/viper"
 
-	hmTypes "github.com/maticnetwork/heimdall/types"
+	hmTypes "github.com/zenanetwork/iris/types"
 
 	cfg "github.com/tendermint/tendermint/config"
 )
@@ -38,7 +38,7 @@ func TestIrisConfigNewSelectionAlgoHeight(t *testing.T) {
 
 	data := map[string]bool{"mumbai": false, "mainnet": false, "local": true}
 	for chain, shouldBeZero := range data {
-		conf.BorRPCUrl = "" // allow config to be loaded again
+		conf.ZenaRPCUrl = "" // allow config to be loaded again
 
 		viper.Set("chain", chain)
 
@@ -80,7 +80,7 @@ func TestGetChainManagerAddressMigration(t *testing.T) {
 	}
 
 	// test for non existing chain
-	conf.BorRPCUrl = ""
+	conf.ZenaRPCUrl = ""
 
 	viper.Set("chain", "newChain")
 	InitIrisConfig(os.ExpandEnv("$HOME/.irisd"))

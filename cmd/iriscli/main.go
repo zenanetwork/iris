@@ -26,7 +26,6 @@ import (
 	"github.com/ethereum/go-ethereum/console/prompt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/google/uuid"
-	hmModule "github.com/maticnetwork/heimdall/types/module"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/tendermint/go-amino"
@@ -36,14 +35,15 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	"github.com/tendermint/tendermint/privval"
 	tmTypes "github.com/tendermint/tendermint/types"
+	hmModule "github.com/zenanetwork/iris/types/module"
 
-	"github.com/maticnetwork/heimdall/file"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/file"
+	"github.com/zenanetwork/iris/version"
 
-	"github.com/maticnetwork/heimdall/app"
-	authCli "github.com/maticnetwork/heimdall/auth/client/cli"
-	hmTxCli "github.com/maticnetwork/heimdall/client/tx"
-	"github.com/maticnetwork/heimdall/helper"
+	"github.com/zenanetwork/iris/app"
+	authCli "github.com/zenanetwork/iris/auth/client/cli"
+	hmTxCli "github.com/zenanetwork/iris/client/tx"
+	"github.com/zenanetwork/iris/helper"
 )
 
 var logger = helper.Logger.With("module", "cmd/Iriscli")

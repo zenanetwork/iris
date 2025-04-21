@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 
-	"github.com/maticnetwork/heimdall/cmd/heimdalld/service"
-	"github.com/maticnetwork/heimdall/version"
+	"github.com/zenanetwork/iris/cmd/irisd/service"
+	"github.com/zenanetwork/iris/version"
 )
 
 func main() {

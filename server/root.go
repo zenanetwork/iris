@@ -25,14 +25,14 @@ import (
 	rpctypes "github.com/tendermint/tendermint/rpc/lib/types"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/maticnetwork/heimdall/app"
-	tx "github.com/maticnetwork/heimdall/client/tx"
-	"github.com/maticnetwork/heimdall/helper"
-	hmRest "github.com/maticnetwork/heimdall/types/rest"
+	"github.com/zenanetwork/iris/app"
+	tx "github.com/zenanetwork/iris/client/tx"
+	"github.com/zenanetwork/iris/helper"
+	hmRest "github.com/zenanetwork/iris/types/rest"
 
 	// unnamed import of statik for swagger UI support
-	"github.com/maticnetwork/heimdall/server/gRPC"
-	_ "github.com/maticnetwork/heimdall/server/statik"
+	"github.com/zenanetwork/iris/server/gRPC"
+	_ "github.com/zenanetwork/iris/server/statik"
 )
 
 const shutdownTimeout = 10 * time.Second
@@ -286,7 +286,7 @@ func RegisterRoutes(ctx client.CLIContext, mux *mux.Router) {
 
 	// checkpoint.RegisterRoutes(rs.CliCtx, rs.Mux, rs.Cdc)
 	// staking.RegisterRoutes(rs.CliCtx, rs.Mux, rs.Cdc)
-	// bor.RegisterRoutes(rs.CliCtx, rs.Mux, rs.Cdc)
+	// zena.RegisterRoutes(rs.CliCtx, rs.Mux, rs.Cdc)
 	// clerk.RegisterRoutes(rs.CliCtx, rs.Mux, rs.Cdc)
 
 	// register rest routes
