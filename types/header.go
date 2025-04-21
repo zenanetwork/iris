@@ -7,33 +7,33 @@ import (
 
 // Checkpoint block header struct
 type Checkpoint struct {
-	Proposer   IrisAddress `json:"proposer"`
-	StartBlock uint64          `json:"start_block"`
-	EndBlock   uint64          `json:"end_block"`
-	RootHash   IrisHash    `json:"root_hash"`
-	ZenaChainID string          `json:"zena_chain_id"`
-	TimeStamp  uint64          `json:"timestamp"`
+	Proposer    IrisAddress `json:"proposer"`
+	StartBlock  uint64      `json:"start_block"`
+	EndBlock    uint64      `json:"end_block"`
+	RootHash    IrisHash    `json:"root_hash"`
+	ZenaChainID string      `json:"zena_chain_id"`
+	TimeStamp   uint64      `json:"timestamp"`
 }
 
 type CheckpointWithID struct {
-	ID         uint64          `json:"id"`
-	Proposer   IrisAddress `json:"proposer"`
-	StartBlock uint64          `json:"start_block"`
-	EndBlock   uint64          `json:"end_block"`
-	RootHash   IrisHash    `json:"root_hash"`
-	ZenaChainID string          `json:"zena_chain_id"`
-	TimeStamp  uint64          `json:"timestamp"`
+	ID          uint64      `json:"id"`
+	Proposer    IrisAddress `json:"proposer"`
+	StartBlock  uint64      `json:"start_block"`
+	EndBlock    uint64      `json:"end_block"`
+	RootHash    IrisHash    `json:"root_hash"`
+	ZenaChainID string      `json:"zena_chain_id"`
+	TimeStamp   uint64      `json:"timestamp"`
 }
 
 // Milestone block header struct
 type Milestone struct {
 	Proposer    IrisAddress `json:"proposer"`
-	StartBlock  uint64          `json:"start_block"`
-	EndBlock    uint64          `json:"end_block"`
+	StartBlock  uint64      `json:"start_block"`
+	EndBlock    uint64      `json:"end_block"`
 	Hash        IrisHash    `json:"hash"`
-	ZenaChainID  string          `json:"zena_chain_id"`
-	MilestoneID string          `json:"milestone_id"`
-	TimeStamp   uint64          `json:"timestamp"`
+	ZenaChainID string      `json:"zena_chain_id"`
+	MilestoneID string      `json:"milestone_id"`
+	TimeStamp   uint64      `json:"timestamp"`
 }
 
 // CreateBlock generate new block
@@ -46,12 +46,12 @@ func CreateBlock(
 	timestamp uint64,
 ) Checkpoint {
 	return Checkpoint{
-		StartBlock: start,
-		EndBlock:   end,
-		RootHash:   rootHash,
-		Proposer:   proposer,
+		StartBlock:  start,
+		EndBlock:    end,
+		RootHash:    rootHash,
+		Proposer:    proposer,
 		ZenaChainID: zenaChainID,
-		TimeStamp:  timestamp,
+		TimeStamp:   timestamp,
 	}
 }
 
@@ -70,7 +70,7 @@ func CreateMilestone(
 		EndBlock:    end,
 		Hash:        hash,
 		Proposer:    proposer,
-		ZenaChainID:  zenaChainID,
+		ZenaChainID: zenaChainID,
 		MilestoneID: milestoneID,
 		TimeStamp:   timestamp,
 	}

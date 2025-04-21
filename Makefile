@@ -3,11 +3,11 @@ LATEST_GIT_TAG:=$(shell git describe --tags $(git rev-list --tags --max-count=1)
 VERSION := $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
 
-ldflags = -X github.com/maticnetwork/iris/version.Name=iris \
-		  -X github.com/maticnetwork/iris/version.ServerName=irisd \
-		  -X github.com/maticnetwork/iris/version.ClientName=iriscli \
-		  -X github.com/maticnetwork/iris/version.Version=$(VERSION) \
-		  -X github.com/maticnetwork/iris/version.Commit=$(COMMIT) \
+ldflags = -X github.com/zenanetwork/iris/version.Name=iris \
+		  -X github.com/zenanetwork/iris/version.ServerName=irisd \
+		  -X github.com/zenanetwork/iris/version.ClientName=iriscli \
+		  -X github.com/zenanetwork/iris/version.Version=$(VERSION) \
+		  -X github.com/zenanetwork/iris/version.Commit=$(COMMIT) \
 		  -X github.com/cosmos/cosmos-sdk/version.Name=iris \
 		  -X github.com/cosmos/cosmos-sdk/version.ServerName=irisd \
 		  -X github.com/cosmos/cosmos-sdk/version.ClientName=iriscli \

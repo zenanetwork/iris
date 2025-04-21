@@ -27,7 +27,7 @@ var testTxStateData2 = []byte("test-tx-state2")
 type SideTxProcessorTestSuite struct {
 	suite.Suite
 
-	app     *app.EireneApp
+	app     *app.IrisApp
 	ctx     sdk.Context
 	encoder sdk.TxEncoder
 }

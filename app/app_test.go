@@ -16,11 +16,11 @@ import (
 	simTypes "github.com/zenanetwork/iris/types/simulation"
 )
 
-func TestEireneAppExport(t *testing.T) {
+func TestIrisAppExport(t *testing.T) {
 	t.Parallel()
 
 	db := db.NewMemDB()
-	happ := NewEireneApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
+	happ := NewIrisApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
 	genesisState := NewDefaultGenesisState()
 
 	// Get state bytes
@@ -39,12 +39,12 @@ func TestEireneAppExport(t *testing.T) {
 	happ.Commit()
 
 	// Making a new app object with the db, so that initchain hasn't been called
-	newHapp := NewEireneApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
+	newHapp := NewIrisApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
 	_, _, err = newHapp.ExportAppStateAndValidators()
 	require.NoError(t, err, "ExportAppStateAndValidators should not have an error")
 }
 
-func TestEireneAppExportWithRand(t *testing.T) {
+func TestIrisAppExportWithRand(t *testing.T) {
 	t.Parallel()
 
 	config, db, dir, logger, _, err := SetupSimulation("goleveldb-app-sim", "Simulation")
@@ -60,7 +60,7 @@ func TestEireneAppExportWithRand(t *testing.T) {
 	seed := rand.New(rand.NewSource(config.Seed))
 
 	// create app
-	app := NewEireneApp(logger, db)
+	app := NewIrisApp(logger, db)
 
 	params := simulation.RandomParams(seed)
 	accs := simTypes.RandomAccounts(seed, params.NumKeys())
@@ -88,7 +88,7 @@ func TestEireneAppExportWithRand(t *testing.T) {
 	app.Commit()
 
 	// Making a new app object with the db, so that initchain hasn't been called
-	newHapp := NewEireneApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
+	newHapp := NewIrisApp(log.NewTMLogger(log.NewSyncWriter(os.Stdout)), db)
 	exportedState, _, err := newHapp.ExportAppStateAndValidators()
 	require.NoError(t, err, "ExportAppStateAndValidators should not have an error")
 	require.NotEmpty(t, string(exportedState))
