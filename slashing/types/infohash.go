@@ -5,7 +5,7 @@ import (
 	"math/big"
 	"sort"
 
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/zenanetwork/go-zenanet/rlp"
 	"github.com/zenanetwork/iris/helper"
 	hmTypes "github.com/zenanetwork/iris/types"
 )

@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/zenanetwork/go-zenanet/common/math"
 	"github.com/zenanetwork/iris/topup/types"
 	hmTypes "github.com/zenanetwork/iris/types"
 	"github.com/zenanetwork/iris/types/module"

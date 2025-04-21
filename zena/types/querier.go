@@ -1,6 +1,6 @@
 package types
 
-import "github.com/ethereum/go-ethereum/common"
+import "github.com/zenanetwork/go-zenanet/common"
 
 // query endpoints supported by the auth Querier
 const (

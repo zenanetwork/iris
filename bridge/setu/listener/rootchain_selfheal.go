@@ -10,7 +10,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/core/types"
 	"github.com/zenanetwork/iris/bridge/setu/util"
 	"github.com/zenanetwork/iris/helper"
 )

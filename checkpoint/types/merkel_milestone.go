@@ -6,8 +6,8 @@ import (
 	"math"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/google/uuid"
+	"github.com/zenanetwork/go-zenanet/common"
 
 	"github.com/zenanetwork/iris/helper"
 	hmTypes "github.com/zenanetwork/iris/types"

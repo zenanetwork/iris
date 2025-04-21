@@ -11,8 +11,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
+	"github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/zenanetwork/iris/bridge/setu/util"
 	"github.com/zenanetwork/iris/contracts/stakinginfo"

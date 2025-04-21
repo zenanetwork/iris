@@ -4,8 +4,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/log"
 	grpc_retry "github.com/grpc-ecosystem/go-grpc-middleware/retry"
+	"github.com/zenanetwork/go-zenanet/log"
 
 	proto "github.com/zenanetwork/zenaproto/zena"
 
@@ -25,7 +25,7 @@ func NewZenaGRPCClient(address string) *ZenaGRPCClient {
 	opts := []grpc_retry.CallOption{
 		grpc_retry.WithMax(5),
 		grpc_retry.WithBackoff(grpc_retry.BackoffLinear(1 * time.Second)),
-		grpc_retry.WithCodes(codes.Internal, codes.Unavailable, codes.Azenated, codes.NotFound),
+		grpc_retry.WithCodes(codes.Internal, codes.Unavailable, codes.Aborted, codes.NotFound),
 	}
 
 	conn, err := grpc.NewClient(address,

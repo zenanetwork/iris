@@ -11,15 +11,14 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/rpc"
 	lru "github.com/hashicorp/golang-lru"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
+	"github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/common/hexutil"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
+	"github.com/zenanetwork/go-zenanet/ethclient"
+	"github.com/zenanetwork/go-zenanet/rpc"
 
-	"github.com/zenanetwork/iris/zena/client/grpc"
 	"github.com/zenanetwork/iris/contracts/erc20"
 	"github.com/zenanetwork/iris/contracts/rootchain"
 	"github.com/zenanetwork/iris/contracts/slashmanager"
@@ -29,6 +28,7 @@ import (
 	"github.com/zenanetwork/iris/contracts/statesender"
 	"github.com/zenanetwork/iris/contracts/validatorset"
 	"github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena/client/grpc"
 )
 
 // smart contracts' events names

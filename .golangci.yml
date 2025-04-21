@@ -1,7 +1,7 @@
 # This file configures github.com/golangci/golangci-lint.
 
 run:
-  go: '1.22'
+  go: "1.22"
   timeout: 20m
   tests: true
 
@@ -123,12 +123,12 @@ linters-settings:
       printf:
         # Run `go tool vet help printf` to see available settings for `printf` analyzer.
         funcs:
-          - (github.com/ethereum/go-ethereum/log.Logger).Trace
-          - (github.com/ethereum/go-ethereum/log.Logger).Debug
-          - (github.com/ethereum/go-ethereum/log.Logger).Info
-          - (github.com/ethereum/go-ethereum/log.Logger).Warn
-          - (github.com/ethereum/go-ethereum/log.Logger).Error
-          - (github.com/ethereum/go-ethereum/log.Logger).Crit
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Trace
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Debug
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Info
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Warn
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Error
+          - (github.com/zenanetwork/go-zenanet/log.Logger).Crit
 
 issues:
   exclude-dirs:

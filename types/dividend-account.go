@@ -8,13 +8,13 @@ import (
 
 	"github.com/cbergoon/merkletree"
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/zenanetwork/go-zenanet/crypto"
 )
 
 // DividendAccount contains burned Fee amount
 type DividendAccount struct {
 	User      IrisAddress `json:"user"`
-	FeeAmount string          `json:"feeAmount"` // string representation of big.Int
+	FeeAmount string      `json:"feeAmount"` // string representation of big.Int
 }
 
 func NewDividendAccount(user IrisAddress, fee string) DividendAccount {

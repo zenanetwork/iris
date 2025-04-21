@@ -1,6 +1,6 @@
 package statesender
 
-import "github.com/ethereum/go-ethereum/common"
+import "github.com/zenanetwork/go-zenanet/common"
 
 const (
 	// StateSyncedEventID is the topic ID of StateSynced event

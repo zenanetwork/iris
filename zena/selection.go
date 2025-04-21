@@ -6,11 +6,11 @@ import (
 	"math"
 	"math/rand"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 
-	"github.com/zenanetwork/iris/zena/types"
 	"github.com/zenanetwork/iris/helper"
 	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena/types"
 )
 
 // XXXSelectNextProducers selects producers for next span by converting power to tickets

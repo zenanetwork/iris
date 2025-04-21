@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 	"github.com/zenanetwork/iris/bridge/setu/util"
 	hmClient "github.com/zenanetwork/iris/client"
 	"github.com/zenanetwork/iris/contracts/stakinginfo"

@@ -5,7 +5,7 @@ package mocks
 import (
 	big "math/big"
 
-	common "github.com/ethereum/go-ethereum/common"
+	common "github.com/zenanetwork/go-zenanet/common"
 	erc20 "github.com/zenanetwork/iris/contracts/erc20"
 
 	iristypes "github.com/zenanetwork/iris/types"
@@ -24,7 +24,7 @@ import (
 
 	statesender "github.com/zenanetwork/iris/contracts/statesender"
 
-	types "github.com/ethereum/go-ethereum/core/types"
+	types "github.com/zenanetwork/go-zenanet/core/types"
 
 	validatorset "github.com/zenanetwork/iris/contracts/validatorset"
 )

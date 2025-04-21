@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/RichardKnop/machinery/v1/tasks"
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	ethCommon "github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/zenanetwork/go-zenanet"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
+	ethCommon "github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/rpc"
 
 	"github.com/zenanetwork/iris/bridge/setu/util"
 	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"

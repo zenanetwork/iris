@@ -10,8 +10,8 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
+	"github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/zenanetwork/iris/bridge/setu/util"
 	chainmanagerTypes "github.com/zenanetwork/iris/chainmanager/types"

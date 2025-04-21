@@ -2,7 +2,7 @@ package types
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 
 	hmTypes "github.com/zenanetwork/iris/types"
 )

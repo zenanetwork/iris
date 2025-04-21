@@ -1,9 +1,9 @@
 package types
 
 import (
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
+	"github.com/zenanetwork/go-zenanet/accounts/abi/bind"
+	"github.com/zenanetwork/go-zenanet/common"
 )
 
 // Contract is how we represent contracts at iris

@@ -15,7 +15,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/spf13/viper"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/zenanetwork/iris/app"
 	authTypes "github.com/zenanetwork/iris/auth/types"

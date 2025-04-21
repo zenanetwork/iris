@@ -10,8 +10,8 @@ import (
 	cliContext "github.com/cosmos/cosmos-sdk/client/context"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	zena "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/core/types"
+	zena "github.com/zenanetwork/go-zenanet"
+	"github.com/zenanetwork/go-zenanet/core/types"
 
 	authTypes "github.com/zenanetwork/iris/auth/types"
 	"github.com/zenanetwork/iris/bridge/setu/util"

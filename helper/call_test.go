@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 
 	authTypes "github.com/zenanetwork/iris/auth/types"
 	"github.com/zenanetwork/iris/contracts/erc20"

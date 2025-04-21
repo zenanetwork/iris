@@ -4,7 +4,7 @@ import (
 	"math/big"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ethereum/go-ethereum/accounts/abi"
+	"github.com/zenanetwork/go-zenanet/accounts/abi"
 	hmCommon "github.com/zenanetwork/iris/common"
 	"github.com/zenanetwork/iris/types"
 	hmTypes "github.com/zenanetwork/iris/types"

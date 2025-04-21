@@ -11,15 +11,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/ethereum/go-ethereum/common"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/common"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 
-	"github.com/zenanetwork/iris/zena/types"
 	"github.com/zenanetwork/iris/chainmanager"
 	"github.com/zenanetwork/iris/helper"
 	"github.com/zenanetwork/iris/params/subspace"
 	"github.com/zenanetwork/iris/staking"
 	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena/types"
 )
 
 const maxSpanListLimit = 150 // a span is ~6 KB => we can fit 150 spans in 1 MB response
@@ -360,7 +360,7 @@ func (k *Keeper) GetLastEthBlock(ctx sdk.Context) *big.Int {
 func (k *Keeper) GetNextSpanSeed(ctx sdk.Context, id uint64) (common.Hash, common.Address, error) {
 	var (
 		blockHeader *ethTypes.Header
-		zenaBlock    uint64
+		zenaBlock   uint64
 		seedSpan    *hmTypes.Span
 		err         error
 		author      *common.Address
@@ -491,8 +491,8 @@ func (k *Keeper) IterateSpansAndApplyFn(ctx sdk.Context, f func(span hmTypes.Spa
 func (k *Keeper) getZenaBlockForSpanSeed(ctx sdk.Context, seedSpan *hmTypes.Span, proposedSpanID uint64) (uint64, *common.Address, error) {
 	var (
 		zenaBlock uint64
-		author   *common.Address
-		err      error
+		author    *common.Address
+		err       error
 	)
 
 	logger := k.Logger(ctx)

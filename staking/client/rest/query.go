@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 	"github.com/zenanetwork/iris/staking/types"
 	hmTypes "github.com/zenanetwork/iris/types"
 	hmRest "github.com/zenanetwork/iris/types/rest"

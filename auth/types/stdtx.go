@@ -8,9 +8,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/common/hexutil"
+	"github.com/zenanetwork/go-zenanet/rlp"
 )
 
 var (

@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/zenanetwork/iris/app"
 	"github.com/zenanetwork/iris/clerk"

@@ -7,8 +7,8 @@ import (
 	"reflect"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/zenanetwork/go-zenanet/crypto"
+	"github.com/zenanetwork/go-zenanet/rlp"
 )
 
 const (

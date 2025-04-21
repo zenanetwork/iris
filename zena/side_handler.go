@@ -6,11 +6,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	ethCommon "github.com/ethereum/go-ethereum/common"
-	"github.com/zenanetwork/iris/zena/types"
+	ethCommon "github.com/zenanetwork/go-zenanet/common"
 	"github.com/zenanetwork/iris/common"
 	hmCommon "github.com/zenanetwork/iris/common"
 	"github.com/zenanetwork/iris/helper"
+	"github.com/zenanetwork/iris/zena/types"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"

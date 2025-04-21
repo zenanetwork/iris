@@ -11,10 +11,10 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/zenanetwork/go-zenanet/accounts/abi/bind"
+	"github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/crypto"
+	"github.com/zenanetwork/go-zenanet/ethclient"
 
 	"github.com/zenanetwork/iris/contracts/erc20"
 	"github.com/zenanetwork/iris/contracts/rootchain"

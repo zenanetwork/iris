@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/common/hexutil"
+	"github.com/zenanetwork/go-zenanet/common/math"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
+	"github.com/zenanetwork/go-zenanet/log"
+	"github.com/zenanetwork/go-zenanet/rpc"
 
 	protoutil "github.com/zenanetwork/zenaproto/utils"
 	proto "github.com/zenanetwork/zenaproto/zena"

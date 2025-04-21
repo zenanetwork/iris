@@ -1,6 +1,6 @@
 package stakinginfo
 
-import "github.com/ethereum/go-ethereum/common"
+import "github.com/zenanetwork/go-zenanet/common"
 
 const (
 	// StakeUpdateEventID is the topic ID of StakeUpdate event

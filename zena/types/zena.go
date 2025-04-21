@@ -3,7 +3,7 @@ package types
 import (
 	"encoding/json"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 )
 
 // ResponseWithHeight defines a response object type that wraps an original

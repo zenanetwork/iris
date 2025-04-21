@@ -8,10 +8,10 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 

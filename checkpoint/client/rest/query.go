@@ -13,8 +13,8 @@ import (
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/ethereum/go-ethereum/common"
-	ethcmn "github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
+	ethcmn "github.com/zenanetwork/go-zenanet/common"
 
 	"github.com/zenanetwork/iris/checkpoint/types"
 	"github.com/zenanetwork/iris/helper"

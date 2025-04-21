@@ -8,8 +8,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/tendermint/tendermint/libs/log"
+	"github.com/zenanetwork/go-zenanet/common"
 
 	"github.com/zenanetwork/iris/chainmanager"
 	"github.com/zenanetwork/iris/helper"

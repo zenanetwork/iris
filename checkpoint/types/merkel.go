@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/cbergoon/merkletree"
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 
 	"github.com/tendermint/crypto/sha3"
 

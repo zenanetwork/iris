@@ -7,11 +7,11 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	zenaCommon "github.com/ethereum/go-ethereum/common"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	zenaCommon "github.com/zenanetwork/go-zenanet/common"
 
 	"github.com/zenanetwork/iris/app"
 	cmTypes "github.com/zenanetwork/iris/chainmanager/types"

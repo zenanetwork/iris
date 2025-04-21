@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 )
 
 // Validator iris validator

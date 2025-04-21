@@ -12,9 +12,9 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/tendermint/tendermint/libs/log"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
+	ethereum "github.com/zenanetwork/go-zenanet"
+	"github.com/zenanetwork/go-zenanet/core/types"
+	"github.com/zenanetwork/go-zenanet/ethclient"
 
 	"github.com/zenanetwork/iris/bridge/setu/queue"
 	"github.com/zenanetwork/iris/bridge/setu/util"

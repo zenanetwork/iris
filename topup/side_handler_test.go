@@ -8,11 +8,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkAuth "github.com/cosmos/cosmos-sdk/x/auth/types"
-	ethCommon "github.com/ethereum/go-ethereum/common"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	ethCommon "github.com/zenanetwork/go-zenanet/common"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/zenanetwork/iris/app"
 	authTypes "github.com/zenanetwork/iris/auth/types"

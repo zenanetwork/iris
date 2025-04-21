@@ -8,7 +8,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"gopkg.in/yaml.v3"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/zenanetwork/go-zenanet/common"
 )
 
 // Ensure that different address types implement the interface

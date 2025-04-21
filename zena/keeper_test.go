@@ -5,14 +5,14 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ethereum/go-ethereum/common"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/zenanetwork/go-zenanet/common"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 	"github.com/zenanetwork/iris/app"
-	"github.com/zenanetwork/iris/zena"
 	"github.com/zenanetwork/iris/helper/mocks"
 	hmTypes "github.com/zenanetwork/iris/types"
+	"github.com/zenanetwork/iris/zena"
 )
 
 type ZenaKeeperTestSuite struct {

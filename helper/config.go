@@ -11,9 +11,6 @@ import (
 	"strings"
 	"time"
 
-	ethCrypto "github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/tendermint/go-amino"
@@ -22,10 +19,13 @@ import (
 	logger "github.com/tendermint/tendermint/libs/log"
 	"github.com/tendermint/tendermint/privval"
 	tmTypes "github.com/tendermint/tendermint/types"
+	ethCrypto "github.com/zenanetwork/go-zenanet/crypto"
+	"github.com/zenanetwork/go-zenanet/ethclient"
+	"github.com/zenanetwork/go-zenanet/rpc"
 
-	zenagrpc "github.com/zenanetwork/iris/zena/client/grpc"
 	"github.com/zenanetwork/iris/file"
 	hmTypes "github.com/zenanetwork/iris/types"
+	zenagrpc "github.com/zenanetwork/iris/zena/client/grpc"
 )
 
 const (
@@ -47,9 +47,9 @@ const (
 
 	// iris-config flags
 	MainRPCUrlFlag               = "eth_rpc_url"
-	ZenaRPCUrlFlag                = "zena_rpc_url"
-	ZenaGRPCUrlFlag               = "zena_grpc_url"
-	ZenaGRPCFlag                  = "zena_grpc_flag"
+	ZenaRPCUrlFlag               = "zena_rpc_url"
+	ZenaGRPCUrlFlag              = "zena_grpc_url"
+	ZenaGRPCFlag                 = "zena_grpc_flag"
 	TendermintNodeURLFlag        = "tendermint_rpc_url"
 	IrisServerURLFlag            = "iris_rest_server"
 	AmqpURLFlag                  = "amqp_url"
@@ -81,12 +81,12 @@ const (
 	// --
 
 	// RPC Endpoints
-	DefaultMainRPCUrl = "http://localhost:9545"
+	DefaultMainRPCUrl  = "http://localhost:9545"
 	DefaultZenaRPCUrl  = "http://localhost:8545"
 	DefaultZenaGRPCUrl = "localhost:3131"
 
 	// RPC Timeouts
-	DefaultEthRPCTimeout = 5 * time.Second
+	DefaultEthRPCTimeout  = 5 * time.Second
 	DefaultZenaRPCTimeout = 5 * time.Second
 
 	// Services
@@ -169,13 +169,13 @@ func init() {
 // Configuration represents iris config
 type Configuration struct {
 	EthRPCUrl        string `mapstructure:"eth_rpc_url"`        // RPC endpoint for main chain
-	ZenaRPCUrl        string `mapstructure:"zena_rpc_url"`        // RPC endpoint for zena chain
-	ZenaGRPCUrl       string `mapstructure:"zena_grpc_url"`       // gRPC endpoint for zena chain
-	ZenaGRPCFlag      bool   `mapstructure:"zena_grpc_flag"`      // gRPC flag for zena chain
+	ZenaRPCUrl       string `mapstructure:"zena_rpc_url"`       // RPC endpoint for zena chain
+	ZenaGRPCUrl      string `mapstructure:"zena_grpc_url"`      // gRPC endpoint for zena chain
+	ZenaGRPCFlag     bool   `mapstructure:"zena_grpc_flag"`     // gRPC flag for zena chain
 	TendermintRPCUrl string `mapstructure:"tendermint_rpc_url"` // tendemint node url
 	SubGraphUrl      string `mapstructure:"sub_graph_url"`      // sub graph url
 
-	EthRPCTimeout time.Duration `mapstructure:"eth_rpc_timeout"` // timeout for eth rpc
+	EthRPCTimeout  time.Duration `mapstructure:"eth_rpc_timeout"`  // timeout for eth rpc
 	ZenaRPCTimeout time.Duration `mapstructure:"zena_rpc_timeout"` // timeout for zena rpc
 
 	AmqpURL       string `mapstructure:"amqp_url"`         // amqp url
@@ -443,11 +443,11 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 func GetDefaultIrisConfig() Configuration {
 	return Configuration{
 		EthRPCUrl:        DefaultMainRPCUrl,
-		ZenaRPCUrl:        DefaultZenaRPCUrl,
-		ZenaGRPCUrl:       DefaultZenaGRPCUrl,
+		ZenaRPCUrl:       DefaultZenaRPCUrl,
+		ZenaGRPCUrl:      DefaultZenaGRPCUrl,
 		TendermintRPCUrl: DefaultTendermintNodeURL,
 
-		EthRPCTimeout: DefaultEthRPCTimeout,
+		EthRPCTimeout:  DefaultEthRPCTimeout,
 		ZenaRPCTimeout: DefaultZenaRPCTimeout,
 
 		AmqpURL:       DefaultAmqpURL,

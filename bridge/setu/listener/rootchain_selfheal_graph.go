@@ -11,9 +11,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/accounts/abi/bind"
+	"github.com/zenanetwork/go-zenanet/common"
+	"github.com/zenanetwork/go-zenanet/core/types"
 	jsoniter "github.com/json-iterator/go"
 
 	"github.com/zenanetwork/iris/helper"

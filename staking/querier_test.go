@@ -9,10 +9,10 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	ethTypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
+	ethTypes "github.com/zenanetwork/go-zenanet/core/types"
 
 	"github.com/zenanetwork/iris/app"
 	chSim "github.com/zenanetwork/iris/checkpoint/simulation"
