@@ -1767,8 +1767,8 @@ github.com/zeebo/assert v1.3.0/go.mod h1:Pq9JiuJQpG8JLJdtkwrJESF0Foym2/D9XMU5ciN
 github.com/zeebo/xxh3 v1.0.2/go.mod h1:5NWz9Sef7zIDm2JHfFlcQvNekmcEl9ekUZQQKCYaDcA=
 github.com/zenanetwork/go-zenanet v0.1.0 h1:XHxSK546UQmzQ81fMH0urM0kPvJk5d71cKDuAb4I+F4=
 github.com/zenanetwork/go-zenanet v0.1.0/go.mod h1:WPpRsqNBf5DwsQPRhWaYWKLiU9LSuiAf3K59TAZ8Ieg=
-github.com/zenanetwork/zenaproto v0.1.1 h1:+Vsexr1tmAzOVoVTmmX8XbjbZKw81bhdbmuT+hZU9Ak=
-github.com/zenanetwork/zenaproto v0.1.1/go.mod h1:76VjL2Q6dlPp7MRPH3gttS5+pdmOqgASUXrxdwevY3A=
+github.com/zenanetwork/zenaproto v0.1.2 h1:5K0dT6o+1m/cuefUMUV37cywb6zmvk0R4iTi7pTdxjY=
+github.com/zenanetwork/zenaproto v0.1.2/go.mod h1:76VjL2Q6dlPp7MRPH3gttS5+pdmOqgASUXrxdwevY3A=
 github.com/zondax/hid v0.9.1 h1:gQe66rtmyZ8VeGFcOpbuH3r7erYtNEAezCAYu8LdkJo=
 github.com/zondax/hid v0.9.1/go.mod h1:l5wttcP0jwtdLjqjMMWFVEE7d1zO0jvSPA9OPZxWpEM=
 github.com/zondax/ledger-go v0.14.1 h1:Pip65OOl4iJ84WTpA4BKChvOufMhhbxED3BaihoZN4c=

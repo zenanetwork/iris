@@ -16,7 +16,7 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/zenanetwork/go-zenanet/common"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/zenanetwork/go-zenanet/core/types"
 	"github.com/zenanetwork/iris/app"
 	authTypes "github.com/zenanetwork/iris/auth/types"
 	authTypesMocks "github.com/zenanetwork/iris/auth/types/mocks"

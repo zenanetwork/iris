@@ -72,12 +72,12 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustSuccess() {
 	keeper := app.CheckpointKeeper
 
 	checkpoint := hmTypes.Checkpoint{
-		Proposer:   hmTypes.HexToIrisAddress("123"),
-		StartBlock: 0,
-		EndBlock:   256,
-		RootHash:   hmTypes.HexToIrisHash("123"),
-		BorChainID: "testchainid",
-		TimeStamp:  1,
+		Proposer:    hmTypes.HexToIrisAddress("123"),
+		StartBlock:  0,
+		EndBlock:    256,
+		RootHash:    hmTypes.HexToIrisHash("123"),
+		ZenaChainID: "testchainid",
+		TimeStamp:   1,
 	}
 	err := keeper.AddCheckpoint(ctx, 1, checkpoint)
 	require.NoError(t, err)
@@ -108,12 +108,12 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustSameCheckpointAsRoot
 	keeper := app.CheckpointKeeper
 
 	checkpoint := hmTypes.Checkpoint{
-		Proposer:   hmTypes.HexToIrisAddress("123"),
-		StartBlock: 0,
-		EndBlock:   256,
-		RootHash:   hmTypes.HexToIrisHash("123"),
-		BorChainID: "testchainid",
-		TimeStamp:  1,
+		Proposer:    hmTypes.HexToIrisAddress("123"),
+		StartBlock:  0,
+		EndBlock:    256,
+		RootHash:    hmTypes.HexToIrisHash("123"),
+		ZenaChainID: "testchainid",
+		TimeStamp:   1,
 	}
 	err := keeper.AddCheckpoint(ctx, 1, checkpoint)
 	require.NoError(t, err)
@@ -139,12 +139,12 @@ func (suite *HandlerTestSuite) TestHandleMsgCheckpointAdjustNotSameCheckpointAsR
 	keeper := app.CheckpointKeeper
 
 	checkpoint := hmTypes.Checkpoint{
-		Proposer:   hmTypes.HexToIrisAddress("123"),
-		StartBlock: 0,
-		EndBlock:   256,
-		RootHash:   hmTypes.HexToIrisHash("123"),
-		BorChainID: "testchainid",
-		TimeStamp:  1,
+		Proposer:    hmTypes.HexToIrisAddress("123"),
+		StartBlock:  0,
+		EndBlock:    256,
+		RootHash:    hmTypes.HexToIrisHash("123"),
+		ZenaChainID: "testchainid",
+		TimeStamp:   1,
 	}
 	err := keeper.AddCheckpoint(ctx, 1, checkpoint)
 	require.NoError(t, err)
@@ -388,7 +388,7 @@ func (suite *SideHandlerTestSuite) TestPostHandleMsgCheckpoint() {
 		require.Equal(t, bufferedHeader.EndBlock, header.EndBlock)
 		require.Equal(t, bufferedHeader.RootHash, header.RootHash)
 		require.Equal(t, bufferedHeader.Proposer, header.Proposer)
-		require.Equal(t, bufferedHeader.BorChainID, header.BorChainID)
+		require.Equal(t, bufferedHeader.ZenaChainID, header.ZenaChainID)
 		require.Empty(t, err, "Unable to set checkpoint from buffer, Error: %v", err)
 	})
 

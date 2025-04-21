@@ -333,12 +333,12 @@ func PostHandleMsgCheckpoint(ctx sdk.Context, k Keeper, msg types.MsgCheckpoint,
 
 	// Add checkpoint to buffer with root hash and account hash
 	if err = k.SetCheckpointBuffer(ctx, hmTypes.Checkpoint{
-		StartBlock: msg.StartBlock,
-		EndBlock:   msg.EndBlock,
-		RootHash:   msg.RootHash,
-		Proposer:   msg.Proposer,
-		BorChainID: msg.BorChainID,
-		TimeStamp:  timeStamp,
+		StartBlock:  msg.StartBlock,
+		EndBlock:    msg.EndBlock,
+		RootHash:    msg.RootHash,
+		Proposer:    msg.Proposer,
+		ZenaChainID: msg.ZenaChainID,
+		TimeStamp:   timeStamp,
 	}); err != nil {
 		logger.Error("Failed to set checkpoint buffer", "Error", err)
 	}

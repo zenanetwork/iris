@@ -352,7 +352,7 @@ func InitIrisConfigWith(homeDir string, irisConfigFileFromFLag string) {
 
 	if conf.ZenaRPCTimeout == 0 {
 		// fallback to default
-		Logger.Debug("Missing BOR RPC timeout or invalid value provided, falling back to default", "timeout", DefaultZenaRPCTimeout)
+		Logger.Debug("Missing ZENA RPC timeout or invalid value provided, falling back to default", "timeout", DefaultZenaRPCTimeout)
 		conf.ZenaRPCTimeout = DefaultZenaRPCTimeout
 	}
 
