@@ -19,12 +19,12 @@ import (
 )
 
 type Milestone struct {
-	Proposer   hmTypes.IrisAddress `json:"proposer"`
-	StartBlock uint64              `json:"start_block"`
-	EndBlock   uint64              `json:"end_block"`
-	Hash       hmTypes.IrisHash    `json:"hash"`
+	Proposer    hmTypes.IrisAddress `json:"proposer"`
+	StartBlock  uint64              `json:"start_block"`
+	EndBlock    uint64              `json:"end_block"`
+	Hash        hmTypes.IrisHash    `json:"hash"`
 	ZenaChainID string              `json:"zena_chain_id"`
-	TimeStamp  uint64              `json:"timestamp"`
+	TimeStamp   uint64              `json:"timestamp"`
 }
 
 func (h *IrisGRPCServer) FetchMilestoneCount(ctx context.Context, in *emptypb.Empty) (*proto.FetchMilestoneCountResponse, error) {
@@ -79,11 +79,11 @@ func (h *IrisGRPCServer) FetchMilestone(ctx context.Context, in *emptypb.Empty) 
 
 	resp.Height = fmt.Sprint(result.Height)
 	resp.Result = &proto.Milestone{
-		StartBlock: milestone.StartBlock,
-		EndBlock:   milestone.EndBlock,
-		RootHash:   protoutils.ConvertHashToH256(hash),
-		Proposer:   protoutils.ConvertAddressToH160(address),
-		Timestamp:  timestamppb.New(time.Unix(big.NewInt(0).SetUint64(milestone.TimeStamp).Int64(), 0)),
+		StartBlock:  milestone.StartBlock,
+		EndBlock:    milestone.EndBlock,
+		RootHash:    protoutils.ConvertHashToH256(hash),
+		Proposer:    protoutils.ConvertAddressToH160(address),
+		Timestamp:   timestamppb.New(time.Unix(big.NewInt(0).SetUint64(milestone.TimeStamp).Int64(), 0)),
 		ZenaChainID: milestone.ZenaChainID,
 	}
 

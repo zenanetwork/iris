@@ -15,16 +15,16 @@ import (
 )
 
 type Event struct {
-	Id         uint64 `json:"id"`
-	Contract   string `json:"contract"`
-	Data       string `json:"data"`
-	TxHash     string `json:"tx_hash"`
-	LogIndex   uint64 `json:"log_index"`
+	Id          uint64 `json:"id"`
+	Contract    string `json:"contract"`
+	Data        string `json:"data"`
+	TxHash      string `json:"tx_hash"`
+	LogIndex    uint64 `json:"log_index"`
 	ZenaChainId string `json:"zena_chain_id"`
-	RecordTime string `json:"record_time"`
+	RecordTime  string `json:"record_time"`
 }
 
-func (h *IrisGRPCServer) StateSyncEvents(req *proto.StateSyncEventsRequest, reply proto.Heimdall_StateSyncEventsServer) error {
+func (h *IrisGRPCServer) StateSyncEvents(req *proto.StateSyncEventsRequest, reply proto.Iris_StateSyncEventsServer) error {
 	cliCtx := cliContext.NewCLIContext().WithCodec(h.cdc)
 	fromId := req.FromID
 
