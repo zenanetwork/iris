@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum"
 	lru "github.com/hashicorp/golang-lru"
+	"github.com/zenanetwork/go-zenanet"
 	"github.com/zenanetwork/go-zenanet/accounts/abi"
 	"github.com/zenanetwork/go-zenanet/common"
 	"github.com/zenanetwork/go-zenanet/common/hexutil"
@@ -518,7 +518,7 @@ func (c *ContractCaller) GetZenaChainBlockAuthor(blockNum *big.Int) (*common.Add
 	}
 
 	if author == nil {
-		return nil, ethereum.NotFound
+		return nil, zenanet.NotFound
 	}
 
 	return author, nil
