@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ethereum/go-ethereum"
+	"github.com/zenanetwork/go-zenanet"
 	"github.com/zenanetwork/go-zenanet/accounts/abi/bind"
 	"github.com/zenanetwork/go-zenanet/common"
 	"github.com/zenanetwork/go-zenanet/crypto"
@@ -24,7 +24,7 @@ import (
 
 func GenerateAuthObj(client *ethclient.Client, address common.Address, data []byte) (auth *bind.TransactOpts, err error) {
 	// generate call msg
-	callMsg := ethereum.CallMsg{
+	callMsg := zenanet.CallMsg{
 		To:   &address,
 		Data: data,
 	}

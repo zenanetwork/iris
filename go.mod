@@ -29,7 +29,7 @@ require (
 	github.com/tendermint/tendermint v0.34.24
 	github.com/tendermint/tm-db v0.6.7
 	github.com/zenanetwork/go-zenanet v0.1.0
-	github.com/zenanetwork/zenaproto v0.1.1
+	github.com/zenanetwork/zenaproto v0.1.2
 	golang.org/x/sync v0.13.0
 	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
