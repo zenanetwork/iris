@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+#
+##################
+# Stops existing for upgrade
+export IRIS_DIR=/var/lib/iris
+sudo -u iris irisd init --chain=mainnet --home /var/lib/iris
+sudo chown -R iris $IRIS_DIR
+#################
+#sudo systemctl stop irisd.service

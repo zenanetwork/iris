@@ -1,0 +1,16 @@
+[Unit]
+  Description=irisd
+  StartLimitIntervalSec=500
+  StartLimitBurst=5
+[Service]
+  Restart=on-failure
+  RestartSec=5s
+  WorkingDirectory=/usr/bin
+  ExecStart=/usr/bin/irisd start --home "/var/lib/iris" \
+    --chain={{NETWORK}} \
+    --rest-server
+  Type=simple
+  LimitNOFILE=65536
+  User=iris
+[Install]
+  WantedBy=multi-user.target

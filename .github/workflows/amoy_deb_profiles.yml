@@ -1,0 +1,177 @@
+name: amoy_deb_profiles
+
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "**"
+    tags:
+      - "v*.*.*"
+      - "v*.*.*-*"
+
+jobs:
+  build:
+    permissions:
+      id-token: write
+      contents: write
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Variables
+      - name: Adding TAG to ENV
+        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+      - name: adding version
+        run: |
+          NUMERIC_VERSION=$( echo ${{ env.GIT_TAG }} | sed 's/[^0-9.]//g' )
+          echo "VERSION=$NUMERIC_VERSION" >> $GITHUB_ENV
+
+      - name: Making directory structure for yaml
+        run: mkdir -p packaging/deb/eirened/var/lib/eirene/config
+      - name: making directory structure for the systemd
+        run: mkdir -p packaging/deb/eirened/lib/systemd/system
+      - name: delete old control file
+        run: rm -rf packaging/deb/eirened/DEBIAN/control
+
+      # Control file creation
+      - name: create control file
+        run: |
+          touch packaging/deb/eirened/DEBIAN/control
+          echo "Package: eirene-profile" >> packaging/deb/eirened/DEBIAN/control
+          echo "Version: ${{ env.VERSION }}" >> packaging/deb/eirened/DEBIAN/control
+          echo "Section: base" >> packaging/deb/eirened/DEBIAN/control
+          echo "Priority: optional" >> packaging/deb/eirened/DEBIAN/control
+          echo "Architecture: all" >> packaging/deb/eirened/DEBIAN/control
+          echo "Maintainer: devops@zena.technology" >> packaging/deb/eirened/DEBIAN/control
+          echo "Description: eirene profile package" >> packaging/deb/eirened/DEBIAN/control
+
+      #### Sentry Profiles ####
+      - name: Setting up eirened for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/deb/eirened packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Copying Postinst/Postrm for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/package_scripts/postinst.profile packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/postinst
+          cp -rp packaging/templates/package_scripts/postrm.profile packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/postrm
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Copying preinst for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/package_scripts/preinst packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/preinst
+          sed -i "s/{{NETWORK}}/${{ env.NETWORK }}/g" packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/preinst
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Copying eirene-config for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/templates/config/${{ env.NETWORK }}/eirene-config.toml packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/var/lib/eirene/config/eirene-config.toml
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Copying config for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/templates/config/${{ env.NETWORK }}/config.toml packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/var/lib/eirene/config/config.toml
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Copying systemd file for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/systemd/eirened-sentry.service packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/lib/systemd/system/eirened.service
+          sed -i "s/{{NETWORK}}/${{ env.NETWORK }}/g" packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/lib/systemd/system/eirened.service
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+      - name: Building eirened for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }} profile
+        run: dpkg-deb --build --root-owner-group packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+
+      ### Validator Profiles ###
+      - name: Setting eirened for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/deb/eirened packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Copying over the postinst/postrm file for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/package_scripts/postinst.profile packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN//postinst
+          cp -rp packaging/templates/package_scripts/postrm.profile packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/postrm
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Copying preinst for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/package_scripts/preinst packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/preinst
+          sed -i "s/{{NETWORK}}/${{ env.NETWORK }}/g" packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/DEBIAN/preinst
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Copying eirene-config for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/templates/config/${{ env.NETWORK }}/eirene-config.toml packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/var/lib/eirene/config/eirene-config.toml
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Copying config for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: cp -rp packaging/templates/config/${{ env.NETWORK }}/config.toml packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/var/lib/eirene/config/config.toml
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Copying systemd file for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }}
+        run: |
+          cp -rp packaging/templates/systemd/eirened-validator.service packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/lib/systemd/system/eirened.service
+          sed -i "s/{{NETWORK}}/${{ env.NETWORK }}/g" packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}/lib/systemd/system/eirened.service
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+      - name: Building eirened for ${{ env.NODE }} on ${{ env.NETWORK }} on ${{ env.ARCH }} profile
+        run: dpkg-deb --build --root-owner-group packaging/deb/eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+
+      # Shasum
+      - name: shasum the eirene debian profile package
+        run: cd packaging/deb/ && sha256sum eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}.deb > eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}.deb.checksum
+        env:
+          ARCH: all
+          NODE: sentry
+          NETWORK: amoy
+
+      - name: shasum the eirene debian profile package
+        run: cd packaging/deb/ && sha256sum eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}.deb > eirene-${{ env.NETWORK }}-${{ env.NODE }}-config_${{ env.GIT_TAG }}-${{ env.ARCH }}.deb.checksum
+        env:
+          ARCH: all
+          NODE: validator
+          NETWORK: amoy
+
+      ############ Check and Upload ##########################
+      - name: Confirming package built
+        run: ls -ltr packaging/deb/ | grep eirene
+
+      - name: Release eirene Packages
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.GIT_TAG }}
+          prerelease: true
+          files: |
+            packaging/deb/eirene-amoy-**.deb
+            packaging/deb/eirene-amoy-**.deb.checksum

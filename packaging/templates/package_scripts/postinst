@@ -1,0 +1,13 @@
+#!/bin/bash
+# This is a postinstallation script so the service can be configured and started when requested
+#
+export IRIS_DIR=/var/lib/iris
+sudo adduser --disabled-password --disabled-login --shell /usr/sbin/nologin --quiet --system --no-create-home --home /nonexistent iris
+if [ -d "$IRIS_DIR" ]
+then
+    echo "Directory $IRIS_DIR exists."
+    sudo chown -R iris $IRIS_DIR
+else
+    mkdir -p $IRIS_DIR
+    sudo chown -R iris $IRIS_DIR
+fi

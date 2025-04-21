@@ -1,0 +1,25 @@
+.DS_Store
+
+helper/iris-params.go
+
+# ignore vendor
+vendor/
+vendor/github.com/zenanetwork/go-zenanet
+vendor/github.com/tendermint/iavl
+
+# ignore build
+build
+logs
+*.log
+
+.idea
+.vscode
+
+data/
+dist/
+
+.dccache
+.idea/
+.idea*
+
+cover.out

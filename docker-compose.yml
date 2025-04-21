@@ -1,0 +1,70 @@
+# This is an example compose file for starting up Iris required components
+# to run standalone without Bor for development and testing purposes.
+# Do not use this for production.
+version: "3"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-alpine
+    ports:
+      - "5672:5672" # RabbitMQ
+    restart: unless-stopped
+
+  irisd:
+    container_name: irisd
+    image: 0xpolygon/iris:latest
+    build: .
+    restart: unless-stopped
+    environment:
+      - IRIS_ETH_RPC_URL=https://goerli.infura.io/v3/[YOUR_INFURA_PROJECT_ID]
+    volumes:
+      - ./data:/iris
+    ports:
+      - "26656:26656" # P2P (TCP)
+      - "26657:26657" # RPC (TCP)
+    depends_on:
+      - rabbitmq
+    command:
+      - start
+      - --p2p.laddr=tcp://0.0.0.0:26656
+      - --rpc.laddr=tcp://0.0.0.0:26657
+
+  irisr:
+    container_name: irisr
+    image: 0xpolygon/iris:latest
+    build: .
+    restart: unless-stopped
+    environment:
+      - IRIS_ETH_RPC_URL=https://goerli.infura.io/v3/[YOUR_INFURA_PROJECT_ID]
+    volumes:
+      - ./data:/iris
+    ports:
+      - "1317:1317" # Iris REST API
+    depends_on:
+      - irisd
+    command:
+      - rest-server
+      - --laddr=tcp://0.0.0.0:1317
+      - --node=tcp://irisd:26657
+
+  bridge:
+    container_name: bridge
+    image: 0xpolygon/iris:latest
+    build: .
+    restart: unless-stopped
+    environment:
+      - IRIS_ETH_RPC_URL=https://goerli.infura.io/v3/[YOUR_INFURA_PROJECT_ID]
+      - IRIS_AMQP_URL=amqp://guest:guest@rabbitmq:5672
+      - IRIS_IRIS_REST_SERVER=http://irisr:1317
+      - IRIS_TENDERMINT_RPC_URL=http://irisd:26657
+    volumes:
+      - ./data:/iris
+    depends_on:
+      - irisd
+      - irisr
+      - rabbitmq
+    command:
+      - bridge
+      - start
+      - --all

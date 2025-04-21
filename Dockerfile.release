@@ -1,0 +1,21 @@
+FROM alpine:3.14
+
+ARG IRIS_DIR=/var/lib/iris
+ENV IRIS_DIR=$IRIS_DIR
+
+RUN apk add --no-cache \
+       ca-certificates \
+       tini && \
+       mkdir -p ${IRIS_DIR}
+
+WORKDIR ${IRIS_DIR}
+COPY irisd /usr/bin/
+COPY iriscli /usr/bin/
+COPY builder/files/genesis-mainnet-v1.json ${IRIS_DIR}/
+COPY builder/files/genesis-testnet-v4.json ${IRIS_DIR}/
+
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+
+EXPOSE 1317 26656 26657
+
+ENTRYPOINT ["entrypoint.sh"]

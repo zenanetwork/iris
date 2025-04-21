@@ -1,0 +1,28 @@
+defaultStake: 10000
+defaultFee: 2000
+zenaChainId: 15001
+irisChainId: iris-15001
+contractsRepo: https://github.com/0xPolygon/pos-contracts.git
+contractsBranch: anvil-pos
+genesisContractsBranch: master
+sprintSize:
+  - "64"
+blockNumber:
+  - "0"
+blockTime:
+  - "2"
+numOfBorValidators: 3
+numOfBorSentries: 0
+numOfBorArchiveNodes: 0
+numOfErigonValidators: 0
+numOfErigonSentries: 0
+numOfErigonArchiveNodes: 0
+ethURL: http://anvil:9545
+ethHostUser: ubuntu
+devnetType: docker
+zenaDockerBuildContext: "https://github.com/maticnetwork/zena.git#develop"
+irisDockerBuildContext: "../../iris"
+sprintSizeBlockNumber:
+  - "0"
+devnetBorFlags: config,config,config
+mnemonic: "clock radar mass judge dismiss just intact mind resemble fringe diary casino"
