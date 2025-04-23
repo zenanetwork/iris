@@ -1,8 +1,8 @@
-# Heimdall
+# Iris
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/zenanetwork/iris)](https://goreportcard.com/report/github.com/zenanetwork/iris) [![CircleCI](https://circleci.com/gh/zenanetwork/iris/tree/master.svg?style=shield)](https://circleci.com/gh/zenanetwork/iris/tree/master) [![GolangCI Lint](https://github.com/zenanetwork/iris/actions/workflows/ci.yml/badge.svg)](https://github.com/zenanetwork/iris/actions)
 
-Validator node for Matic Network. It uses peppermint, customized [Tendermint](https://github.com/tendermint/tendermint).
+Validator node for Zena Network. It uses peppermint, customized [Tendermint](https://github.com/tendermint/tendermint).
 
 ### Install from source
 
@@ -14,15 +14,15 @@ Make sure you have Go v1.20+ already installed.
 $ make install
 ```
 
-### Init Heimdall
+### Init Iris
 
 ```bash
 $ irisd init
 $ irisd init --chain=mainnet        Will init with genesis.json for mainnet
-$ irisd init --chain=amoy           Will init with genesis.json for amoy
+$ irisd init --chain=pax           Will init with genesis.json for pax
 ```
 
-### Run Heimdall
+### Run Iris
 
 ```bash
 $ irisd start
@@ -33,7 +33,7 @@ $ irisd start
 ```bash
 $ irisd start                       Will start for mainnet by default
 $ irisd start --chain=mainnet       Will start for mainnet
-$ irisd start --chain=amoy          Will start for amoy
+$ irisd start --chain=pax          Will start for pax
 $ irisd start --chain=local         Will start for local with NewSelectionAlgoHeight = 0
 ```
 
@@ -51,13 +51,9 @@ $ irisd bridge
 
 ### Develop using Docker
 
-You can build and run Heimdall using the included Dockerfile in the root directory:
+You can build and run Iris using the included Dockerfile in the root directory:
 
 ```bash
 docker build -t iris .
 docker run iris
 ```
-
-### Documentation
-
-Latest docs are [here](https://docs.polygon.technology/pos/).
