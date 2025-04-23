@@ -1,6 +1,6 @@
 # Iris
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/zenanetwork/iris)](https://goreportcard.com/report/github.com/zenanetwork/iris) [![CircleCI](https://circleci.com/gh/zenanetwork/iris/tree/master.svg?style=shield)](https://circleci.com/gh/zenanetwork/iris/tree/master) [![GolangCI Lint](https://github.com/zenanetwork/iris/actions/workflows/ci.yml/badge.svg)](https://github.com/zenanetwork/iris/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zenanetwork/iris)](https://goreportcard.com/report/github.com/zenanetwork/iris) [![GolangCI Lint](https://github.com/zenanetwork/iris/actions/workflows/ci.yml/badge.svg)](https://github.com/zenanetwork/iris/actions)
 
 Validator node for Zena Network. It uses peppermint, customized [Tendermint](https://github.com/tendermint/tendermint).
 
